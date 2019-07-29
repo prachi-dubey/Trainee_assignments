@@ -1,0 +1,345 @@
+  body {
+  margin: 0px;
+}
+
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.upper-background {
+  background: url(assets/banner_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+header {
+  margin: 0 40px;
+  padding-top: 15px;
+}
+
+.logo {
+  float: left;
+  padding-top: 17px;
+}
+
+.menu-links {
+  float: left;
+  margin-left: 200px;
+  padding-top: 17px;
+ }
+
+ .link {
+  color: black;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+ }
+
+.buttons {
+  background-color: #5695FE;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: 0 20px 0 40px;
+  padding: 18px 40px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hotline-button {
+  float:right;
+}
+
+.container {
+  margin: 0 20px;
+  position: relative;
+  top: 120px;
+}
+
+div.content-section {
+  float: left;
+  padding: 5px;
+  width: 40%;
+}
+
+.content-wrapper {
+  padding-left: 20px;
+}
+
+.content-section .sub-heading {
+  margin-top: 135px;
+  padding-left: 15px;
+}
+
+.content-title {
+  font-size: 65px;
+}
+
+.content-data {
+  line-height: 25px;
+  word-spacing: 2px;
+}
+
+.appointment-button {
+  float: left;
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.image-section-right {
+  float: right;
+  width: 652px;
+}
+
+.learnmore-section {
+  position: relative;
+  top: 230px;
+}
+
+.image-section-left {
+  float: left;
+  margin-left: 60px;
+  width: 533px;
+}
+
+div.about-us-section {
+  float: right;
+  margin-right: 40px;
+  padding: 5px;
+  position: relative;
+  width: 40%;
+}
+
+.about-us {
+  font-size: 55px;
+  margin-top: 10px;
+}
+
+.data-format {
+  color: #655f5fe3;
+  font-size: 16px;
+  line-height: 25px;
+  margin-top: 20px;
+  word-spacing: 1px;
+}
+
+.learnmore-button {
+  float: left;
+  margin: 30px 20px 30px 0px;
+  padding: 15px 30px;
+}
+
+.icon-style {
+  font-size: 20px;
+  line-height: 80px;
+}
+
+.icons {
+   margin-top: 65px;
+}
+
+.icons > div {
+  border-right: 1px solid #cccccc;
+  float: left;
+  text-align: center;
+  width: 33%;
+
+}
+
+.about-us-icon {
+   height: 45px;
+}
+
+.lower-background {
+  background: url(assets/footer_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.icons > div:last-child {
+    border-right: none;
+}
+
+.ourservices-container {
+  position: relative;
+  top: 400px;
+}
+
+.ourservice-title {
+  font: 53px italic;
+  font-weight: 600;
+  text-align: center;
+  word-spacing: 1px;
+}
+
+.ourservice-section {
+  margin: 0 70px;
+  margin-top: 70px;
+}
+
+.ourservice-left {
+  display: inline-block;
+  margin-top: 35px;
+  width: 20%;
+}
+
+.ourservice-right {
+  float: right;
+  margin-top: 35px;
+  width: 20%;
+}
+
+.circle-icon {
+  background-color: #f0f4f6;
+  border-radius: 50%;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+.ourservice-icon {
+  height: 30px;
+  margin: 10px;
+}
+
+.ourservice-data {
+  float: right;
+  font: 22px italic, Georgia, serif;
+  font-weight: 500;
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+div.ourservice-img {
+  display: inline-block;
+  margin: 35px 110px;
+}
+
+.ourservice-blog-space {
+  margin-bottom: 80px;
+}
+
+.oursevice-blog-upper {
+
+}
+
+.oursevice-blog-lower {
+
+}
+
+.ourservice-img-size {
+  height: 365px;
+  width: 365px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .upper-background {
+   background-color: #F0F4F687;
+   background-image: none;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .menu-links {
+    margin-left: 70px;
+   }
+
+  .link {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .buttons {
+   font-size: 18px;
+   margin: 0px;
+   padding: 15px 10px;
+  }
+
+  .container {
+    margin: 0 40px;
+    top: 0;
+  }
+
+  div.content-section{
+    float: none;
+    margin: 180px 0;
+    width: 100%;
+  }
+
+  .sub-heading {
+    margin-top: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    padding-left: 0;
+   }
+
+  .content-title {
+    font-size: 45px;
+    text-align: center;
+   }
+
+   .content-data {
+     text-align: center;
+   }
+
+   .appointment-button {
+     margin-left: 220px;
+     margin-top: 25px;
+   }
+
+   .image-section-right {
+    display: none;
+   }
+
+   .learnmore-section {
+    display: none;
+   }
+
+   .ourservices-container {
+     position: none;
+     top: 50px;
+   }
+
+   .ourservice-title {
+     font: 45px italic;
+   }
+
+   .ourservice-left {
+     width: 100%;
+   }
+
+   .ourservice-data {
+     margin-right: 85px;
+   }
+
+   .ourservice-blog-space {
+     display: none;
+   }
+
+   .oursevice-blog-upper {
+     display: inline-block;
+     width: 48%;
+   }
+
+   .oursevice-blog-lower {
+     display: inline-block;
+     width: 48%;
+   }
+
+   .ourservice-right {
+     float: none;
+     width: 100%;
+     margin-bottom: 50px;
+   }
+
+}
