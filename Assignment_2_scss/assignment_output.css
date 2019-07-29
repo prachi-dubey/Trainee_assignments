@@ -1,0 +1,210 @@
+.buttons {
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: 0 20px 0 40px;
+  padding: 18px 40px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.oursevice-blog-upper .circle-icon, .oursevice-blog-lower .circle-icon {
+  background-color: #f0f4f6;
+  border-radius: 50%;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+body {
+  margin: 0px;
+}
+
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.buttons {
+  background-color: #5695FE;
+}
+
+.hotline-button {
+  float: right;
+}
+
+.appointment-button {
+  float: left;
+  margin: 20px 0 0 0;
+}
+
+.data-format {
+  color: #655f5fe3;
+  font-size: 16px;
+  line-height: 25px;
+  margin-top: 20px;
+  word-spacing: 1px;
+}
+
+.upper-background {
+  background: url(assets/banner_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.upper-background header {
+  margin: 0 40px;
+  padding-top: 15px;
+}
+.upper-background header .logo {
+  float: left;
+  padding-top: 17px;
+}
+.upper-background header .menu-links {
+  float: left;
+  margin-left: 200px;
+  padding-top: 17px;
+}
+.upper-background header .menu-links .link {
+  color: black;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 20px;
+  position: relative;
+  top: 120px;
+}
+.container .content-section {
+  float: left;
+  padding: 5px;
+  margin-top: 135px;
+  width: 40%;
+}
+.container .content-section .sub-heading {
+  padding-left: 15px;
+}
+.container .content-section .content-wrapper {
+  padding-left: 20px;
+}
+.container .content-section .content-wrapper .content-title {
+  font-size: 65px;
+}
+.container .content-section .content-wrapper .content-data {
+  line-height: 25px;
+  word-spacing: 2px;
+}
+.container .image-section-right {
+  float: right;
+  width: 652px;
+}
+
+.lower-background {
+  background: url(assets/footer_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.image-section-left {
+  float: left;
+  margin-left: 60px;
+  width: 533px;
+}
+
+.learnmore-section {
+  position: relative;
+  top: 230px;
+}
+
+.about-us-section {
+  float: right;
+  margin-right: 40px;
+  padding: 5px;
+  position: relative;
+  width: 40%;
+}
+.about-us-section .about-us {
+  font-size: 55px;
+  margin-top: 10px;
+}
+.about-us-section .learnmore-button {
+  float: left;
+  margin: 30px 20px 30px 0px;
+  padding: 15px 30px;
+}
+.about-us-section .icons {
+  margin-top: 65px;
+}
+.about-us-section .icons .about-us-icon {
+  height: 45px;
+}
+.about-us-section .icons .icon-style {
+  font-size: 20px;
+  line-height: 80px;
+}
+
+.icons > div {
+  border-right: 1px solid #cccccc;
+  float: left;
+  text-align: center;
+  width: 33%;
+}
+.icons > div .icons > div:last-child {
+  border-right: none;
+}
+
+.ourservices-container {
+  position: relative;
+  top: 400px;
+}
+.ourservices-container .ourservice-title {
+  font: 53px italic;
+  font-weight: 600;
+  text-align: center;
+  word-spacing: 1px;
+}
+.ourservices-container .ourservice-section {
+  margin: 0 70px;
+  margin-top: 70px;
+}
+.ourservices-container .ourservice-section .feature {
+  margin-top: 35px;
+  width: 20%;
+}
+.ourservices-container .ourservice-section .left {
+  display: inline-block;
+}
+.ourservices-container .ourservice-section .right {
+  float: right;
+}
+.ourservices-container .ourservice-section div.ourservice-img {
+  display: inline-block;
+  margin: 35px 110px;
+}
+.ourservices-container .ourservice-section div.ourservice-img .ourservice-img-size {
+  height: 365px;
+  width: 365px;
+}
+
+.ourservice-data {
+  float: right;
+  font: 22px italic, Georgia, serif;
+  font-weight: 500;
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+.ourservice-icon {
+  height: 30px;
+  margin: 10px;
+}
+
+.ourservice-blog-space {
+  margin-bottom: 80px;
+}
+
+/*# sourceMappingURL=assignment_output.css.map */
