@@ -1,0 +1,163 @@
+.upper-background {
+  background: url(assets/banner_bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+header {
+  display: flex;
+  margin: 0 40px;
+  padding-top: 15px;
+}
+
+.logo {
+  padding-top: 17px;
+}
+
+.menu-links {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: 68%;
+ }
+
+ .menu-links > a {
+  color: black;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+ }
+
+.buttons {
+  background-color: #5695FE;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: 0 20px 0 40px;
+  padding: 18px 40px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  margin: 150px 20px 0 20px;
+}
+
+.content-section {
+  padding: 5px;
+  width: 40%;
+}
+
+.content-wrapper {
+  padding-left: 20px;
+}
+
+.sub-heading {
+  margin-top: 135px;
+  padding-left: 15px;
+}
+
+.content-title {
+  font-size: 65px;
+}
+
+.content-data {
+  line-height: 25px;
+  word-spacing: 2px;
+}
+
+.appointment-button {
+  margin: 15px 220px 0 0;
+}
+
+.image-section-right {
+  display: flex;
+  width: 652px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .upper-background {
+   background-color: #F0F4F687;
+   background-image: none;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .menu-links {
+    padding-top: 3px;
+   }
+
+  .link {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .buttons {
+   font-size: 17px;
+   margin: 0px;
+   padding: 15px 10px;
+  }
+
+  .container {
+    margin: 0 40px;
+    top: 0;
+  }
+
+  .content-section{
+    margin: 180px 0;
+    width: 100%;
+  }
+
+  .sub-heading {
+    margin-top: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    padding-left: 0;
+   }
+
+  .content-title {
+    font-size: 45px;
+    text-align: center;
+   }
+
+   .content-data {
+     text-align: center;
+   }
+
+   .appointment-button {
+     margin: 25px 220px;
+   }
+
+   .image-section-right {
+    display: none;
+   }
+}
+
+@media only screen and (max-width: 480px) {
+  .menu-links {
+    display: none;
+   }
+
+   .buttons {
+    margin: 0 0 0 110px;
+   }
+
+   .content-section {
+     margin: 100px 0;
+   }
+
+   .appointment-button {
+     margin: 0px 90px;
+   }
+
+}
