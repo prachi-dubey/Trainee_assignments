@@ -1,0 +1,186 @@
+$ipad: 768px;
+
+.background {
+  background: url("assets/hero_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p {
+  color: #655f5fe3;
+  font-size: 16px;
+  line-height: 25px;
+  word-spacing: 1px;
+}
+
+.regna {
+  font-size: 40px;
+}
+
+.regna-center {
+  margin: 230px 0;
+  text-align: center;
+}
+
+.nav-style {
+  padding: 10px !important;
+}
+
+.get-started-button {
+  font-size: 20px;
+}
+
+.icons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.page-header {
+  border: none;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+      opacity: 1;
+      transform: none;
+  }
+}
+
+.aboutus {
+  .media {
+    animation-duration: 2s;
+    animation-name: fadeInUp;
+  }
+
+  .img-style {
+    background: url("assets/about_bg.png") center top no-repeat;
+    min-height: 500px;
+      // @media (max-width: $ipad) {
+      //   order: 1;
+      // }
+    }
+
+  .icons {
+    border: 1px solid #2dc997;
+    border-radius: 50%;
+    color: #2dc997;
+    font-size: 20px;
+    height: 64px;
+    width: 64px;
+  }
+
+}
+
+.title {
+  margin-top: 80px;
+  padding-bottom: 0 !important;
+  text-align: center;
+  word-spacing: 1px;
+}
+
+.service {
+  .section {
+     display: flex;
+     flex-wrap: wrap;
+     margin: 0 auto;
+     width: 100%;
+
+     .card {
+       animation-duration: 4s;
+       animation-name: fadeInUp;
+       background-color: #FAFAFA;
+       margin: 30px 15px;
+       padding: 25px;
+       position: relative;
+       text-align: justify;
+       width: 30%;
+
+       @media (max-width: $ipad) {
+         width: 100%;
+       }
+
+       .icons {
+           background-color: #2dc997;
+           border: 6px solid white;
+           border-radius: 50%;
+           color: #fff;
+           font-size: 20px;
+           height: 60px;
+           left: 41%;
+           position: absolute;
+           top: -30px;
+           width: 60px;
+       }
+
+       .card-title {
+         font-size: 18px;
+         font-weight: 500;
+         margin-top: 10px;
+       }
+
+       &:hover {
+         .icons {
+           background-color: #fff;
+           border: 2px solid #2dc997;
+           color: #2dc997;
+         }
+       }
+     }
+   }
+}
+
+.team {
+  margin: 0 40px;
+
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .thumbnail {
+      border: none;
+      margin: 20px;
+      text-align: center;
+      width: 21%;
+
+      @media (max-width: $ipad) {
+        width: 100%;
+      }
+
+      .name {
+        color: #666666;
+        display: block;
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 10px;
+      }
+
+      .post {
+        color: #8A8A8A;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #F7F7F7;
+  padding: 100px 0;
+
+  .address {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  .input-align {
+    margin-bottom: 20px;
+  }
+
+  .button-align {
+    text-align: center;
+  }
+}
