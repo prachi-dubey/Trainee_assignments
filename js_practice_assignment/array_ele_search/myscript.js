@@ -11,3 +11,12 @@ function searchArrayElement(array) {
 
 var arrElement = searchArrayElement(arr);
 console.log("element of array is : " + arrElement);
+
+///////////////////////////////////// another apporach ///////////////////////////
+
+var first = arr.find(myFunction);
+console.log(first);
+
+function myFunction(value, index, array) {
+  return value == 6;
+}
