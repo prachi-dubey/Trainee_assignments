@@ -12,11 +12,22 @@ function searchArrayElement(array) {
 var arrElement = searchArrayElement(arr);
 console.log("element of array is : " + arrElement);
 
-///////////////////////////////////// another apporach ///////////////////////////
+///////////////////////////////////// another apporach find ///////////////////////////
 
 var first = arr.find(myFunction);
 console.log(first);
 
 function myFunction(value, index, array) {
   return value == 6;
+}
+
+//////////////////// index of /////////////////////
+
+var a = arr.indexOf(20);
+// console.log(a);
+
+if(a != -1) {
+  console.log(a);
+} else {
+  console.log("Number not found");
 }
