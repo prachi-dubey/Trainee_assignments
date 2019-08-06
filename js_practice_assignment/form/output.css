@@ -1,0 +1,20 @@
+h2 {
+  text-align: center;
+}
+
+.form-center {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.dp-style {
+  margin-right: 70px;
+  padding-top: 0 !important;
+}
+
+.languages .checkbox-inline {
+  width: 47%;
+  margin-right: 0;
+}
+
+/*# sourceMappingURL=output.css.map */

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../../../../bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="output.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <h2> Form Example </h2>
+ <div class="container form-center">
+  <form  class="form-horizontal">
+    <div class="form-group row">
+      <label class="col-sm-3 col-xs-12">First Name: </label>
+      <div class="col-sm-9 col-xs-12 input-group">
+        <input type="text" class="form-control"  id="firstName" value="" placeholder="First name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-xs-12" >Last Name: </label>
+      <div class="col-sm-9 col-xs-12 input-group">
+        <input type="text" class="form-control" id="lastName" value="" placeholder="Last name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-xs-12" >Age:</label>
+      <div class="col-sm-9 col-xs-12 input-group">
+        <input type="text" class="form-control" id="age" value="" placeholder="10">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-xs-12" >Email:</label>
+      <div class="col-sm-9 col-xs-12 input-group">
+        <input type="email" class="form-control" id="emailAdd" value="" placeholder="xyz@gmail.com">
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-sm-4"> Developer Profile </label>
+      <div class="col-sm-8">
+        <label class="radio-inline dp-style">
+          <input type="radio" value="frontend" name="RadioOptions" id="profile"> FrontEnd
+        </label>
+        <label class="radio-inline dp-style ">
+          <input type="radio" value="backend" name="RadioOptions" id="profile"> BackEnd
+        </label>
+      </div>
+    </div>
+
+    <div class="row" id="chkLang">
+      <label class="col-sm-4"> Language </label>
+        <div class="col-sm-8 languages">
+          <label class="checkbox-inline dp-style">
+            <input type="checkbox" value="c" name="lang"> C
+          </label>
+          <label class="checkbox-inline dp-style">
+            <input type="checkbox" value="c++" name="lang"> C++
+          </label> <br>
+          <label class="checkbox-inline dp-style">
+            <input type="checkbox" value="sql" name="lang"> sql
+          </label>
+          <label class="checkbox-inline dp-style">
+            <input type="checkbox" value="java" name="lang"> java
+          </label>
+        </div>
+    </div>
+
+    <button type="button" onclick='getInfo();'>
+      submit
+    </button>
+  </form>
+  <p id="error"></p>
+  </div>
+  <script src="myscript.js"></script>
+</body>
+</html>
