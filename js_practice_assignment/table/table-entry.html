@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../../../../bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="tableStyle.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="center">
+  <h2> Table Entry </h2>
+  <div class="row">
+    <button class="col-sm-1 col-sm-push-10 font-style" onclick="showInputRow()">  ADD </button>
+  </div>
+
+  <table class="table table-bordered" id = "wrapper">
+    <tr>
+      <th>Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Age</th>
+      <th>Profile</th>
+    </tr>
+  </table>
+
+
+ <div class="row-no-gutter form-group" id="insert-data" style="display:none">
+   <div class="col-sm-1 form-style ">
+     <input type="text" class="form-control"  id="idNo" onfocus="this.value=''" value="" placeholder="id">
+   </div>
+   <div class="col-sm-3 form-style ">
+     <input type="text" class="form-control"  id="firstName" value="" placeholder="firstName">
+   </div>
+   <div class="col-sm-3 form-style ">
+     <input type="text" class="form-control"  id="lastName" value="" placeholder="lastName">
+   </div>
+   <div class="col-sm-2 form-style ">
+     <input type="text" class="form-control"  id="age" value="" placeholder="age">
+   </div>
+   <div class="col-sm-2 form-style ">
+     <input type="text" class="form-control"  id="profile" value="" placeholder="profile">
+   </div>
+   <button class="col-sm-1 font-style" onclick="getRowData()">  SAVE </button>
+ </div>
+
+</div>
+<script src="tableJs.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.table {
+  margin: 0px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+button {
+  padding: 4px;
+}
+
+.center {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.form-style {
+  padding: 0 !important;
+}
+
+.font-style {
+  color: #0000ff;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=tableStyle.css.map */
