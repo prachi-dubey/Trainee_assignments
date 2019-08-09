@@ -1,31 +1,24 @@
-.table {
-  margin: 0px;
-}
-
-h2 {
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 0;
-}
-
 button {
   padding: 4px;
 }
 
-.center {
-  margin: 0 auto;
+.container {
   width: 70%;
 }
-
-.form-style {
-  padding: 0 !important;
+.container .heading h2 {
+  display: inline-block;
+  text-align: center;
+  width: 70%;
 }
-
-.font-style {
-  color: #0000ff;
-  font-size: 18px;
+.container .heading button {
+  width: 15%;
+}
+.container .error-msg {
+  color: #ff0000;
+}
+.container .wrapper {
+  margin: 0px;
+  width: 85%;
 }
 
 /*# sourceMappingURL=tableStyle.css.map */
