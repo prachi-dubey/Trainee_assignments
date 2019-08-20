@@ -1,0 +1,62 @@
+$week-color: #E0E0E0;
+$border-color: #eeeeee;
+$current-date: #ffff00;
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+
+ .page-header {
+   margin: 20px 0 10px;
+   h1 {
+     text-align: center;
+   }
+ }
+
+ .style {
+   height: 40px;
+   margin-bottom: 20px;
+
+   .month {
+     font-size: 20px;
+     width: 150px;
+   }
+ }
+
+ .week {
+   padding-left: 0;
+    li {
+        background-color: $week-color;
+        width: 13%;
+      }
+    }
+
+    .date-wrapper {
+       padding-left: 0;
+    }
+}
+
+.block {
+  border: 1px solid $border-color;
+  display: inline-block;
+  font-size: 20px;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  width: 149px;
+}
+
+.empty-block {
+  border: 1px solid $border-color;
+  float: left;
+  height: 50px;
+  list-style-type: none;
+  width: 149px;
+}
+
+.current-date {
+  background-color: $current-date;
+}
