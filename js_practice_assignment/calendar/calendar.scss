@@ -1,60 +1,58 @@
 $week-color: #E0E0E0;
 $border-color: #eeeeee;
 $current-date: #ffff00;
+$mobile: 380px;
 
-* {
-  box-sizing: border-box;
-}
+// @media (max-width: $mobile) {
+//   weekday = ["S", "M", "T", "W", "T", "F", "S"];
+// }
 
 .container {
   width: 90%;
 
- .page-header {
-   margin: 20px 0 10px;
-   h1 {
-     text-align: center;
-   }
- }
-
- .style {
-   height: 40px;
-   margin-bottom: 20px;
-
-   .month {
-     font-size: 20px;
-     width: 150px;
-   }
- }
-
- .week {
-   padding-left: 0;
-    li {
-        background-color: $week-color;
-        width: 13%;
-      }
+  .page-header {
+    margin: 20px 0 10px;
+    h1 {
+      text-align: center;
     }
+  }
 
-    .date-wrapper {
-       padding-left: 0;
+  .mmyy-block {
+    height: 40px;
+    margin-bottom: 20px;
+
+    .month {
+      font-size: 20px;
+      height: 45px;
+      width: 150px;
     }
+  }
+}
+
+.week-block {
+  padding-left: 0;
+}
+
+.week-color {
+  background-color: $week-color;
+}
+
+.day {
+  font-size: 20px;
 }
 
 .block {
   border: 1px solid $border-color;
-  display: inline-block;
-  font-size: 20px;
+  float: left;
   height: 50px;
   padding: 10px;
   text-align: center;
-  width: 149px;
+  width: 14%;
 }
 
-.empty-block {
-  border: 1px solid $border-color;
-  float: left;
-  height: 50px;
+.empty {
+
   list-style-type: none;
-  width: 149px;
 }
 
 .current-date {

@@ -14,24 +14,29 @@
     <h1> Calendar </h1>
   </div>
 
-  <div class="style">
-   <button class="btn btn-success month"> August </button>
+ <div class="mmyy-block">
+    <div class="pull-left">
+      <label>Select month:</label>
+      <select class="sel-month month btn-success" id="curr-month">
+          <option value="0">January</option>
+          <option value="1">Feburary</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+      </select>
+    </div>
  </div>
 
-  <ul class="week">
-    <li class="block">Sunday</li>
-    <li class="block">Monday</li>
-    <li class="block">Tuesday</li>
-    <li class="block">Wednesday</li>
-    <li class="block">Thursday</li>
-    <li class="block">Friday</li>
-    <li class="block">Saturday</li>
-  </ul>
-
-  <ul class="date-wrapper" id="set-date-style"> </ul>
-
+ <div class="week-block clearfix" id="week-wrap"> </div>
+ 
 </div>
-
 <script src="calendar.js"></script>
 </body>
 </html>

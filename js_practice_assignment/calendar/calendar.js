@@ -1,39 +1,58 @@
-var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-var d = new Date();
+var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+//2015 2025
 
-var currentDate = d.getDate();
-// console.log(currentDate);
+setMonthAndYear();
 
-var currentMonth = d.getMonth();
-var currentYear = d.getFullYear();
+$("select.sel-month").change(function() {
+    var selectedMonth = $(this).children("option:selected").val();
+    $("#week-wrap").empty();
+    setMonthAndYear(selectedMonth);
+});
 
-var firstDate = new Date(currentYear, currentMonth, 1);     // month first date
-var lastDate = new Date(currentYear, currentMonth + 1, 0);  //month last date
-console.log(firstDate);
-// console.log(lastDate);
+function setMonthAndYear(month) {
+  var d = new Date();
+  if(month) {
+     d.setMonth(month);
+   }
+  prepareCalendar(d);
+}
 
-var weekdayNum = firstDate.getDay();
-// console.log(weekdayNum);                   //4
-// console.log(weekday[weekdayNum]);         //thursday                     // firstdate day
+function prepareCalendar (date) {
+  var checkMonth = new Date().getMonth();                    //give month currently
 
-var totalDate = lastDate.getDate();
-// console.log(totalDate);                     //31
+  var currentDate = date.getDate();
+  var currentMonth = date.getMonth();
+  var currentYear = date.getFullYear();
+  $("#curr-month").val(currentMonth);
 
-$("ul li").each(function(index, value) {
-  var liHtml ;
-  var htmlWeekDay = $(value).text();
-  if( htmlWeekDay == weekday[weekdayNum]) {
-    for(var i = 1; i < weekdayNum; i++) {
-      liHtml = "<li class='empty-block'></li>";              //adding empty blog
-      $("#set-date-style").append(liHtml);
+  var firstDate = new Date(currentYear, currentMonth, 1);     // month first date
+  var lastDate = new Date(currentYear, currentMonth + 1, 0);  //month last date
+
+  var firstDay = firstDate.getDay();
+  var lastDay = lastDate.getDay();
+  var totalDate = lastDate.getDate();
+
+  var liHtml = "";
+  for(var i = 0; i < 7 ; i++) {
+    liHtml += "<div class='week-color block day'>" + weekday[i] +"</div>";              //adding weekdays blog
+  }
+
+  for(var i = 0; i < firstDay; i++) {
+    liHtml += "<div class='empty block'></div>";              //adding empty blog
+  }
+
+  for(var i = 1; i <= totalDate; i++) {
+    if(currentDate == i && currentMonth == checkMonth) {                                  //foucs current date
+      liHtml += "<div class='block current-date day'>" + i  + "</div>";       //adding date
+    } else {
+      liHtml += "<div class='block day'>" + i  + "</div>";       //adding date
     }
-    for(var j = 1; j <= totalDate; j++) {
-      if(currentDate == j) {                                   //foucs current date
-        liHtml += "<li ' class='block current-date'>" + j  + "</li>";       //adding date
-      } else {
-        liHtml += "<li class='block'>" + j  + "</li>";       //adding date
+  }
+
+  if(weekday != 6) {
+      for(var i = lastDay; i < 6; i++) {
+        liHtml += "<div class='empty block'></div>";              //adding empty blog
       }
-    }           //end of for
-  $("#set-date-style").append(liHtml);
- }     //end of if
-});   //end of each function
+  }
+  $("#week-wrap").append(liHtml);
+}
