@@ -7,18 +7,28 @@
 .container .page-header h1 {
   text-align: center;
 }
-.container .mmyy-block {
+.container .mm-yy-block {
   height: 45px;
   margin-bottom: 18px;
 }
-.container .mmyy-block .month {
+.container .mm-yy-block .month {
   font-size: 20px;
   height: 45px;
   width: 150px;
 }
-.container .mmyy-block .year {
+.container .mm-yy-block .year {
   display: inline-block;
   margin-left: 20px;
+}
+.container .modal-header {
+  background-color: #5cb85c;
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.error {
+  color: #ff0000;
 }
 
 .week-block {
@@ -26,7 +36,7 @@
 }
 
 .week-color {
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
 }
 
 .day {
@@ -37,7 +47,7 @@
   border: 1px solid #eeeeee;
   float: left;
   height: 50px;
-  padding: 10px;
+  line-height: 2.4;
   text-align: center;
   width: 14%;
 }
@@ -48,6 +58,39 @@
 
 .current-date {
   background-color: #ffff00;
+}
+
+.addEvent {
+  color: #de6e80;
+  float: right;
+  font-size: 10px;
+  line-height: 1.42857143;
+  position: relative;
+  top: 32px;
+}
+
+.event-add {
+  width: 30%;
+  display: inline-block;
+}
+
+.ui-widget-content {
+  border: none !important;
+}
+
+#first-date,
+#last-date {
+  z-index: 1051;
+}
+
+.modal-dialog .modal-header {
+  padding: 35px 50px;
+}
+.modal-dialog .modal-body {
+  padding: 40px 50px;
+}
+.modal-dialog .modal-body .event-add .label-gap {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=calendar.css.map */

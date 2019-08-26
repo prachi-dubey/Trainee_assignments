@@ -1,6 +1,9 @@
-$week-color: #E0E0E0;
+$week-color: #e0e0e0;
 $border-color: #eeeeee;
 $current-date: #ffff00;
+$modal-color: #5cb85c;
+$event-add: #de6e80;
+$error: #ff0000;
 $mobile: 380px;
 
 // @media (max-width: $mobile) {
@@ -17,7 +20,7 @@ $mobile: 380px;
     }
   }
 
-  .mmyy-block {
+  .mm-yy-block {
     height: 45px;
     margin-bottom: 18px;
 
@@ -31,6 +34,17 @@ $mobile: 380px;
       margin-left: 20px;
     }
   }
+
+  .modal-header {
+    background-color: $modal-color;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.error {
+  color: $error;
 }
 
 .week-block {
@@ -49,16 +63,56 @@ $mobile: 380px;
   border: 1px solid $border-color;
   float: left;
   height: 50px;
-  padding: 10px;
+  line-height: 2.4;
+  // padding: 10px;
   text-align: center;
   width: 14%;
 }
 
 .empty {
-
   list-style-type: none;
 }
 
 .current-date {
   background-color: $current-date;
+}
+
+.addEvent {
+  color: $event-add;
+  float: right;
+  font-size: 10px;
+  line-height: 1.42857143;
+  position: relative;
+  top: 32px;
+}
+
+.event-add {
+  width: 30%;
+  display: inline-block;
+  // margin-top: 20px;
+}
+
+.ui-widget-content {
+  border: none !important;
+}
+
+#first-date,
+#last-date {
+  z-index: 1051;
+}
+
+.modal-dialog {
+  .modal-header {
+    padding:35px 50px;
+  }
+
+  .modal-body {
+    padding:40px 50px;
+
+    .event-add {
+      .label-gap {
+        margin-top:10px;
+      }
+    }
+  }
 }
