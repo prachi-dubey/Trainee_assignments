@@ -4,11 +4,8 @@ $current-date: #ffff00;
 $modal-color: #5cb85c;
 $event-add: #de6e80;
 $error: #ff0000;
+$event-color: #e91e63;
 $mobile: 380px;
-
-// @media (max-width: $mobile) {
-//   weekday = ["S", "M", "T", "W", "T", "F", "S"];
-// }
 
 .container {
   width: 90%;
@@ -20,7 +17,7 @@ $mobile: 380px;
     }
   }
 
-  .mm-yy-block {
+  .month-year-block {
     height: 45px;
     margin-bottom: 18px;
 
@@ -38,8 +35,8 @@ $mobile: 380px;
   .modal-header {
     background-color: $modal-color;
     color:white !important;
-    text-align: center;
     font-size: 30px;
+    text-align: center;
   }
 }
 
@@ -64,7 +61,6 @@ $mobile: 380px;
   float: left;
   height: 50px;
   line-height: 2.4;
-  // padding: 10px;
   text-align: center;
   width: 14%;
 }
@@ -87,9 +83,8 @@ $mobile: 380px;
 }
 
 .event-add {
-  width: 30%;
   display: inline-block;
-  // margin-top: 20px;
+  width: 30%;
 }
 
 .ui-widget-content {
@@ -115,4 +110,18 @@ $mobile: 380px;
       }
     }
   }
+}
+
+.event-line {
+  border-top: 6px solid $event-color;
+  height: 45px !important;
+  margin-top: 5px;
+
+  .addEvent {
+    top: 23px !important;
+  }
+}
+
+.date-range-margin {
+  margin-top: 10px;
 }

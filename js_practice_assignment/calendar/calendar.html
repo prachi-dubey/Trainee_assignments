@@ -6,17 +6,16 @@
   <link href="calendar.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-
 <div class="container">
   <div class="page-header">
     <h1> Calendar </h1>
   </div>
 
- <div class="mm-yy-block">
+  <div class="month-year-block">
     <div class="pull-left">
       <label>Select month:</label>
       <select class="sel-month month btn-success" id="curr-month">
@@ -55,16 +54,7 @@
 
  <div class="week-block clearfix" id="week-wrap"> </div>
 
- <!-- <div>
-        Date: <input type="text" id="tbDate" />
-    </div> -->
-
-<!-- <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for @mdo</span>
-<span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for @fat</span>
-<span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for @getbootstrap</span> -->
-
-
-<div class="modal fade" id="open-modal" role="dialog">
+ <div class="modal fade" id="open-modal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content clearfix">
       <div class="modal-header">
@@ -76,21 +66,21 @@
               <label><span class="glyphicon glyphicon-plus-sign"></span> Add title</label>
               <input type="text" class="form-control" id="add-title" placeholder=""/>
 
-              <div style="margin-top:10px";>
+              <div class="date-range-margin">
                 <label><span class="glyphicon glyphicon-time"></span> Date range</label>
               </div>
 
               <div class="event-add">
 
                 <label> Date from: </label>
-                <div class="input-group" id="first-input">
-                 <input type="text" class="form-control" id="first-date" placeholder="dd/mm/yy">
+                <div class="input-group">
+                 <input type="text" class="form-control showDatepicker" id="first-date" placeholder="dd/mm/yy">
                  <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </div>
                </div>
 
               <label class="label-gap"> Date to: </label>
                <div class="input-group">
-                <input type="text" class="form-control" id="last-date" placeholder="dd/mm/yy">
+                <input type="text" class="form-control showDatepicker" id="last-date" placeholder="dd/mm/yy">
                 <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </div>
               </div>
             </div>
@@ -111,28 +101,3 @@
 
 </body>
 </html>
-
-
-  <!-- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <div class="modal-content clearfix">
-        <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-calendar"></span> Add Event</h4>
-        </div>
-        <div class="modal-body" style="padding:40px 50px;">
-          <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-plus-sign"></span> Add title</label>
-              <input type="text" class="form-control" id="add-title" placeholder="">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <button type="submit" class="btn btn-success btn-default pull-right"><span class="glyphicon glyphicon-off"></span> Submit</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
