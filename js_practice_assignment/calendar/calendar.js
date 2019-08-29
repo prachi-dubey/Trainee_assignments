@@ -8,7 +8,7 @@ $(document).ready(function() {
   var selectedMonth = null;
   var selectedYear = null;
 
-  setMonthAndYear(8, 2019);
+  setMonthAndYear();
 
   $("select.sel-month").change(function() {
       selectedMonth = $(this).children("option:selected").val();
@@ -35,22 +35,22 @@ function setMonthAndYear(month, year) {
   prepareCalendar(date);
 }
 
-function eventsOnDate(monthEvents, date, selMonth) {
+function eventsOnDate(monthEvents, date, selMonth, selYear) {
   var events = [];
   for (var x = 0; x < monthEvents.length; x++) {
     var title = monthEvents ? monthEvents[x].title : null;
     var fdate = monthEvents ? monthEvents[x].fdate : null;
     var ldate = monthEvents ? monthEvents[x].ldate : null;
-    // console.log(fdate);
-    var eventFdate = fdate.getDate();  // console.log("event first date " + eventFdate);
-    var eventFmonth = fdate.getMonth(); // console.log("event first month " + eventFmonth);
 
-    var eventLdate = ldate.getDate();   //console.log("event last date " + eventLdate);
-    var eventLmonth = ldate.getMonth();  //console.log("event last month " + eventLmonth);
+    var eventFdate = fdate.getDate();
+    var eventFmonth = fdate.getMonth();
+
+    var eventLdate = ldate.getDate();
+    var eventLmonth = ldate.getMonth();
     if ((eventFmonth == eventLmonth) && (date >= eventFdate && date <= eventLdate)) {
       events.push(title);
     } else if((eventFmonth < eventLmonth) && (eventFmonth == selMonth)) {
-      if( eventLdate < date && eventFdate <= date) {
+      if( eventLdate < date || eventFdate <= date) {
         events.push(title);
       }
     }  // greater if
@@ -113,14 +113,16 @@ function prepareCalendar(date) {
      }
       calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
     } else if (selLastDate == i && selMonth == currentMonth && selYear == currentYear) {
-      for (var x = 0; x < eventInMonth; x++) {
-         var title = monthEvents ? monthEvents[x].title : null;
-         var fdate = monthEvents ? monthEvents[x].fdate : null;
-         var ldate = monthEvents ? monthEvents[x].ldate : null;
-      }
-      if(i == fdate) {
-        calView += "<div class='current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + title  + "'>" ;
-      } else {
+      if(monthEvents.length) {
+        var events = eventsOnDate(monthEvents, i, selMonth);
+        console.log('for day : ' + i);
+        console.log(events);
+        if (events.length) {
+          calView += "<div class='block day current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
+        } else {
+          calView += "<div class='block current-date day'>";
+        }
+     }  else {
         calView += "<div class='block current-date day'>" ;      //foucs current date
       }
       calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
@@ -137,17 +139,6 @@ function prepareCalendar(date) {
 
   calendarWrapper.append(calView);
   bindEvents();
-
-  // if( flag == 1) {
-  //   // var tmp = fdate.getDate();          console.log("fdate " + tmp);
-  //   var tmpMonth = fdate.getMonth();    console.log("fmonth " + tmpMonth);
-  //   var tmpYear = fdate.getFullYear();  console.log("fyear " + tmpYear);
-  //   var newEventFdate = new Date(tmpYear, tmpMonth+1, 1);  console.log(newEventFdate);
-  //   yearEvents[eventLmonth] = [{ title: title, fdate: newEventFdate, ldate: ldate }];
-  //   console.log("test me also");
-  //   flag = 0;
-  // }
-
 }
 
 function bindEvents() {
@@ -230,15 +221,14 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
   var endDate = eventLastDate.getDate();      //date
   var endMonth = eventLastDate.getMonth();
   var endYear = eventLastDate.getFullYear();
-  // var eventText = { title: eventTitle, fdate: startdate, ldate: endDate };
 
   var eventStartDate = new Date(startYear, startMonth, startdate);
   while ((eventStartDate < eventLastDate) || (eventStartDate.getMonth() == endMonth)) {
     var year = eventStartDate.getFullYear();
     var month = eventStartDate.getMonth();
     var eventText = {title: eventTitle, ldate: eventLastDate};
-    if ((month <= endMonth) && (startMonth != endMonth) && (startMonth != month)) {
-      eventText['fdate'] = new Date(year, month+1, 1);
+    if ((month <= endMonth) &&  (startMonth != month)) { 
+      eventText['fdate'] = new Date(year, month, 1);
     } else {
       eventText['fdate'] = eventFirstDate;
     }
@@ -253,22 +243,9 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
 
     var nextMonthDate = eventStartDate.setMonth(eventStartDate.getMonth() + 1);
     eventStartDate = new Date(nextMonthDate);
-  }
-  console.log(storeEventData);
-  // if(storeEventData[startYear][startMonth]) {
-  //   storeEventData[startYear][startMonth].push(eventText);
-  // } else {
-  //   storeEventData[startYear][startMonth] = [eventText];
-  // }
 
-  // if(storeEventData[startYear]) {
-  //
-  // }
-  // else {
-  //   storeEventData[startYear] = {
-  //     [startMonth]: [eventText]
-  //   }
-  // }
+  }
+   console.log(storeEventData);
 
    calendarWrapper.empty();
    setMonthAndYear(startMonth, startYear)
