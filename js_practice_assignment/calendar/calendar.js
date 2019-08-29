@@ -1,13 +1,11 @@
 var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 var monthYear = null;
 var storeEventData = {};
+var selectedMonth = null;
+var selectedYear = null;
 var calendarWrapper = $("#week-wrap");
-var flag = 0;
 
 $(document).ready(function() {
-  var selectedMonth = null;
-  var selectedYear = null;
-
   setMonthAndYear();
 
   $("select.sel-month").change(function() {
@@ -23,19 +21,19 @@ $(document).ready(function() {
   });
 });
 
-function setMonthAndYear(month, year) {
+function setMonthAndYear(selectedMonth, selectedYear) {
   var date = new Date();
-  if(month) {
-     date.setMonth(month);
+  if(selectedMonth) {
+     date.setMonth(selectedMonth);
    }
-  if(year) {
-     date.setFullYear(year);
+  if(selectedYear) {
+     date.setFullYear(selectedYear);
    }
   monthYear = date;
   prepareCalendar(date);
 }
 
-function eventsOnDate(monthEvents, date, selMonth, selYear) {
+function eventsOnDate(monthEvents, date, selMonth) {
   var events = [];
   for (var x = 0; x < monthEvents.length; x++) {
     var title = monthEvents ? monthEvents[x].title : null;
@@ -50,7 +48,7 @@ function eventsOnDate(monthEvents, date, selMonth, selYear) {
     if ((eventFmonth == eventLmonth) && (date >= eventFdate && date <= eventLdate)) {
       events.push(title);
     } else if((eventFmonth < eventLmonth) && (eventFmonth == selMonth)) {
-      if( eventLdate < date || eventFdate <= date) {
+      if(eventFdate <= date) {
         events.push(title);
       }
     }  // greater if
@@ -63,7 +61,7 @@ function prepareCalendar(date) {
   var currentYear = new Date().getFullYear();                    //give month currently
   var currentDate = new Date().getDate();
 
-  var selLastDate = date.getDate();
+  var selDate = date.getDate();
   var selMonth = date.getMonth();
   var selYear = date.getFullYear();
   $("#curr-month").val(selMonth);
@@ -76,75 +74,68 @@ function prepareCalendar(date) {
   var monthLastDay = lastDate.getDay();
   var monthTotalDay = lastDate.getDate();
 
-  var calView = "";
+  var calendarView = "";
 
   for (var i = 0; i < 7 ; i++) {
-    calView += "<div class='week-color block day'>" + weekday[i] +"</div>";              //adding weekdays blog
+    calendarView += "<div class='week-color block day'>" + weekday[i] +"</div>";   //adding weekdays blog
   }
 
   for (var i = 0; i < monthFirstDay; i++) {
-    calView += "<div class='empty block'></div>";                                       //adding empty blog
+    calendarView += "<div class='empty block'></div>";          //adding empty blog
   }
 
-  var yearEvents =  storeEventData[selYear];                                           // check event
+  var yearEvents =  storeEventData[selYear];             // check event
   var monthEvents = [];
   if(yearEvents) {
     monthEvents = yearEvents[selMonth];
-    var eventInMonth = monthEvents ? monthEvents.length : null;
   }
 
   for (var i = 1; i <= monthTotalDay; i++) {
     if(selYear < currentYear) {
-      calView += "<div class='block day'>" + i  + "</div>";
+      calendarView += "<div class='block day'>" + i  + "</div>";
     } else if (selYear == currentYear && selMonth < currentMonth) {
-      calView += "<div class='block day'>" + i  + "</div>";
-    } else if (selLastDate < i || selMonth > currentMonth || selYear > currentYear) {
-      if(monthEvents.length) {
+      calendarView += "<div class='block day'>" + i  + "</div>";
+    } else if (selDate < i || selMonth > currentMonth || selYear > currentYear) {
+      if(monthEvents && monthEvents.length ) {
         var events = eventsOnDate(monthEvents, i, selMonth);
-        console.log('for day : ' + i);
-        console.log(events);
         if (events.length) {
-          calView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
+          calendarView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
         } else {
-          calView += "<div class='block day'>";
+          calendarView += "<div class='block day'>";
         }
-     } else {
-       calView += "<div class='block day'>";
-     }
-      calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
-    } else if (selLastDate == i && selMonth == currentMonth && selYear == currentYear) {
-      if(monthEvents.length) {
+      } else {
+        calendarView += "<div class='block day'>";
+      }
+     calendarView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
+   } else if (selDate == i && selMonth == currentMonth && selYear == currentYear) {
+      if(monthEvents && monthEvents.length ) {
         var events = eventsOnDate(monthEvents, i, selMonth);
-        console.log('for day : ' + i);
-        console.log(events);
         if (events.length) {
-          calView += "<div class='block day current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
+          calendarView += "<div class='block day current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
         } else {
-          calView += "<div class='block current-date day'>";
+          calendarView += "<div class='block current-date day'>";
         }
      }  else {
-        calView += "<div class='block current-date day'>" ;      //foucs current date
+        calendarView += "<div class='block current-date day'>" ;      //foucs current date
       }
-      calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
+      calendarView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
     } else {
-      calView += "<div class='block day'>" + i  + "</div>";     //adding date
+      calendarView += "<div class='block day'>" + i  + "</div>";     //adding date
     }
   }
 
   if (weekday != 6) {
       for (var i = monthLastDay; i < 6; i++) {
-        calView += "<div class='empty block'></div>";              //adding empty blog
+        calendarView += "<div class='empty block'></div>";              //adding empty blog
       }
   }
 
-  calendarWrapper.append(calView);
+  calendarWrapper.append(calendarView);
   bindEvents();
 }
 
 function bindEvents() {
-  $('.addEvent').on('click', function() {
-    displayEventModal($(this));
-  });
+  $('.addEvent').on( "click", displayEventModal);
 
   $('[data-toggle="tooltip"]').tooltip({
     position: top
@@ -155,16 +146,17 @@ function bindEvents() {
     $('#first-date').val("");
     $('#last-date').val("");
   });
-
 }
 
-var addEventDate = null;
-function displayEventModal($this) {
+function displayEventModal() {
   $('#open-modal').modal('show');
-  addEventDate = $this.data('date');                 //give data attribute
+  var eventClickDate = null;
+  // console.log(this);
+  eventClickDate = $(this).data('date');                 //give data attribute
+  console.log(eventClickDate);
 
-  monthYear.setDate(addEventDate);
-  eventDefaltDate = (monthYear.getMonth()+ 1) + "/" + addEventDate + "/" + monthYear.getFullYear();
+  monthYear.setDate(eventClickDate);
+  eventDefaltDate = (monthYear.getMonth()+ 1) + "/" + eventClickDate + "/" + monthYear.getFullYear();
   $('#first-date').val(eventDefaltDate);
 
   $('.input-group-addon').on('click', function() {
@@ -180,8 +172,6 @@ function displayEventModal($this) {
     $("#last-date").datepicker( "option", "minDate", minDateEvent );
   });
   $("#last-date").datepicker( "option", "minDate", eventDefaltDate );
-
-
 }
 
 function storeEvent() {
@@ -208,7 +198,6 @@ function storeEvent() {
   }
 
   $("#open-modal").modal('hide');
-
   setEvent(eventTitle, eventFirstDate, eventLastDate);
 }
 
@@ -222,12 +211,15 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
   var endMonth = eventLastDate.getMonth();
   var endYear = eventLastDate.getFullYear();
 
+  console.log(eventFirstDate);
+  console.log(eventLastDate);
+
   var eventStartDate = new Date(startYear, startMonth, startdate);
   while ((eventStartDate < eventLastDate) || (eventStartDate.getMonth() == endMonth)) {
     var year = eventStartDate.getFullYear();
     var month = eventStartDate.getMonth();
     var eventText = {title: eventTitle, ldate: eventLastDate};
-    if ((month <= endMonth) &&  (startMonth != month)) { 
+    if ((month <= endMonth) && (startMonth != endMonth) ) { //&& (startMonth != endMonth) && (startMonth != month)) && (monthYear.getMonth() != month)
       eventText['fdate'] = new Date(year, month, 1);
     } else {
       eventText['fdate'] = eventFirstDate;
@@ -241,12 +233,10 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
       storeEventData[year][month] = [eventText];
     }
 
-    var nextMonthDate = eventStartDate.setMonth(eventStartDate.getMonth() + 1);
-    eventStartDate = new Date(nextMonthDate);
-
+    eventStartDate = new Date(eventStartDate.setMonth(eventStartDate.getMonth() + 1));
   }
-   console.log(storeEventData);
 
+   console.log(storeEventData);
    calendarWrapper.empty();
-   setMonthAndYear(startMonth, startYear)
+   setMonthAndYear(monthYear.getMonth(), monthYear.getFullYear());
 }

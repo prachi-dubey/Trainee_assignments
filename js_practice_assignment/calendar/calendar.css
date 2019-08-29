@@ -64,6 +64,7 @@
   color: #de6e80;
   float: right;
   font-size: 10px;
+  left: -2px;
   line-height: 1.42857143;
   position: relative;
   top: 32px;
@@ -104,6 +105,10 @@
 
 .date-range-margin {
   margin-top: 10px;
+}
+
+.glyphicon-plus:before {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=calendar.css.map */

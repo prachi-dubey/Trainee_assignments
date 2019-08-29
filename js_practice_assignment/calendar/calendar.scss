@@ -77,6 +77,7 @@ $mobile: 380px;
   color: $event-add;
   float: right;
   font-size: 10px;
+  left: -2px;
   line-height: 1.42857143;
   position: relative;
   top: 32px;
@@ -124,4 +125,8 @@ $mobile: 380px;
 
 .date-range-margin {
   margin-top: 10px;
+}
+
+.glyphicon-plus:before {
+  cursor: pointer;
 }
