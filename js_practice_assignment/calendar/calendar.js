@@ -8,7 +8,7 @@ $(document).ready(function() {
   var selectedMonth = null;
   var selectedYear = null;
 
-  setMonthAndYear();
+  setMonthAndYear(8, 2019);
 
   $("select.sel-month").change(function() {
       selectedMonth = $(this).children("option:selected").val();
@@ -21,8 +21,6 @@ $(document).ready(function() {
       calendarWrapper.empty();
       setMonthAndYear(selectedMonth, selectedYear);
   });
-
-
 });
 
 function setMonthAndYear(month, year) {
@@ -35,6 +33,29 @@ function setMonthAndYear(month, year) {
    }
   monthYear = date;
   prepareCalendar(date);
+}
+
+function eventsOnDate(monthEvents, date, selMonth) {
+  var events = [];
+  for (var x = 0; x < monthEvents.length; x++) {
+    var title = monthEvents ? monthEvents[x].title : null;
+    var fdate = monthEvents ? monthEvents[x].fdate : null;
+    var ldate = monthEvents ? monthEvents[x].ldate : null;
+    // console.log(fdate);
+    var eventFdate = fdate.getDate();  // console.log("event first date " + eventFdate);
+    var eventFmonth = fdate.getMonth(); // console.log("event first month " + eventFmonth);
+
+    var eventLdate = ldate.getDate();   //console.log("event last date " + eventLdate);
+    var eventLmonth = ldate.getMonth();  //console.log("event last month " + eventLmonth);
+    if ((eventFmonth == eventLmonth) && (date >= eventFdate && date <= eventLdate)) {
+      events.push(title);
+    } else if((eventFmonth < eventLmonth) && (eventFmonth == selMonth)) {
+      if( eventLdate < date && eventFdate <= date) {
+        events.push(title);
+      }
+    }  // greater if
+  }  //end of for
+  return events;
 }
 
 function prepareCalendar(date) {
@@ -66,8 +87,8 @@ function prepareCalendar(date) {
   }
 
   var yearEvents =  storeEventData[selYear];                                           // check event
+  var monthEvents = [];
   if(yearEvents) {
-    var monthEvents = [];
     monthEvents = yearEvents[selMonth];
     var eventInMonth = monthEvents ? monthEvents.length : null;
   }
@@ -78,61 +99,38 @@ function prepareCalendar(date) {
     } else if (selYear == currentYear && selMonth < currentMonth) {
       calView += "<div class='block day'>" + i  + "</div>";
     } else if (selLastDate < i || selMonth > currentMonth || selYear > currentYear) {
-
-      if(monthEvents) {
-        for(var x = 0; x < eventInMonth; x++) {
-        var title = monthEvents ? monthEvents[x].title : null;
-        var fdate = monthEvents ? monthEvents[x].fdate : null;
-        var ldate = monthEvents ? monthEvents[x].ldate : null;
-        // console.log(fdate);
-        var eventFdate = fdate.getDate();  // console.log("event first date " + eventFdate);
-        var eventFmonth = fdate.getMonth(); // console.log("event first month " + eventFmonth);
-
-        var eventLdate = ldate.getDate();   //console.log("event last date " + eventLdate);
-        var eventLmonth = ldate.getMonth();  //console.log("event last month " + eventLmonth);
-
-           if ( eventFmonth == eventLmonth ) {
-             if (i >= eventFdate && i <= eventLdate )  {
-              calView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + title  + "'>" ;
-            } else {
-              console.log("run 1");
-              calView += "<div class='block day'>";
-            }
-          } else if( eventFmonth < eventLmonth) {
-                if(eventFmonth == selMonth) {
-                  if( eventLdate < i && eventFdate <= i ) { flag = 1;
-                    calView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + title  + "'>" ;
-                  }  else {
-                    console.log("run 2");
-                    calView += "<div class='block day'>";
-                  }
-                }
-            }  // greater if
-
-        }  //end of for
+      if(monthEvents.length) {
+        var events = eventsOnDate(monthEvents, i, selMonth);
+        console.log('for day : ' + i);
+        console.log(events);
+        if (events.length) {
+          calView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
+        } else {
+          calView += "<div class='block day'>";
+        }
      } else {
        calView += "<div class='block day'>";
      }
       calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
     } else if (selLastDate == i && selMonth == currentMonth && selYear == currentYear) {
-      for(var x = 0; x < eventInMonth; x++) {
+      for (var x = 0; x < eventInMonth; x++) {
          var title = monthEvents ? monthEvents[x].title : null;
          var fdate = monthEvents ? monthEvents[x].fdate : null;
          var ldate = monthEvents ? monthEvents[x].ldate : null;
-       }
-        if(i == fdate) {
-          calView += "<div class='current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + title  + "'>" ;
-        } else {
-          calView += "<div class='block current-date day'>" ;      //foucs current date
-         }
+      }
+      if(i == fdate) {
+        calView += "<div class='current-date event-line' data-toggle='tooltip' data-placement='auto' title='" + title  + "'>" ;
+      } else {
+        calView += "<div class='block current-date day'>" ;      //foucs current date
+      }
       calView += "<span class='addEvent glyphicon glyphicon-plus' data-date='" + i + "' data-toggle='modal'></span>"+ i  + "</div>";
     } else {
       calView += "<div class='block day'>" + i  + "</div>";     //adding date
     }
   }
 
-  if(weekday != 6) {
-      for(var i = monthLastDay; i < 6; i++) {
+  if (weekday != 6) {
+      for (var i = monthLastDay; i < 6; i++) {
         calView += "<div class='empty block'></div>";              //adding empty blog
       }
   }
@@ -140,15 +138,15 @@ function prepareCalendar(date) {
   calendarWrapper.append(calView);
   bindEvents();
 
-  if( flag == 1) {
-    // var tmp = fdate.getDate();          console.log("fdate " + tmp);
-    var tmpMonth = fdate.getMonth();    console.log("fmonth " + tmpMonth);
-    var tmpYear = fdate.getFullYear();  console.log("fyear " + tmpYear);
-    var newEventFdate = new Date(tmpYear, tmpMonth+1, 1);  console.log(newEventFdate);
-    yearEvents[eventLmonth] = [{ title: title, fdate: newEventFdate, ldate: ldate }];
-    console.log("test me also");
-    flag = 0;
-  }
+  // if( flag == 1) {
+  //   // var tmp = fdate.getDate();          console.log("fdate " + tmp);
+  //   var tmpMonth = fdate.getMonth();    console.log("fmonth " + tmpMonth);
+  //   var tmpYear = fdate.getFullYear();  console.log("fyear " + tmpYear);
+  //   var newEventFdate = new Date(tmpYear, tmpMonth+1, 1);  console.log(newEventFdate);
+  //   yearEvents[eventLmonth] = [{ title: title, fdate: newEventFdate, ldate: ldate }];
+  //   console.log("test me also");
+  //   flag = 0;
+  // }
 
 }
 
@@ -234,23 +232,44 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
   var endYear = eventLastDate.getFullYear();
   // var eventText = { title: eventTitle, fdate: startdate, ldate: endDate };
 
-  var eventText = { title: eventTitle, fdate: eventFirstDate, ldate: eventLastDate }
-
-  if(storeEventData[startYear]) {
-    if(storeEventData[startYear][startMonth]) {
-      storeEventData[startYear][startMonth].push(eventText);
+  var eventStartDate = new Date(startYear, startMonth, startdate);
+  while ((eventStartDate < eventLastDate) || (eventStartDate.getMonth() == endMonth)) {
+    var year = eventStartDate.getFullYear();
+    var month = eventStartDate.getMonth();
+    var eventText = {title: eventTitle, ldate: eventLastDate};
+    if ((month <= endMonth) && (startMonth != endMonth) && (startMonth != month)) {
+      eventText['fdate'] = new Date(year, month+1, 1);
     } else {
-      storeEventData[startYear][startMonth] = [eventText];
+      eventText['fdate'] = eventFirstDate;
     }
-  } else {
-    storeEventData[startYear] = {
-      [startMonth]: [eventText]
+    if (!storeEventData[year]) {
+      storeEventData[year] = {};
     }
+    if (storeEventData[year][month]) {
+      storeEventData[year][month].push(eventText);
+    } else {
+      storeEventData[year][month] = [eventText];
+    }
+
+    var nextMonthDate = eventStartDate.setMonth(eventStartDate.getMonth() + 1);
+    eventStartDate = new Date(nextMonthDate);
   }
-
-  console.log(addEventDate);
-
-  calendarWrapper.empty();
-  setMonthAndYear(startMonth, startYear)
   console.log(storeEventData);
+  // if(storeEventData[startYear][startMonth]) {
+  //   storeEventData[startYear][startMonth].push(eventText);
+  // } else {
+  //   storeEventData[startYear][startMonth] = [eventText];
+  // }
+
+  // if(storeEventData[startYear]) {
+  //
+  // }
+  // else {
+  //   storeEventData[startYear] = {
+  //     [startMonth]: [eventText]
+  //   }
+  // }
+
+   calendarWrapper.empty();
+   setMonthAndYear(startMonth, startYear)
 }
