@@ -1,12 +1,13 @@
 var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 var monthYear = null;
 var storeEventData = {};
-var selectedMonth = null;
-var selectedYear = null;
 var calendarWrapper = $("#week-wrap");
 
 $(document).ready(function() {
   setMonthAndYear();
+
+  var selectedMonth = null;
+  var selectedYear = null;
 
   $("select.sel-month").change(function() {
       selectedMonth = $(this).children("option:selected").val();
@@ -33,8 +34,9 @@ function setMonthAndYear(selectedMonth, selectedYear) {
   prepareCalendar(date);
 }
 
-function eventsOnDate(monthEvents, date, selMonth) {
+function eventsOnDate(monthEvents, date, selMonth, selYear) {
   var events = [];
+  var currentDate = new Date(selYear, selMonth, date);
   for (var x = 0; x < monthEvents.length; x++) {
     var title = monthEvents ? monthEvents[x].title : null;
     var fdate = monthEvents ? monthEvents[x].fdate : null;
@@ -42,21 +44,26 @@ function eventsOnDate(monthEvents, date, selMonth) {
 
     var eventFdate = fdate.getDate();
     var eventFmonth = fdate.getMonth();
+    var eventFyear = fdate.getFullYear();
 
     var eventLdate = ldate.getDate();
     var eventLmonth = ldate.getMonth();
+    var eventLyear = ldate.getFullYear();
     if ((eventFmonth == eventLmonth) && (date >= eventFdate && date <= eventLdate)) {
       events.push(title);
     } else if((eventFmonth < eventLmonth) && (eventFmonth == selMonth)) {
       if(eventFdate <= date) {
         events.push(title);
       }
-    }  // greater if
+    }  else if((eventFyear < eventLyear) && (eventFmonth > eventLmonth) && (currentDate >= fdate)) {
+      events.push(title);
+    }
   }  //end of for
   return events;
 }
 
 function prepareCalendar(date) {
+  var calendarView = "";
   var currentMonth = new Date().getMonth();                    //give month currently
   var currentYear = new Date().getFullYear();                    //give month currently
   var currentDate = new Date().getDate();
@@ -73,8 +80,6 @@ function prepareCalendar(date) {
   var monthFirstDay = firstDate.getDay();
   var monthLastDay = lastDate.getDay();
   var monthTotalDay = lastDate.getDate();
-
-  var calendarView = "";
 
   for (var i = 0; i < 7 ; i++) {
     calendarView += "<div class='week-color block day'>" + weekday[i] +"</div>";   //adding weekdays blog
@@ -97,7 +102,7 @@ function prepareCalendar(date) {
       calendarView += "<div class='block day'>" + i  + "</div>";
     } else if (selDate < i || selMonth > currentMonth || selYear > currentYear) {
       if(monthEvents && monthEvents.length ) {
-        var events = eventsOnDate(monthEvents, i, selMonth);
+        var events = eventsOnDate(monthEvents, i, selMonth, selYear);
         if (events.length) {
           calendarView += "<div class='block day event-line' data-toggle='tooltip' data-placement='auto' title='" + events.join(', ')  + "'>"
         } else {
@@ -151,10 +156,7 @@ function bindEvents() {
 function displayEventModal() {
   $('#open-modal').modal('show');
   var eventClickDate = null;
-  // console.log(this);
-  eventClickDate = $(this).data('date');                 //give data attribute
-  console.log(eventClickDate);
-
+  eventClickDate = $(this).data('date');
   monthYear.setDate(eventClickDate);
   eventDefaltDate = (monthYear.getMonth()+ 1) + "/" + eventClickDate + "/" + monthYear.getFullYear();
   $('#first-date').val(eventDefaltDate);
@@ -211,15 +213,12 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
   var endMonth = eventLastDate.getMonth();
   var endYear = eventLastDate.getFullYear();
 
-  console.log(eventFirstDate);
-  console.log(eventLastDate);
-
   var eventStartDate = new Date(startYear, startMonth, startdate);
   while ((eventStartDate < eventLastDate) || (eventStartDate.getMonth() == endMonth)) {
     var year = eventStartDate.getFullYear();
     var month = eventStartDate.getMonth();
     var eventText = {title: eventTitle, ldate: eventLastDate};
-    if ((month <= endMonth) && (startMonth != endMonth) ) { //&& (startMonth != endMonth) && (startMonth != month)) && (monthYear.getMonth() != month)
+    if ((month <= endMonth) && (startMonth != endMonth) && (month != startMonth)) {
       eventText['fdate'] = new Date(year, month, 1);
     } else {
       eventText['fdate'] = eventFirstDate;
@@ -232,7 +231,6 @@ function setEvent(eventTitle, eventFirstDate, eventLastDate) {
     } else {
       storeEventData[year][month] = [eventText];
     }
-
     eventStartDate = new Date(eventStartDate.setMonth(eventStartDate.getMonth() + 1));
   }
 
