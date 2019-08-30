@@ -140,7 +140,13 @@ function prepareCalendar(date) {
 }
 
 function bindEvents() {
-  $('.addEvent').on( "click", displayEventModal);
+  // $('.addEvent').on( "click", displayEventModal);
+
+  $('.addEvent').on( "click", function() {
+    // console.log(this);
+    displayEventModal.call(this);
+  });
+
 
   $('[data-toggle="tooltip"]').tooltip({
     position: top
