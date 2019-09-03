@@ -7,9 +7,10 @@
   <link href="book-api.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="node_modules/mustache/mustache.js"> </script>
 
 </head>
-<body>
+<body onload="booksContainer()">
   <div class="container">
     <nav class="navbar navbar-inverse navbar-default">
       <div class="navbar-header">
@@ -18,46 +19,53 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#">HOME</a></li>
         <li><a href="#">ABOUT US </a></li>
-        <li><a href="#">BOOKS</a></li>
         <li><a href="#">CONTACT US</a></li>
       </ul>
     </nav>
 
-   <section>
-     <div class="side-nav clearfix">
-       <ul class="side-nav-left">
-         <li class="side-nav-data"><a  href="/Java/">Java</a> </li>
-         <li class="side-nav-data"><a  href="/Andriod/">Andriod</a> </li>
-         <li class="side-nav-data"><a  href="/Php/">Php</a> </li>
-         <li class="side-nav-data"><a  href="/Mysql/">Mysql</a> </li>
-         <li class="side-nav-data"><a  href="/Css/">css</a> </li>
-         <li class="side-nav-data"><a  href="/Jquery/">Jquery</a> </li>
-         <li class="side-nav-data"><a  href="/Html/">Html</a> </li>
-         <li class="side-nav-data"><a  href="/Phyton/">Phyton</a> </li>
-       </ul>
-     </div>
+    <section>
+      <div class="side-nav clearfix">
+        <ul class="side-nav-left">
+          <li class="side-nav-data" data-book="java"><a  href="javascript:void(0);">Java</a> </li>
+          <li class="side-nav-data" data-book="android"><a  href="javascript:void(0);">Andriod</a> </li>
+          <li class="side-nav-data" data-book="php"><a  href="javascript:void(0);">Php</a> </li>
+          <li class="side-nav-data" data-book="mysql"><a  href="javascript:void(0);">Mysql</a> </li>
+          <li class="side-nav-data" data-book="css"><a  href="javascript:void(0);">css</a> </li>
+          <li class="side-nav-data" data-book="jquery"><a  href="javascript:void(0);">Jquery</a> </li>
+          <li class="side-nav-data" data-book="html"><a  href="javascript:void(0);">Html</a> </li>
+          <li class="side-nav-data" data-book="python"><a  href="javascript:void(0);">Phyton</a> </li>
+        </ul>
+      </div>
 
-     <div class="wrapper clearfix" id="book-wrapper">
-          <!-- <div class="thumbnail">
-            <img src="..." alt="...">
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>...</p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      <div class="wrapper clearfix container-fluid" id="books-wrapper"></div>
+
+      <div class="relative" id="loading">
+        <div class="absolute glyphicon glyphicon-refresh"></div>
+      </div>
+
+      <div id="book-api" class="hidden">
+        <div class="row">
+          {{#books}}
+          <div class='col-md-3 col-sm-4'>
+            <div class='thumbnail book-container'>
+              {{#title}}
+              <img src={{image}}  alt={{title}}>
+              <div class='caption'>
+                <h3 class="test"><p style="color:blue">{{title}}</p></h3>
+                <p> {{subtitle }}</p>
+                <p><a href='#' class='btn btn-primary' role='button'>More details</a> </p>
+              </div>
+              {{/title}}
             </div>
-          </div> -->
-    </div>
+          </div>
+          {{/books}}
+        </div>
+      </div>
 
-   </section>
-
-  <!-- <button>Get External Content</button>  -->
-
-
-
+    </section>
   </div>
 
-
-
 <script src="bookApi.js"></script>
+
 </body>
 </html>

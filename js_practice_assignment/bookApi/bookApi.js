@@ -1,37 +1,46 @@
 $(document).ready(function(){
-
-    $.get('https://api.itbook.store/1.0/search/java', function(data, status) {
-      console.log("data: ");
-      console.log(data);
-      console.log("Status: " + status);
-      getBookData(data);
-    });
+   getBookDetail()
+   $('li').on('click', getSubName );
 });
 
-function getBookData(data) {
-  console.log("i am in function data: ");
-  // console.log(data);
-  var bookArray = data.books;
-  console.log(bookArray);
-  console.log(bookArray.length);
-  var title = "";
-  var img = "";
-  var subtitle = "";
-  var bookHtml = "";
-  for(var i = 0; i < 8; i++) {
-    title = bookArray[i].title;  // console.log(title);
-    img = bookArray[i].image;  //console.log(img);
-    subtitle = bookArray[i].subtitle;// console.log(subtitle);
+function getSubName() {
+  $('.side-nav-left li').removeClass('highlight');
 
-    bookHtml += "<div class='thumbnail'>";
-    bookHtml += "<img src="+ img +" alt="+ title +">"
-    bookHtml += "<div class='caption'> <h3>"+ title +"</h3>";
-    bookHtml += "<p>"+ subtitle +"</p>";
-    bookHtml += "<p><a href='#' class='btn btn-primary' role='button'>More details</a> </p>";
-    bookHtml += "</div>";
-    bookHtml += "</div>";
+  var clickSub = null;
+  clickSub = $(this).data('book');
+  console.log(clickSub);
+  $(this).addClass('highlight');
+  getBookDetail(clickSub)
+}
 
-    console.log(bookHtml);
+function getBookDetail(clickSub) {
+  // console.log(clickSub);
+  if(clickSub) {
+    $('#books-wrapper').empty();
   }
-  $("#book-wrapper").append(bookHtml);
+  $('#loading').removeClass('hidden');
+  var test = clickSub ? clickSub : 'java';
+  var tmp = 'https://api.itbook.store/1.0/search/'+ test +''; console.log(tmp);
+  $.get('https://api.itbook.store/1.0/search/'+ test +'', function(data, status) {
+  console.log("data: ");
+  console.log(data);
+  // console.log("Status: " + status);
+  booksContainer(data);
+  });
+}
+
+function booksContainer(data) {
+  var template = $('#book-api').html();
+  var output = Mustache.render(template, data);
+  $('#loading').addClass('hidden');
+  $('#books-wrapper').html(output);
+}
+
+function myFunction() {
+  var x = $("#myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
 }

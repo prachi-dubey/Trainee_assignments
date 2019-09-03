@@ -14,17 +14,15 @@
   float: left;
   width: 20%;
 }
-.container section .side-nav li:visited {
-  /* visited link */
-  background-color: red;
+@media (max-width: 768px) {
+  .container section .side-nav {
+    float: none;
+    width: 100%;
+  }
 }
 .container section .side-nav li:hover {
   /* mouse over link */
   background-color: #fff0f5;
-}
-.container section .side-nav li:active {
-  /* selected link */
-  background-color: hotpink;
 }
 .container section .side-nav .side-nav-left {
   background-color: #d3d3d31f;
@@ -45,29 +43,54 @@
   text-decoration: none;
 }
 .container section .wrapper {
-  background-color: lavenderblush;
-  float: left;
   width: 80%;
-}
-.container section .wrapper .thumbnail {
   float: left;
-  margin: 15px 0 0 15px;
-  width: 23%;
 }
-.container section .wrapper .thumbnail h3 {
+@media (max-width: 768px) {
+  .container section .wrapper {
+    float: none;
+    width: 100%;
+  }
+}
+.container section .wrapper .test {
+  margin-top: 0;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.container section .wrapper .thumbnail p {
+.container section .wrapper p {
   display: -webkit-box;
   min-height: 40px;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.container section .wrapper p:last-child {
+  text-align: center;
+}
+
+.highlight {
+  background-color: #ffeb3b;
+}
+
+.relative {
+  position: relative;
+  width: 1140px;
+  height: 900px;
+}
+
+.absolute {
+  position: absolute;
+  right: 500px;
+  top: 280px;
+}
+
+.glyphicon {
+  color: #23527F;
+  font-size: 50px;
 }
 
 /*# sourceMappingURL=book-api.css.map */

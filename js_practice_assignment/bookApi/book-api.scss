@@ -1,4 +1,8 @@
 $bookapi-color: #fff0f5;
+$highlight-color: #ffeb3b;
+$loading-color: #23527F;
+$ipad: 768px;
+$mobile: 376px;
 
 .container {
   .navbar-inverse {
@@ -23,16 +27,13 @@ $bookapi-color: #fff0f5;
       float: left;
       width: 20%;
 
-      li:visited {    /* visited link */
-       background-color: red;
+      @media (max-width: $ipad) {
+        float: none;
+        width: 100%;
       }
 
       li:hover {   /* mouse over link */
         background-color: $bookapi-color;
-      }
-
-      li:active {    /* selected link */
-        background-color: hotpink;
       }
 
       .side-nav-left {
@@ -57,32 +58,56 @@ $bookapi-color: #fff0f5;
     }
 
     .wrapper {
-      background-color: lavenderblush;
-      float: left;
       width: 80%;
+      float: left;
 
-      .thumbnail {
-        float: left;
-        margin: 15px 0 0 15px;
-        width: 23%;
+      @media (max-width: $ipad) {
+        float: none;
+        width: 100%;
+      }
 
-        h3 {
-          display: -webkit-box;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
+      .test {
+        margin-top: 0;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
 
-        p {
-          display: -webkit-box;
-          min-height: 40px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
+      p {
+        display: -webkit-box;
+        min-height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      p:last-child {
+        text-align: center;
       }
     }
   }
+}
+
+.highlight {
+  background-color: $highlight-color;
+}
+
+.relative {
+  position: relative;
+  width: 1140px;
+  height: 900px;
+}
+
+.absolute {
+  position: absolute;
+  right: 500px;
+  top: 280px;
+}
+
+.glyphicon {
+  color: $loading-color;
+  font-size: 50px;
 }
