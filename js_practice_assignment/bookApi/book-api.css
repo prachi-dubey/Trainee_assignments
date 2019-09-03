@@ -42,6 +42,9 @@
 .container section .side-nav .side-nav-left .side-nav-data a {
   text-decoration: none;
 }
+.container section .container-fluid {
+  padding-right: 0;
+}
 .container section .wrapper {
   width: 80%;
   float: left;
@@ -49,6 +52,7 @@
 @media (max-width: 768px) {
   .container section .wrapper {
     float: none;
+    margin-top: 60px;
     width: 100%;
   }
 }

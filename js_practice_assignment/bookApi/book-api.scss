@@ -57,12 +57,17 @@ $mobile: 376px;
       }
     }
 
+    .container-fluid {
+      padding-right: 0;
+    }
+
     .wrapper {
       width: 80%;
       float: left;
 
       @media (max-width: $ipad) {
         float: none;
+        margin-top: 60px;
         width: 100%;
       }
 
