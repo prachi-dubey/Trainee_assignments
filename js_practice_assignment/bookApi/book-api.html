@@ -10,7 +10,7 @@
   <script src="node_modules/mustache/mustache.js"> </script>
 
 </head>
-<body onload="booksContainer()" >
+<body>
   <div class="container">
     <nav class="navbar navbar-inverse navbar-default">
       <div class="navbar-header">
@@ -20,53 +20,55 @@
         <li class="active"><a href="#">HOME</a></li>
         <li><a href="#">ABOUT US </a></li>
         <li><a href="#">CONTACT US</a></li>
-        <li class="pull-right btn btn-info hidden" id="humburger" onClick="setTimeout(showSidebar);">&#9776;</li>
+        <li class="pull-right btn btn-info hidden" id="humburger" onClick="showSidebar()">&#9776;</li>
       </ul>
     </nav>
 
     <section>
       <nav id="sidebar">
         <div class="side-nav clearfix">
-          <ul class=" side-nav-left">
-            <li class="side-nav-data"  data-book="java"><a  href="javascript:void(0);">Java</a> </li>
-            <li class="side-nav-data"  data-book="android"><a  href="javascript:void(0);">Andriod</a> </li>
-            <li class="side-nav-data"  data-book="php"><a  href="javascript:void(0);">Php</a> </li>
-            <li class="side-nav-data"  data-book="mysql"><a  href="javascript:void(0);">Mysql</a> </li>
-            <li class="side-nav-data"  data-book="css"><a  href="javascript:void(0);">css</a> </li>
-            <li class="side-nav-data"  data-book="jquery"><a  href="javascript:void(0);">Jquery</a> </li>
-            <li class="side-nav-data"  data-book="html"><a  href="javascript:void(0);">Html</a> </li>
-            <li class="side-nav-data"  data-book="python"><a  href="javascript:void(0);">Phyton</a> </li>
+          <ul class="left">
+            <li class="data highlight"  data-book="java"><a  href="javascript:void(0);">Java</a> </li>
+            <li class="data"  data-book="android"><a  href="javascript:void(0);">Andriod</a> </li>
+            <li class="data"  data-book="php"><a  href="javascript:void(0);">Php</a> </li>
+            <li class="data"  data-book="mysql"><a  href="javascript:void(0);">Mysql</a> </li>
+            <li class="data"  data-book="css"><a  href="javascript:void(0);">css</a> </li>
+            <li class="data"  data-book="jquery"><a  href="javascript:void(0);">Jquery</a> </li>
+            <li class="data"  data-book="html"><a  href="javascript:void(0);">Html</a> </li>
+            <li class="data"  data-book="python"><a  href="javascript:void(0);">Phyton</a> </li>
           </ul>
         </div>
-    </nav>
+      </nav>
 
-    <div class="wrapper clearfix container-fluid" id="books-wrapper"></div>
+      <div class="wrapper clearfix container-fluid" id="books-wrapper"></div>
 
-    <div class="relative" id="loading-status">
-      <div class="absolute glyphicon glyphicon-refresh"></div>
-    </div>
-
-    <div id="book-api" class="hidden">
-      <div class="row">
-        {{#books}}
-        <div class='col-md-3 col-sm-4'>
-          <div class='thumbnail book-container'>
-            {{#title}}
-            <img src={{image}}  alt={{title}}>
-            <div class='caption'>
-              <h3 class="test"><p style="color:blue">{{title}}</p></h3>
-              <p> {{subtitle }}</p>
-              <p><a href='#' class='btn btn-primary' role='button'>More details</a></p>
-            </div>
-            {{/title}}
-          </div>
-        </div>
-        {{/books}}
+      <div class="loading-wrapper clearfix" id="loading-status">
+        <div class="glyphicon glyphicon-refresh"></div>
       </div>
     </div>
-
   </section>
 </div>
+
+<script id="book-template" type="x-tmpl-mustache">
+  <div>
+    <div class="row">
+      {{#books}}
+      <div class='col-md-3 col-sm-4'>
+        <div class='thumbnail'>
+          {{#title}}
+          <img src="download.png" data-src={{image}} alt={{title}}>
+          <div class='caption'>
+            <h3>{{title}}</h3>
+            <div>{{subtitle }}</div>
+            <p><a href='#' class='btn btn-primary' role='button'>More details</a></p>
+          </div>
+          {{/title}}
+        </div>
+      </div>
+      {{/books}}
+    </div>
+  </div>
+</script>
 
 <script src="bookApi.js"></script>
 </body>

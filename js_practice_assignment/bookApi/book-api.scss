@@ -1,6 +1,6 @@
-$bookapi-color: #fff0f5;
-$highlight-color: #ffeb3b;
-$loading-color: #23527F;
+$lightpink: #fff0f5;
+$yellow: #ffeb3b;
+$loading: #23527F;
 $ipad: 768px;
 $mobile: 376px;
 
@@ -11,7 +11,7 @@ $mobile: 376px;
     .navbar-header {
       .book-api {
         font-size: 50px;
-        color: $bookapi-color;
+        color: $lightpink;
       }
     }
 
@@ -33,10 +33,10 @@ $mobile: 376px;
       }
 
       li:hover {   /* mouse over link */
-        background-color: $bookapi-color;
+        background-color: $lightpink;
       }
 
-      .side-nav-left {
+      .left {
         background-color: #d3d3d31f;
         border: 1px solid #a9a0a038;
         border-radius: 5px;
@@ -45,7 +45,7 @@ $mobile: 376px;
         padding: 0;
         width: 100%;
 
-        .side-nav-data {
+        .data {
           border-bottom: 1px solid #a9a0a038;
           padding: 15px 0;
           text-align: center;
@@ -71,48 +71,54 @@ $mobile: 376px;
         width: 100%;
       }
 
-      .test {
-        margin-top: 0;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
+      .caption {
+        padding: 0 5px;
 
-      p {
-        display: -webkit-box;
-        min-height: 40px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
+        h3 {
+          font-size: 22px;
+          height: 50px;
+          margin: 0 0 5px 5px;
+          overflow: hidden;
+        }
 
-      p:last-child {
-        text-align: center;
+        > div {
+          height: 45px;
+          margin-bottom: 5px;
+          overflow: hidden;
+        }
+
+        p {
+          text-align: center;
+        }
+      }
+    }
+
+    .loading-wrapper {
+      position: relative;
+
+      > div {
+        color: $loading;
+        font-size: 50px;
+        left: 55%;
+        position: absolute;
+        top: 50%;
       }
     }
   }
 }
 
 .highlight {
-  background-color: $highlight-color;
+  background-color: $yellow;
 }
 
-.relative {
-  position: relative;
-  width: 1140px;
-  height: 900px;
-}
-
-.absolute {
-  position: absolute;
-  right: 500px;
-  top: 280px;
-}
-
-.glyphicon {
-  color: $loading-color;
-  font-size: 50px;
+.text-test {
+  // white-space: normal;
+  // // white-space: nowrap;
+  //  overflow: hidden;
+  //  text-overflow: ellipsis;
+  height: 50px;
+  width: 180px;
+  background-color: aqua;
+  // position: absolute;
+  font-size: 20px;
 }
