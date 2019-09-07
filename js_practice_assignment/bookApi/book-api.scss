@@ -1,6 +1,10 @@
 $lightpink: #fff0f5;
 $yellow: #ffeb3b;
-$loading: #23527F;
+$blue: #23527F;
+$green: #5cb85c;
+$red: #ff0000;
+$orange: #ffa500;
+$pink: #ffc0cb;
 $ipad: 768px;
 $mobile: 376px;
 
@@ -97,7 +101,7 @@ $mobile: 376px;
       position: relative;
 
       > div {
-        color: $loading;
+        color: $blue;
         font-size: 50px;
         left: 55%;
         position: absolute;
@@ -111,14 +115,44 @@ $mobile: 376px;
   background-color: $yellow;
 }
 
-.text-test {
-  // white-space: normal;
-  // // white-space: nowrap;
-  //  overflow: hidden;
-  //  text-overflow: ellipsis;
-  height: 50px;
-  width: 180px;
-  background-color: aqua;
-  // position: absolute;
-  font-size: 20px;
+.modal-content {
+
+  .modal-header {
+    background-color: $green;
+    color:white !important;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .modal-body {
+    img {
+      width: 160px;
+      height: 230px;
+    }
+
+   .book-detail {
+     font-size: 14px;
+     margin-top: 20px;
+
+     label {
+       margin: 10px 0;
+     }
+
+     .red {
+       color: red;
+     }
+
+     .url {
+       text-decoration: underline;
+     }
+   }
+  }
+}
+
+.selected {
+  color: $orange;
+}
+
+.rating {
+  background-color: $pink;
 }

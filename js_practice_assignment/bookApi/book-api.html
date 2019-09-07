@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="book-api.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="node_modules/mustache/mustache.js"> </script>
@@ -47,6 +48,63 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade" id="open-modal" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content clearfix">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4><span class="glyphicon glyphicon-book"></span> Book detail</h4>
+       </div>
+       <div class="modal-body">
+           <div class="form-group container-fluid">
+             <div class="row">
+               <div class="col-sm-4">
+                 <img src="" alt="test" id="book-img"/>
+                </div>
+
+                <div class="col-sm-8 book-detail">
+                  <div style="padding:-15px;">
+                    <div>
+                      <label>Name :</label>
+                      <span id="book-name"> </span>
+                    </div>
+
+                    <div>
+                      <label>Detail :</label>
+                      <span id="book-detail"> </span>
+                    </div>
+
+                    <div>
+                      <label>Price :</label>
+                      <span class="red" id="book-price"> </span>
+                    </div>
+
+                    <div>
+                     <label>url :</label>
+                     <span class="url red" id="book-url"> </span>
+                    </div>
+
+                    <div id="stars">
+                      <span class="fa fa-star" data-value='1'></span>
+                      <span class="fa fa-star" data-value='2'></span>
+                      <span class="fa fa-star" data-value='3'></span>
+                      <span class="fa fa-star" data-value='4'></span>
+                      <span class="fa fa-star" data-value='5'></span>
+                      <span class="rating" id='star-text'> 0/5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       <div class="modal-footer">
+         <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal">OK</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
 </div>
 
 <script id="book-template" type="x-tmpl-mustache">
@@ -56,11 +114,11 @@
       <div class='col-md-3 col-sm-4'>
         <div class='thumbnail'>
           {{#title}}
-          <img src="download.png" data-src={{image}} alt={{title}}>
+          <img src={{image}} alt={{title}} >
           <div class='caption'>
             <h3>{{title}}</h3>
-            <div>{{subtitle }}</div>
-            <p><a href='#' class='btn btn-primary' role='button'>More details</a></p>
+            <div>{{shortSubtitle}}</div>
+            <p><a href='#' class='btn btn-primary' data-detail={{isbn13}} role='button'>More details</a></p>
           </div>
           {{/title}}
         </div>

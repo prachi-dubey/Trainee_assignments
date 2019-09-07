@@ -88,11 +88,36 @@
   background-color: #ffeb3b;
 }
 
-.text-test {
-  height: 50px;
-  width: 180px;
-  background-color: aqua;
-  font-size: 20px;
+.modal-content .modal-header {
+  background-color: #5cb85c;
+  color: white !important;
+  font-size: 30px;
+  text-align: center;
+}
+.modal-content .modal-body img {
+  width: 160px;
+  height: 230px;
+}
+.modal-content .modal-body .book-detail {
+  font-size: 14px;
+  margin-top: 20px;
+}
+.modal-content .modal-body .book-detail label {
+  margin: 10px 0;
+}
+.modal-content .modal-body .book-detail .red {
+  color: red;
+}
+.modal-content .modal-body .book-detail .url {
+  text-decoration: underline;
+}
+
+.selected {
+  color: #ffa500;
+}
+
+.rating {
+  background-color: #ffc0cb;
 }
 
 /*# sourceMappingURL=book-api.css.map */

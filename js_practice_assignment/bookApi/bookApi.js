@@ -1,10 +1,15 @@
+var bookData = {};
+var starvalue = null;
+
 $(window).resize(function() {
   getScreenInfo();
 });
 
 $(document).ready(function() {
   getSubDetails();
-  $('#sidebar li').on( "click", getSubName);
+  $('#sidebar li').on('click', getSubName);
+
+  $('#stars span').on('click' , starRating);
 });
 
 function showSidebar() {
@@ -21,7 +26,6 @@ function getSubName() {
 }
 
 function getSubDetails(subject) {
-  // console.log(subject);
   if(subject) {
     $('#books-wrapper').empty();
   }
@@ -32,9 +36,10 @@ function getSubDetails(subject) {
   var url = 'https://api.itbook.store/1.0/search/' + subject;
   console.log(url);
   $.get(url, function(data, status) {
-    // console.log("data: ");
-    // console.log(data);
+     // console.log("data: ");
+     // console.log(data);
     // console.log("Status: " + status);
+    bookData = data;
     booksContainer(data);
   });
 }
@@ -45,15 +50,24 @@ function booksContainer(data) {
   var output = Mustache.render(template, formatData);
   $('#loading-status').addClass('hidden');
   $('#books-wrapper').html(output);
+  console.log("data append");
   getScreenInfo();
+
+  $('.btn').on( "click", bookDetail);
 }
 
-function getScreenInfo() {
-  var screenWidth = $(window).width();
-  if(screenWidth < 780) {
-    $('#humburger').toggleClass('hidden');
-    $('#sidebar').toggleClass('hidden');
+function parseData(data) {
+  var bookDetail = data;
+  var books  = data.books;
+  console.log(books);
+  for(var i = 0; i < books.length; i++ ) {
+    var title = books[i].title;
+    books[i].shortTitle = shortData(title, 25);
+    var subtitle = books[i].subtitle;
+    books[i].shortSubtitle = shortData(subtitle, 47);
   }
+  // console.log(bookDetail);
+  return bookDetail;
 }
 
 function shortData(text, size) {
@@ -64,37 +78,50 @@ function shortData(text, size) {
     return text;
 };
 
-function parseData(data) {
-//   console.log(data);
-  var books  = data.books;
-  for(var i = 0; i < books.length; i++ ) {
-    var title = books[i].title;
-    books[i].title = shortData(title, 25);
-    var subtitle = books[i].subtitle;
-    books[i].subtitle = shortData(subtitle, 47);
+function getScreenInfo() {
+  var screenWidth = $(window).width();
+  if(screenWidth < 780) {
+    $('#humburger').toggleClass('hidden');
+    $('#sidebar').toggleClass('hidden');
   }
-  console.log(data);
-  return data;
 }
 
-// function imgLoad(image) {
-//     // image.imgload = "";
-//     image.src = "download.png";
-//     return true;
-// }
+function bookDetail() {
+  $('#open-modal').modal('show');
+  var bookIsbn = null;
+  bookIsbn = $(this).data('detail');
+  // console.log(bookIsbn);
+  showDetails(bookIsbn);
+}
 
-function init() {
- var imgDefer = $('img');
- console.log(imgDefer);
-  var test = $(imgDefer[i]).attr('data-src');
-  for (var i=0; i<imgDefer.length; i++) {
-    console.log("differ");
-    console.log(test);
-    if(test) {
-    $(imgDefer[i]).attr('src',test);
+function showDetails(bookIsbn) {
+  console.log(bookData);
+  var books  = bookData.books;
+  for(i = 0; i < books.length; i++) {
+    if(books[i].isbn13 == bookIsbn) {  //$('.thumbnail').find('img').attr("src");
+      $('#book-img').attr("src",books[i].image);
+      // console.log(tmp);
+      $('#book-name').text(books[i].title);
+      $('#book-detail').text(books[i].subtitle);
+      $('#book-price').text(books[i].price);
+      $('#book-url').text(books[i].url);
+      break;
     }
   }
 }
 
-window.onload = init;
-// document.onload = init;
+function starRating() {
+    var onStar = $(this).data('value');
+    // console.log(onStar);
+    var test = $(this).parent().children();   console.log(test);
+    if(starvalue > onStar) {
+      $(test).removeClass('selected');
+    }
+
+    for (i = 0; i < onStar; i++) {
+      $(test[i]).addClass('selected');
+    }
+    $('#star-text').text(onStar+'/5');
+    starvalue = onStar;
+    console.log(starvalue);
+}
