@@ -1,0 +1,20 @@
+<script id="book-template" type="x-tmpl-mustache">
+  <div>
+    <div class="row">
+      {{#books}}
+      <div class='col-md-3 col-sm-4'>
+        <div class='thumbnail'>
+          {{#title}}
+          <img src={{image}} alt={{title}} >
+          <div class='caption'>
+            <h3>{{title}}</h3>
+            <div>{{shortSubtitle}}</div>
+            <button class='btn btn-primary' data-detail={{isbn13}} role='button'>More details</button>
+          </div>
+          {{/title}}
+        </div>
+      </div>
+      {{/books}}
+    </div>
+  </div>
+</script>

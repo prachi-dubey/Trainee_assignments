@@ -1,0 +1,123 @@
+.container .navbar-inverse {
+  height: 60px;
+}
+.container .navbar-inverse .navbar-header .book-api {
+  font-size: 50px;
+  color: #fff0f5;
+}
+.container .navbar-inverse .nav-tabs {
+  border: none;
+  padding-top: 15px;
+}
+.container section .side-nav {
+  display: inline-block;
+  float: left;
+  width: 20%;
+}
+@media (max-width: 768px) {
+  .container section .side-nav {
+    float: none;
+    width: 100%;
+  }
+}
+.container section .side-nav li:hover {
+  /* mouse over link */
+  background-color: #fff0f5;
+}
+.container section .side-nav .left {
+  background-color: #d3d3d31f;
+  border: 1px solid #a9a0a038;
+  border-radius: 5px;
+  float: left;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+.container section .side-nav .left .data {
+  border-bottom: 1px solid #a9a0a038;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 20px;
+}
+.container section .side-nav .left .data a {
+  text-decoration: none;
+}
+.container section .container-fluid {
+  padding-right: 0;
+}
+.container section .wrapper {
+  width: 80%;
+  float: left;
+}
+@media (max-width: 768px) {
+  .container section .wrapper {
+    float: none;
+    margin-top: 60px;
+    width: 100%;
+  }
+}
+.container section .wrapper .caption {
+  padding: 0 5px;
+}
+.container section .wrapper .caption h3 {
+  font-size: 22px;
+  height: 50px;
+  margin: 0 0 5px 5px;
+  overflow: hidden;
+}
+.container section .wrapper .caption > div {
+  height: 45px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+.container section .wrapper .caption button {
+  margin-left: 40px;
+}
+.container section .loading-wrapper {
+  position: relative;
+}
+.container section .loading-wrapper > div {
+  color: #23527F;
+  font-size: 50px;
+  left: 55%;
+  position: absolute;
+  top: 50%;
+}
+
+.highlight {
+  background-color: #ffeb3b;
+}
+
+.modal-content .modal-header {
+  background-color: #5cb85c;
+  color: white !important;
+  font-size: 30px;
+  text-align: center;
+}
+.modal-content .modal-body img {
+  width: 160px;
+  height: 230px;
+}
+.modal-content .modal-body .book-detail {
+  font-size: 14px;
+  margin-top: 20px;
+}
+.modal-content .modal-body .book-detail label {
+  margin: 10px 0;
+}
+.modal-content .modal-body .book-detail .red {
+  color: red;
+}
+.modal-content .modal-body .book-detail .url {
+  text-decoration: underline;
+}
+
+.selected {
+  color: #ffa500;
+}
+
+.rating {
+  background-color: #ffc0cb;
+}
+
+/*# sourceMappingURL=book-api.css.map */
