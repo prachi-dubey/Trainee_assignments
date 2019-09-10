@@ -70,9 +70,26 @@ function showDetails(bookIsbn) {
       $('#book-detail').text(books[i].subtitle);
       $('#book-price').text(books[i].price);
       $('#book-url').text(books[i].url);
-      var stars = $('#stars').html();
-      $('#modal-star').html(stars);
+      $.get("template/star.html", function(templateData, Status) {
+         $('#modal-star').html(templateData);
+         $('#modal-star span').on('click', getRating);
+      });
       break;
     }
   }
+}
+
+function getRating() {
+    var onStar = $(this).data('value');
+    var test = $(this).parent().children();
+    if(starvalue >= onStar) {
+      $(test).removeClass('selected');
+    }
+
+    for (i = 0; i < onStar; i++) {
+      $(test[i]).addClass('selected');
+    }
+    $('#star-text').text(onStar+'/5');
+    starvalue = onStar;
+    console.log(starvalue);
 }
