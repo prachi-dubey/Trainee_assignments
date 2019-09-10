@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../../../../bootstrap-3.4.1-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="tableStyle.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="heading">
+    <h2> Table Entry </h2>
+    <button class="btn btn-primary" onclick="getRowData()"> ADD </button>
+  </div>
+
+  <table class="table table-bordered wrapper" id="table-entry">
+    <thead>
+      <tr>
+        <th> Id </th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th> Age</th>
+        <th>Profile</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="table-row"> </tbody>
+  </table>
+  <p class="error-msg" id="error"></p>
+</div>
+<script src="tableJs.js"></script>
+</body>
+</html>
