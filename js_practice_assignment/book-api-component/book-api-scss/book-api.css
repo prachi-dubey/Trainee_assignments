@@ -102,8 +102,11 @@
   font-size: 14px;
   margin-top: 20px;
 }
-.modal-content .modal-body .book-detail label {
+.modal-content .modal-body .book-detail div {
   margin: 10px 0;
+}
+.modal-content .modal-body .book-detail label {
+  margin: 0;
 }
 .modal-content .modal-body .book-detail .red {
   color: red;

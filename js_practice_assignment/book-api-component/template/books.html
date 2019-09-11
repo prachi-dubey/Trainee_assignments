@@ -4,6 +4,10 @@
       {{#books}}
       <div class='col-md-3 col-sm-4'>
         <div class='thumbnail'>
+          <div class="pull-right star">
+            <i>{{star}}</i>
+            <span class="fa fa-star selected"></span>
+          </div>
           {{#title}}
           <img src={{image}} alt={{title}} >
           <div class='caption'>

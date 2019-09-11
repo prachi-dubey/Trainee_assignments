@@ -1,19 +1,16 @@
-function sidenav() {
+function Sidenav() {
+  this.prepareNavData = function() { //preparenavdata
+    var template = null;
+    $.get("template/side-nav.html", function(template, Status) {
+      var output = Mustache.render(template );
+      $('#sidebar').html(output);
+    });
+  };
 }
 
-sidenav.prototype.getSideNav = function() {
-  var template = null;
-  $.get("template/side-nav.html", function(template, Status) {
-    var output = Mustache.render(template );
-    $('#sidebar').html(output);
-  });
-};
-
-sidenav.prototype.getSubName = function(selTab) {
+var getSubject = function(subject) {
   $('#sidebar li').removeClass('highlight');
-  console.log(selTab);
-  selTab.addClass('highlight');
-  var subject = null;
-  subject = selTab.data('book');
-  return subject;
-}
+  $('.data a:contains('+subject+')').parent().addClass("highlight");
+  var app = new App();
+  app.setSubName(subject.toLowerCase());
+};

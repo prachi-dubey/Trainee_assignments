@@ -48,7 +48,7 @@
            <div class="form-group container-fluid">
              <div class="row">
                <div class="col-sm-4">
-                 <img src="" alt="test" id="book-img"/>
+                  <img src="" alt="test" id="book-img"/>
                 </div>
 
                 <div class="col-sm-8 book-detail">
@@ -73,7 +73,14 @@
                      <span class="url red" id="book-url"> </span>
                     </div>
 
-                    <div id="modal-star"></div>
+                    <div id="modal-star">
+                      <span class="fa fa-star" data-value="1"></span>
+                      <span class="fa fa-star" data-value="2"></span>
+                      <span class="fa fa-star" data-value="3"></span>
+                      <span class="fa fa-star" data-value="4"></span>
+                      <span class="fa fa-star" data-value="5"></span>
+                      <i id="star-modal" class="rating">0/5</i>
+                    </div>
 
                   </div>
                 </div>
@@ -81,7 +88,7 @@
             </div>
           </div>
        <div class="modal-footer">
-         <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal">OK</button>
+         <button type="submit" class="btn btn-primary btn-default pull-right" onclick="updateRating()" data-dismiss="modal">OK</button>
        </div>
      </div>
    </div>
@@ -92,7 +99,7 @@
 
 <script src="javascript/side-nav.js"></script>
 <script src="javascript/books.js"></script>
-<script src="bookApp.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
