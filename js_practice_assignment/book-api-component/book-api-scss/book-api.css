@@ -95,8 +95,8 @@
   text-align: center;
 }
 .modal-content .modal-body img {
-  width: 160px;
   height: 230px;
+  width: 160px;
 }
 .modal-content .modal-body .book-detail {
   font-size: 14px;
@@ -121,6 +121,13 @@
 
 .rating {
   background-color: #ffc0cb;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 20px;
+  text-align: center;
+  margin: 40px 0px;
 }
 
 /*# sourceMappingURL=book-api.css.map */

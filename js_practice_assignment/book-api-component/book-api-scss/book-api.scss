@@ -126,8 +126,8 @@ $mobile: 376px;
 
   .modal-body {
     img {
-      width: 160px;
       height: 230px;
+      width: 160px;
     }
 
    .book-detail {
@@ -159,4 +159,11 @@ $mobile: 376px;
 
 .rating {
   background-color: $pink;
+}
+
+.error {
+  color: $red;
+  font-size: 20px;
+  text-align: center;
+  margin: 40px 0px;
 }
