@@ -20,20 +20,23 @@ function Book() {
 };
 
 function booksContainer(data, pageNumber) {
-  var bookTemplate = null;
-  $.get("template/books.html", function(templateData, Status) {
-    bookTemplate = $(templateData).filter('#book-template').html();
-    var formatData = parseData(data);
-    var output = Mustache.render(bookTemplate, formatData);
-    $('#loading-status').addClass('hidden');
-    if(pageNumber == 1) {
-      $('.books').html(output);
-    } else if(pageNumber > 1 && pageNumber <= 5) {
-      $('.books').append(output);
-    } else if(pageNumber > 5) {
-      $('.error').text("No more results...");
-    }
-  });
+  if(data) {
+    var bookTemplate = null;
+    $.get("template/books.html", function(templateData, Status) {
+      bookTemplate = $(templateData).filter('#book-template').html();
+      var formatData = parseData(data);
+      var output = Mustache.render(bookTemplate, formatData);
+      $('#loading-status').addClass('hidden');
+      if(pageNumber == 1) {
+        $('.books').html(output);
+      } else {
+        $('.books').append(output);
+      }
+    });
+  } else {
+     $('.error').text("No more results...");
+  }
+
 }
 
 function parseData(data) {
@@ -65,20 +68,17 @@ function getIsbn(bookIsbn) {
 function showDetails(bookIsbn) {
   var url = 'https://api.itbook.store/1.0/books/' + bookIsbn;
   $.get(url, function(data, status) {
-    $('#book-img').attr("src",data.image);
-    $('#book-name').text(data.title);
-    $('#book-detail').text(data.desc);
-    $('#book-price').text(data.price);
-    $('#book-url').text(data.url);
-    $("#modal-star span").removeClass('selected');
-    for(i = 0; i < 3 ; i++) {
-      $("#modal-star span").eq(i).addClass('selected');
-    }
-    $('#modal-star span').on('mouseover', mouseOverRating).on('mouseout', mouseOutRating);
-    $('#modal-star span').on('click', getRating);
-    $('#open-modal').modal('show');
+    $.get("template/modal.html", function(modalTemplate, Status) {
+      var output = Mustache.render(modalTemplate, data);
+      $('#open-modal').html(output);
+      $('#open-modal').modal('show');
+      for(i = 0; i < 3 ; i++) {
+        $("#modal-star span").eq(i).addClass('selected');
+      }
+      $('#modal-star span').on('mouseover', mouseOverRating).on('mouseout', mouseOutRating);
+      $('#modal-star span').on('click', getRating);
+    });
   });
-
 }
 
 function getRating(event) {
@@ -100,11 +100,9 @@ function getRating(event) {
   }
   $('#star-modal').text(onStar+'/5');
   starValue = onStar;
-
 }
 
 function updateRating() {
-  console.log("thankyou");
   $('[data-detail='+ storeIsbn + ']').text(starValue);
 }
 
