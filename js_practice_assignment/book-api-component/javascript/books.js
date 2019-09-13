@@ -3,9 +3,6 @@ var storeIsbn = null;
 
 function Book() {
   this.getSubDetails = function(subject, pageNumber) {
-    if(!subject) {
-      subject = 'java';
-    }
     if(pageNumber == 1){
       $('.books').empty();
       $('.error').empty();
