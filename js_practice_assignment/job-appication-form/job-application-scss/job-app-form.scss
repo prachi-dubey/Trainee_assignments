@@ -1,0 +1,51 @@
+$moon-yellow: #fdf7df;
+$grey: #9999;
+
+.page {
+  background-color: $moon-yellow;
+
+  .form-img {
+    background: url("../assets/hero-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 170px;
+  }
+
+  .page-header {
+    border-bottom: 1px solid $grey;
+    margin: 20px 0 0 10px;
+    text-align: center;
+
+    h1 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  .container-fluid {
+    padding: 0 10px;
+
+    .style {
+      margin-top: 15px;
+    }
+
+    .radio-style {
+      input {
+        margin-left: 30px;
+      }
+    }
+
+    .checkbox {
+      margin-top: 0;
+    }
+  }
+}
+
+
+.error {
+  color:red;
+  font-family:verdana, Helvetica;
+}
