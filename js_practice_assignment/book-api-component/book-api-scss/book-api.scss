@@ -6,7 +6,6 @@ $red: #ff0000;
 $orange: #ffa500;
 $pink: #ffc0cb;
 $ipad: 768px;
-$mobile: 376px;
 
 .container {
   .navbar-inverse {
@@ -61,10 +60,6 @@ $mobile: 376px;
       }
     }
 
-    .container-fluid {
-      padding-right: 0;
-    }
-
     .wrapper {
       width: 80%;
       float: left;
@@ -91,8 +86,23 @@ $mobile: 376px;
           overflow: hidden;
         }
 
-        button {
-          margin-left: 40px;
+        .style {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .img-style {
+        margin-top: 20px;
+        .book-img {
+          display: block;
+          height: 200px;
+          margin: auto;
+          width: 190px;
+
+          @media (max-width: $ipad) {
+            height: 185px;
+            width: 175px;
+          }
         }
       }
     }
@@ -106,6 +116,9 @@ $mobile: 376px;
         left: 55%;
         position: absolute;
         top: 50%;
+        @media (max-width: $ipad) {
+          left: 40%;
+        }
       }
     }
   }
@@ -125,9 +138,13 @@ $mobile: 376px;
   }
 
   .modal-body {
-    img {
-      height: 230px;
-      width: 160px;
+    .col-sm-4 {
+      display: flex;
+      img {
+        margin: auto;
+        height: 230px;
+        width: 160px;
+      }
     }
 
    .book-detail {

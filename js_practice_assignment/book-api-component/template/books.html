@@ -2,17 +2,21 @@
   <div>
       {{#books}}
       <div class='col-md-3 col-sm-4'>
-        <div class='thumbnail'>
-          <div class="pull-right star">
+        <div class="thumbnail">
+          <div class="pull-right clearfix star">
             <i class="check-isbn" data-detail={{isbn13}} >{{star}}</i>
             <span class="fa fa-star selected"></span>
           </div>
           {{#title}}
-          <img src={{image}} alt={{title}} >
+          <div class="img-style">
+            <img class="book-img lazy" src="../assest/download.png" data-src={{image}} alt={{title}} />
+          </div>
           <div class='caption'>
             <h3>{{title}}</h3>
             <div>{{shortSubtitle}}</div>
-            <button class='btn btn-primary' onclick="getIsbn({{isbn13}})" role='button'>More details</button>
+            <div class="style">
+              <button class='btn btn-primary' onclick="getIsbn({{isbn13}})" role='button'>More details</button>
+            </div>
           </div>
           {{/title}}
         </div>

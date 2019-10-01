@@ -1,0 +1,70 @@
+<div class="home">
+  <div class="panel-group">
+    {{#data}}
+    <div class="panel post-content">
+      <div class="media">
+          <div class="media-left">
+            <img src="{{icon}}" class="media-object media-img">
+            <div class="border"></div>
+          </div>
+          <div class="media-body panel panel-default">
+            <div class="title">
+              <div>{{title}}</div>
+              <span>{{time}}</span>
+            </div>
+            <img class="profile img-responsive" src="{{imageUrl}}" >
+            <div class="title">
+              <h4>{{title}}</h4>
+              <span>{{subtitle}}</span>
+            </div>
+            <div class="title footer">
+              <span class="glyphicon glyphicon-heart"></span>
+              <span> Likes (</span>
+              <span> {{likes}}</span>
+              <span>)</span>
+            </div>
+          </div>
+      </div>
+    </div>
+    {{/data}}
+  </div>
+  <div class="add-post">
+    <div class="btn-primary" onclick="addPostEvent()">
+      <span class="glyphicon glyphicon-plus"></span>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="open-modal" role="dialog">
+ <div class="modal-dialog">
+   <form id="modal-form">
+     <div class="modal-content clearfix">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4><span class="glyphicon glyphicon-film"></span> Add Post</h4>
+       </div>
+       <div class="modal-body">
+         <div class="form-group">
+           <label><span class="glyphicon glyphicon-plus-sign"></span> Add title</label>
+           <input type="text" class="form-control" name="postTitle" placeholder=""/>
+          </div>
+
+          <div class="form-group">
+            <label><span class="glyphicon glyphicon-camera"></span> Add Url for image</label>
+            <input type="text" class="form-control" name="postImage" placeholder="" required/>
+          </div>
+
+          <div class="form-group">
+            <label><span class="glyphicon glyphicon-pencil"></span> Add subtitle</label>
+            <input type="text" class="form-control" name="postSubtitle" placeholder=""/>
+           </div>
+       </div>
+       <div class="modal-error error" id="error-msg"></div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+         <button type="submit" class="btn btn-success btn-default pull-right" onclick="storeUserPost()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+       </div>
+     </div>
+   </form>
+  </div>
+</div>

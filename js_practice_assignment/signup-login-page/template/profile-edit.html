@@ -1,0 +1,105 @@
+<div id="basic-edit">
+  <div class="information panel-body">
+    <form id="profile-basic" name="profile-basic">
+      <div class="row">
+        <div class="col-sm-2"><p>Full Name :</p> </div>
+        <div class="edit-info detail col-sm-10">
+          <div class="form-group">
+            <input type="text" class="edit form-control" value="{{name}}" placeholder="{{name}}" name="fullname">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2"><p>Gender :</p> </div>
+        <div class="edit-info detail col-sm-10">
+        <div class="form-group gender">
+          <div>
+            <label class="radio-inline"><input name="gender" type="radio" value="Male"/> Male</label>
+            <label class="radio-inline"><input name="gender" type="radio" value="Female"/> Female</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Birthdate :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <div class="input-group edit form-group">
+         <input type="text" class="form-control showDatepicker" id="birth-date" name="datepicker" placeholder="{{birthdate}}">
+          <!-- <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Martial status :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <div class="form-group">
+          <select class="edit form-control style" name="maritalStatus" value="{{profile}}">
+            <option value="Married"> Married </option>
+            <option value="Single">Single</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Mobile :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <div class="form-group">
+          <input class="edit form-control" type="text" name="mobile" value="{{mobile}}"/>
+        </div>
+      </div>
+    </div>
+
+     <button  class="save-basic btn btn-primary btn-default" type="submit" onclick="saveBasicProfile()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="work-edit">
+  <div class="information panel-body">
+    <form id="profile-work" name="profile-work">
+    <div class="row ">
+      <div class="col-sm-2"><p>Occupation :</p> </div>
+      <div class="edit-work detail col-sm-10">
+        <div class="form-group">
+          <select class="form-control style" value="" name="profile">
+            <option value="">Select option</option>
+            <option value="Developer">Developer</option>
+            <option value="Tester">Tester</option>
+            <option value="Backend">Backend</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Manager">Manager</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Skills :</p> </div>
+      <div class="edit-work detail col-sm-10">
+        <div class="style skills form-group" id="work-skills">
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Node js,Php,Javascript"/>Node js,Php,Javascript</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="oracle"/> Python,oracle</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Embedded"/> Embedded</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Atuomation"/> Atuomation</label>
+          </div>
+      </div>
+      </div>
+    </div>
+
+   <button  class="save-work btn btn-primary btn-default" type="submit" onclick="saveWorkProfile()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+  </form>
+  </div>
+</div>

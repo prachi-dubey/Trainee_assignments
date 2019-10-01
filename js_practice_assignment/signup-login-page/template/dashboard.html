@@ -1,0 +1,50 @@
+<div id='dashboard-data'>
+  <div class="dashboard">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-padding">
+          <div class="profile-tile thumbnail">
+            <div class="cover"> </div>
+            <img src="{{profileImg}}" class="logo media-img"/>
+            <div class="page-header">
+               <p><b>{{name}}</b></p>
+               <h6>{{profile}}</h6>
+            </div>
+
+            <div class="post-comment clearfix">
+              <div class="post">
+                <div><p>Posts</p></div>
+                <div class="font"> 12M </div>
+              </div>
+              <div class="comment">
+                <div><p>Comment</p></div>
+                <div class="font"> 1 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-9 col-padding">
+          <div class="wrapper">
+           <div class="thumbnail profile-img"></div>
+           <div class="tabs-width">
+              <ul class="nav nav-tabs" id="tabs">
+                <li class='active' data-tab-content="home" onclick="switchToTab(this, 'home')"><a href="javascript:void(0);">Home</a></li>
+                <li data-tab-content="profile" onclick="switchToTab(this, 'profile')"><a href="javascript:void(0);">Profile</a></li>
+                <li data-tab-content="messages" onclick="switchToTab(this, 'messages')"><a href="javascript:void(0);">Messages</a></li>
+                <li data-tab-content="friends" onclick="switchToTab(this, 'friends')"><a href="javascript:void(0);">Friends</a></li>
+              </ul>
+
+              <div class="tab-content" id="tab-content"></div>
+
+           </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id='logout-logo'>
+  <img src="{{profileImg}}" class="logo media-img"/>
+</div> -->

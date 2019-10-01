@@ -42,9 +42,6 @@
 .container section .side-nav .left .data a {
   text-decoration: none;
 }
-.container section .container-fluid {
-  padding-right: 0;
-}
 .container section .wrapper {
   width: 80%;
   float: left;
@@ -70,8 +67,24 @@
   margin-bottom: 5px;
   overflow: hidden;
 }
-.container section .wrapper .caption button {
-  margin-left: 40px;
+.container section .wrapper .caption .style {
+  display: flex;
+  justify-content: center;
+}
+.container section .wrapper .img-style {
+  margin-top: 20px;
+}
+.container section .wrapper .img-style .book-img {
+  display: block;
+  height: 200px;
+  margin: auto;
+  width: 190px;
+}
+@media (max-width: 768px) {
+  .container section .wrapper .img-style .book-img {
+    height: 185px;
+    width: 175px;
+  }
 }
 .container section .loading-wrapper {
   position: relative;
@@ -82,6 +95,11 @@
   left: 55%;
   position: absolute;
   top: 50%;
+}
+@media (max-width: 768px) {
+  .container section .loading-wrapper > div {
+    left: 40%;
+  }
 }
 
 .highlight {
@@ -94,7 +112,11 @@
   font-size: 30px;
   text-align: center;
 }
-.modal-content .modal-body img {
+.modal-content .modal-body .col-sm-4 {
+  display: flex;
+}
+.modal-content .modal-body .col-sm-4 img {
+  margin: auto;
   height: 230px;
   width: 160px;
 }

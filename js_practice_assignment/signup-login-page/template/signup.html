@@ -1,0 +1,63 @@
+<div class="container">
+  <div class= "row">
+    <div class="col-md-6 col-md-offset-3 signup">
+      <form name="signup" id="sign-app">
+        <div class="form-group top-distance">
+          <input type="text" class="form-control" value="" placeholder="Full Name" name="name"/>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" value="" placeholder="Email" name="email"/>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" value="" id="register-password" placeholder="password" name="password"/>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" value="" placeholder="profile img url" name="profileImg"/>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" value="" placeholder="Mobile" name="mobile"/>
+        </div>
+
+        <label> Gender: </label>
+        <div class="form-group gender" for="gender">
+          <label class="radio-inline"><input type="radio" value="male" name="gender"/> Male</label>
+          <label class="radio-inline"><input type="radio" value="female" name="gender"/> Female</label>
+        </div>
+
+        <div class="form-group">
+          <label > Select Position: </label>
+          <select class="form-control" name="profile">
+            <option value="">Select Your Profile </option>
+            <option value="Developer">Developer</option>
+            <option value="Tester">Tester</option>
+            <option value="Backend">Backend</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Manager">Manager</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group skills">
+          <label>Skills</label>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Node js,Php,Javascript"/>Node js,Php,Javascript</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value=" Python,oracle<"/> Python,oracle</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Embedded"/> Embedded</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="skills" value="Atuomation"/> Atuomation</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+         <button type="submit" class="btn btn-success btn-default"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+         <button type="button" class="pull-right btn btn-success btn-default" onclick="changeRoute('login')"> Login </button>
+       </div>
+      </form>
+    </div>
+  </div>
+</div>

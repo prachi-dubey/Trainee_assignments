@@ -15,4 +15,5 @@ var getSubject = function(subject) {
   $('.data a:contains('+subject+')').parent().addClass("highlight");
   var app = new App();
   app.setSubName(subject.toLowerCase());
+  app.getScreenInfo(true);
 };

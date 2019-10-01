@@ -29,11 +29,18 @@ function booksContainer(data, pageNumber) {
       } else {
         $('.books').append(output);
       }
+      $('.lazy').lazy({
+        scrollDirection: 'vertical',
+        // effectTime: 100,
+        visibleOnly: true,
+        onError: function(element) {
+           console.log('error loading ' + element.data('src'));
+       }
+      });
     });
   } else {
      $('.error').text("No more results...");
   }
-
 }
 
 function parseData(data) {
@@ -104,6 +111,8 @@ function updateRating() {
 }
 
 function mouseOverRating(event) {
+  var $cont = $(this);
+
   var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
   $(this).parent().children('#modal-star span').each(function(e) {
     if (e < onStar) {

@@ -78,14 +78,6 @@ function shortData(text, size) {
     return text;
 };
 
-function getScreenInfo() {
-  var screenWidth = $(window).width();
-  if(screenWidth < 780) {
-    $('#humburger').toggleClass('hidden');
-    $('#sidebar').toggleClass('hidden');
-  }
-}
-
 function bookDetail() {
   $('#open-modal').modal('show');
   var bookIsbn = null;

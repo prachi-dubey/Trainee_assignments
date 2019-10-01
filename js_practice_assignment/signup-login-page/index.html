@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="signup-login-scss/signup-login.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <script src="node_modules/mustache/mustache.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid web-wrapper">
+      <div class="web-nav">
+       <nav class="navbar navbar-default">
+         <div class="navbar-header clearfix">
+           <a class="navbar-brand img" href="#"></a>
+           <div class="logout clearfix hide" data-toggle="dropdown">
+             <img src="" class="logo media-img"/>
+          </div>
+          <ul class="dropdown-menu pull-right">
+            <li><a onclick="changeRoute('login')" >Logout</a></li>
+          </ul>
+        </div>
+       </nav>
+     </div>
+
+     <!-- <div class="login-wrapper" id='login-page'></div> -->
+     <!-- <div class="signup-wrapper" id='signup-page'></div> -->
+     <!-- <div id='dashboard-page'></div> -->
+      <div id='wrapper'></div>
+   </div>
+
+
+
+   <script src="javascript/home.js"></script>
+   <script src="javascript/profile.js"></script>
+   <script src="javascript/dashboard.js"></script>
+   <script src="javascript/signup.js"></script>
+   <script src="javascript/login.js"></script>
+   <script src="app.js"></script>
+ </body>
+</html>

@@ -1,0 +1,299 @@
+$moon-yellow: #fdf7df;
+$white-smoke: #f1f1f1;
+$grey: #ccc;
+$grey2: #716969;
+$green: #4CAF50;
+$blue: #6ec0fb;
+$black: #333;
+$ipad: 768px;
+
+.web-wrapper {
+  padding: 0 5px;
+  .web-nav {
+    .navbar {
+      background-color: $blue;
+      .navbar-header {
+        float: none;
+        .img {
+          background: url("../assets/f-letter.jpg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-left: 10px;
+          min-height: 50px;
+        }
+        .logout {
+          float: right;
+          margin: 5px 10px 0 0;
+          .media-img  {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .login {
+    border: 3px solid $white-smoke;
+
+    form {
+      input[type=email], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid $grey;
+        box-sizing: border-box;
+      }
+      .password {
+        display: block;
+      }
+      button {
+        background-color: $green;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      .login-button {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .signup {
+    border: 3px solid $white-smoke;
+    .top-distance {
+      margin-top: 15px;
+      input {
+        text-transform: capitalize;
+      }
+    }
+    .checkbox {
+      margin-top: 0;
+    }
+  }
+
+  .dashboard {
+    .profile-tile {
+       display: inline-block;
+       position: relative;
+       vertical-align: top;
+       width: 85%;
+       @media (max-width: $ipad) {
+         width: 100%;
+       }
+       .cover {
+         background: url("../assets/mountain.jpg");
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         min-height: 150px;
+      }
+      .logo {
+        border: solid 2px white;
+        left: 38%;
+        min-height: 20%;
+        min-width: 25%;
+        position: absolute;
+        top: 120px;
+        @media (max-width: $ipad) {
+          left: 41%;
+          min-height: 20%;
+          min-width: 17%;
+        }
+      }
+      .page-header {
+        text-align: center;
+      }
+      .font {
+        font-size: 14px;
+        line-height: 25px;
+      }
+      .post-comment {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        .post {
+          margin-left: 25px;
+        }
+         > div {
+           padding-right: 10px;
+         }
+         .comment {
+           padding-left: 10px;
+         }
+         > div {
+           border-right: 1px solid $grey;
+           float: left;
+           text-align: center;
+         }
+         > div:last-child {
+           border-right: none;
+         }
+       }
+     }
+
+    .wrapper {
+      display: inline-block;
+      width: 100%;
+      .tabs-width {
+        .nav-tabs>li {
+          width: 25%;
+        }
+        .tab-content {
+          .profile {
+            margin-top: 20px;
+            .font {
+              font-size: 12px;
+            }
+            .basic {
+              .header {
+                align-items: center;
+                border-bottom: solid 2px $grey;
+                color: $grey2;
+                display: flex;
+                font-size: 16px;
+                height: 60px;
+                button {
+                  margin-left: 75%;
+                  width: 5%;
+                }
+              }
+              .information {
+                .row {
+                  margin-top: 10px;
+                  padding-left: 20px;
+                  .detail {
+                    color: $grey2;
+                    .style {
+                      width: 40%;
+                    }
+                  }
+                }
+                .edit {
+                  width: 40%;
+                }
+              }
+            }
+            .work {
+              margin-top: 35px;
+              .header {
+                align-items: center;
+                border-bottom: solid 2px $grey;
+                color: $grey2;
+                display: flex;
+                font-size: 16px;
+                height: 60px;
+                button {
+                  margin-left: 86%;
+                  width: 5%;
+                }
+              }
+              .information {
+                .row {
+                  margin-top: 10px;
+                  padding-left: 20px;
+                  .detail {
+                    color: $grey2;
+                    .style {
+                      width: 40%;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .home {
+    .post-content {
+      margin-top: 25px;
+      margin-right: 25px;
+      span {
+        font-size: 14px;
+        color: $grey2;
+      }
+    }
+    .border {
+      border-left: 2px solid $grey;
+      margin: 10px 0 0 25px;
+      min-height: 500px;
+    }
+    .title {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 15px;
+   }
+   .profile {
+     height: 350px;
+     width: 100%;
+   }
+   .footer {
+     border-top: 1px solid $grey;
+   }
+   .add-post {
+    position: fixed;
+    bottom: 10px;
+    right: 31px;
+    .btn-primary {
+      border-radius: 50%;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      height: 40px;
+      .glyphicon {
+        font-size: 22px;
+        left: 1px;
+        top: 8px;
+      }
+    }
+  }
+}
+
+  .modal-header {
+    background-color: $blue;
+    color:white !important;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .col-padding {
+    padding: 0;
+  }
+
+  .error {
+    color:red;
+    font-family:verdana, Helvetica;
+  }
+
+  .thumbnail {
+    padding: 0;
+  }
+
+  .profile-img {
+    background: url("../assets/mountain.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 230px;
+    @media (max-width: $ipad) {
+      display: none;
+    }
+  }
+
+  .media-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+}

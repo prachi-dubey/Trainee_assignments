@@ -1,0 +1,59 @@
+<div id="basic-view">
+  <div class="information panel-body">
+    <div class="row">
+      <div class="col-sm-2"><p>Full Name :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <p class="basic-info">{{name}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Gender :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <p class="basic-info">{{gender}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Birth Date :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <p class="basic-info"> {{#birthdate}} {{birthdate}} {{/birthdate}}
+        {{^birthdate}} N/A {{/birthdate}} </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Marital Status:</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <p class="basic-info">  {{#maritalstatus}} {{maritalstatus}} {{/maritalstatus}}
+        {{^maritalstatus}} N/A {{/maritalstatus}} </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Mobile :</p> </div>
+      <div class="edit-info detail col-sm-10">
+        <p class="basic-info"> {{mobile}} </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="work-view">
+  <div class="information panel-body">
+    <div class="row ">
+      <div class="col-sm-2"><p>Occupation :</p> </div>
+      <div class="edit-work detail col-sm-10">
+        <p>{{profile}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><p>Skills :</p> </div>
+      <div class="edit-work detail col-sm-10">
+        <p>{{skills}}</p>
+      </div>
+    </div>
+  </div>
+</div>

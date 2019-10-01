@@ -9,6 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="node_modules/mustache/mustache.js"> </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
 
 </head>
 <body>
@@ -21,29 +23,29 @@
         <li class="active"><a href="#">HOME</a></li>
         <li><a href="#">ABOUT US </a></li>
         <li><a href="#">CONTACT US</a></li>
-        <li class="pull-right btn btn-info hidden" id="humburger">&#9776;</li>
+        <li class="pull-right btn btn-info hide" onclick= "showSideBar();" id="humburger">&#9776;</li>
       </ul>
     </nav>
 
   <section>
     <nav id="sidebar">
     </nav>
-    <div class="wrapper clearfix container-fluid" id="books-wrapper">
+    <div class="wrapper clearfix container" id="books-wrapper">
       <div class="row books"></div>
       <div class="error"></div>
     </div>
 
-    <div class="loading-wrapper clearfix" id="loading-status">
+      <div class="loading-wrapper clearfix" id="loading-status">
       <div class="glyphicon glyphicon-refresh"></div>
     </div>
   </section>
 
-  <div class="modal fade" id="open-modal" role="dialog">
-  </div>
-</div>
+      <div class="modal fade" id="open-modal" role="dialog">
+      </div>
+    </div>
 
-<script src="javascript/side-nav.js"></script>
-<script src="javascript/books.js"></script>
-<script src="app.js"></script>
-</body>
+    <script src="javascript/side-nav.js"></script>
+    <script src="javascript/books.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>

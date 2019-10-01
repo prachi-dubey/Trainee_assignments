@@ -1,0 +1,268 @@
+.web-wrapper {
+  padding: 0 5px;
+}
+.web-wrapper .web-nav .navbar {
+  background-color: #6ec0fb;
+}
+.web-wrapper .web-nav .navbar .navbar-header {
+  float: none;
+}
+.web-wrapper .web-nav .navbar .navbar-header .img {
+  background: url("../assets/f-letter.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 10px;
+  min-height: 50px;
+}
+.web-wrapper .web-nav .navbar .navbar-header .logout {
+  float: right;
+  margin: 5px 10px 0 0;
+}
+.web-wrapper .web-nav .navbar .navbar-header .logout .media-img {
+  width: 40px;
+  height: 40px;
+}
+.web-wrapper .login {
+  border: 3px solid #f1f1f1;
+}
+.web-wrapper .login form input[type=email], .web-wrapper .login form input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.web-wrapper .login form .password {
+  display: block;
+}
+.web-wrapper .login form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+}
+.web-wrapper .login form button:hover {
+  opacity: 0.8;
+}
+.web-wrapper .login form .login-button {
+  margin-top: 20px;
+}
+.web-wrapper .signup {
+  border: 3px solid #f1f1f1;
+}
+.web-wrapper .signup .top-distance {
+  margin-top: 15px;
+}
+.web-wrapper .signup .top-distance input {
+  text-transform: capitalize;
+}
+.web-wrapper .signup .checkbox {
+  margin-top: 0;
+}
+.web-wrapper .dashboard .profile-tile {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  width: 85%;
+}
+@media (max-width: 768px) {
+  .web-wrapper .dashboard .profile-tile {
+    width: 100%;
+  }
+}
+.web-wrapper .dashboard .profile-tile .cover {
+  background: url("../assets/mountain.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 150px;
+}
+.web-wrapper .dashboard .profile-tile .logo {
+  border: solid 2px white;
+  left: 38%;
+  min-height: 20%;
+  min-width: 25%;
+  position: absolute;
+  top: 120px;
+}
+@media (max-width: 768px) {
+  .web-wrapper .dashboard .profile-tile .logo {
+    left: 41%;
+    min-height: 20%;
+    min-width: 17%;
+  }
+}
+.web-wrapper .dashboard .profile-tile .page-header {
+  text-align: center;
+}
+.web-wrapper .dashboard .profile-tile .font {
+  font-size: 14px;
+  line-height: 25px;
+}
+.web-wrapper .dashboard .profile-tile .post-comment {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.web-wrapper .dashboard .profile-tile .post-comment .post {
+  margin-left: 25px;
+}
+.web-wrapper .dashboard .profile-tile .post-comment > div {
+  padding-right: 10px;
+}
+.web-wrapper .dashboard .profile-tile .post-comment .comment {
+  padding-left: 10px;
+}
+.web-wrapper .dashboard .profile-tile .post-comment > div {
+  border-right: 1px solid #ccc;
+  float: left;
+  text-align: center;
+}
+.web-wrapper .dashboard .profile-tile .post-comment > div:last-child {
+  border-right: none;
+}
+.web-wrapper .dashboard .wrapper {
+  display: inline-block;
+  width: 100%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .nav-tabs > li {
+  width: 25%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile {
+  margin-top: 20px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .font {
+  font-size: 12px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .header {
+  align-items: center;
+  border-bottom: solid 2px #ccc;
+  color: #716969;
+  display: flex;
+  font-size: 16px;
+  height: 60px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .header button {
+  margin-left: 75%;
+  width: 5%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row .detail {
+  color: #716969;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row .detail .style {
+  width: 40%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .edit {
+  width: 40%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work {
+  margin-top: 35px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .header {
+  align-items: center;
+  border-bottom: solid 2px #ccc;
+  color: #716969;
+  display: flex;
+  font-size: 16px;
+  height: 60px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .header button {
+  margin-left: 86%;
+  width: 5%;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row .detail {
+  color: #716969;
+}
+.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row .detail .style {
+  width: 40%;
+}
+.web-wrapper .home .post-content {
+  margin-top: 25px;
+  margin-right: 25px;
+}
+.web-wrapper .home .post-content span {
+  font-size: 14px;
+  color: #716969;
+}
+.web-wrapper .home .border {
+  border-left: 2px solid #ccc;
+  margin: 10px 0 0 25px;
+  min-height: 500px;
+}
+.web-wrapper .home .title {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: 15px;
+}
+.web-wrapper .home .profile {
+  height: 350px;
+  width: 100%;
+}
+.web-wrapper .home .footer {
+  border-top: 1px solid #ccc;
+}
+.web-wrapper .home .add-post {
+  position: fixed;
+  bottom: 10px;
+  right: 31px;
+}
+.web-wrapper .home .add-post .btn-primary {
+  border-radius: 50%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+.web-wrapper .home .add-post .btn-primary .glyphicon {
+  font-size: 22px;
+  left: 1px;
+  top: 8px;
+}
+.web-wrapper .modal-header {
+  background-color: #6ec0fb;
+  color: white !important;
+  font-size: 30px;
+  text-align: center;
+}
+.web-wrapper .col-padding {
+  padding: 0;
+}
+.web-wrapper .error {
+  color: red;
+  font-family: verdana, Helvetica;
+}
+.web-wrapper .thumbnail {
+  padding: 0;
+}
+.web-wrapper .profile-img {
+  background: url("../assets/mountain.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 230px;
+}
+@media (max-width: 768px) {
+  .web-wrapper .profile-img {
+    display: none;
+  }
+}
+.web-wrapper .media-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+/*# sourceMappingURL=signup-login.css.map */
