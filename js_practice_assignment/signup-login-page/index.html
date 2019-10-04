@@ -12,16 +12,19 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+
   </head>
 
   <body>
-    <div class="container-fluid web-wrapper">
-      <div class="web-nav">
+    <div class="container-fluid website">
+      <div class="nav">
        <nav class="navbar navbar-default">
          <div class="navbar-header clearfix">
-           <a class="navbar-brand img" href="#"></a>
+           <a class="navbar-brand logo" href="#"></a>
            <div class="logout clearfix hide" data-toggle="dropdown">
-             <img src="" class="logo media-img"/>
+             <img src="" class="media-img"/>
           </div>
           <ul class="dropdown-menu pull-right">
             <li><a onclick="changeRoute('login')" >Logout</a></li>
@@ -30,9 +33,6 @@
        </nav>
      </div>
 
-     <!-- <div class="login-wrapper" id='login-page'></div> -->
-     <!-- <div class="signup-wrapper" id='signup-page'></div> -->
-     <!-- <div id='dashboard-page'></div> -->
       <div id='wrapper'></div>
    </div>
 

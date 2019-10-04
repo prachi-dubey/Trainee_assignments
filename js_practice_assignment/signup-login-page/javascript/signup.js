@@ -6,8 +6,7 @@ function Signup() {
     $.get("../template/signup.html", function(templateData, Status) {
       var output = Mustache.render(templateData);
       $('#wrapper').html(output);
-      console.log($("form[name='signup']"));
-      $("form[name='signup']").validate({
+      $("#sign-app").validate({
         rules: {
           name: {
             required: true,
@@ -23,6 +22,7 @@ function Signup() {
           },
           profileImg: {
             required:true,
+            extension: "png|jpg"
           },
           mobile: {
             required:true,
@@ -59,7 +59,9 @@ function Signup() {
             number: "Please enter a valid number",
             minlength: "Required 10 characters long"
           },
-          profileImg: "Please enter valid url",
+          profileImg: {
+            extension: "Please enter valid url",
+          },
           gender: "Please select one option",
           profile: "Please select an option from the list, if none are appropriate please select 'Other'",
           "skills": "Please select at least one checkbox",
@@ -82,9 +84,8 @@ function Signup() {
   }
 
    function onSignupSubmit (form) {
-     console.log(event.target);
      event.preventDefault();
-     var inputs = $('form :input');
+     var inputs = $("#sign-app :input");
      var values = {};
      inputs.each(function() {
        var skills = [];
@@ -93,6 +94,9 @@ function Signup() {
            skills[index] = $(this).val();
          });
          values['skills'] = skills;
+       } else if(this.name == 'gender') {
+         var data = $('input:radio[name=gender]:checked').val()
+         values[this.name] = data;
        } else {
          values[this.name] = $(this).val();
        }

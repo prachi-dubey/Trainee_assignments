@@ -1,6 +1,5 @@
 $(document).ready(function() {
   checkSession();
-
 });
 
 function changeRoute(pageName) {
@@ -24,9 +23,8 @@ function checkSession() {
   if(loginDetail) {
     var dashboardData = new Dashboard();
     dashboardData.prepareDashboard(loginDetail);
-    console.log(loginDetail.profileImg);
-    var html = $('.navbar-header img').html();
-    // console.log(html);
+    $('.logout').removeClass('hide');
+    $('.logout img').attr("src", loginDetail.profileImg);
     return;
   }
   var login = new Login();
@@ -57,8 +55,6 @@ function AuthHelper() {
       for (var i = 0; i < storedDetail.length; i++) {
         if (storedDetail[i].isloggedIn) {
           return storedDetail[i];
-        } else {
-          return false;
         }
       }
     } else {

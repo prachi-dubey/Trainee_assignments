@@ -1,32 +1,33 @@
-.web-wrapper {
+@charset "UTF-8";
+.website {
   padding: 0 5px;
 }
-.web-wrapper .web-nav .navbar {
+.website .nav .navbar {
   background-color: #6ec0fb;
 }
-.web-wrapper .web-nav .navbar .navbar-header {
+.website .nav .navbar .navbar-header {
   float: none;
 }
-.web-wrapper .web-nav .navbar .navbar-header .img {
-  background: url("../assets/f-letter.jpg");
+.website .nav .navbar .navbar-header .logo {
+  background: url("../assets/logo.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: 10px;
   min-height: 50px;
 }
-.web-wrapper .web-nav .navbar .navbar-header .logout {
+.website .nav .navbar .navbar-header .logout {
   float: right;
   margin: 5px 10px 0 0;
 }
-.web-wrapper .web-nav .navbar .navbar-header .logout .media-img {
+.website .nav .navbar .navbar-header .logout .media-img {
   width: 40px;
   height: 40px;
 }
-.web-wrapper .login {
+.website .login {
   border: 3px solid #f1f1f1;
 }
-.web-wrapper .login form input[type=email], .web-wrapper .login form input[type=password] {
+.website .login form input[type=email], .website .login form input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -34,10 +35,10 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-.web-wrapper .login form .password {
+.website .login form .password {
   display: block;
 }
-.web-wrapper .login form button {
+.website .login form button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -46,43 +47,47 @@
   cursor: pointer;
   width: 20%;
 }
-.web-wrapper .login form button:hover {
+.website .login form button:hover {
   opacity: 0.8;
 }
-.web-wrapper .login form .login-button {
+.website .login form .login-status {
   margin-top: 20px;
 }
-.web-wrapper .signup {
+.website .signup {
   border: 3px solid #f1f1f1;
 }
-.web-wrapper .signup .top-distance {
+.website .signup h4 {
+  text-align: center;
+  color: #6ec0fb;
+}
+.website .signup .name {
   margin-top: 15px;
 }
-.web-wrapper .signup .top-distance input {
+.website .signup .name input {
   text-transform: capitalize;
 }
-.web-wrapper .signup .checkbox {
+.website .signup .checkbox {
   margin-top: 0;
 }
-.web-wrapper .dashboard .profile-tile {
+.website .dashboard .user-tile {
   display: inline-block;
   position: relative;
   vertical-align: top;
   width: 85%;
 }
 @media (max-width: 768px) {
-  .web-wrapper .dashboard .profile-tile {
+  .website .dashboard .user-tile {
     width: 100%;
   }
 }
-.web-wrapper .dashboard .profile-tile .cover {
+.website .dashboard .user-tile .cover {
   background: url("../assets/mountain.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 150px;
 }
-.web-wrapper .dashboard .profile-tile .logo {
+.website .dashboard .user-tile .logo {
   border: solid 2px white;
   left: 38%;
   min-height: 20%;
@@ -91,55 +96,52 @@
   top: 120px;
 }
 @media (max-width: 768px) {
-  .web-wrapper .dashboard .profile-tile .logo {
+  .website .dashboard .user-tile .logo {
     left: 41%;
     min-height: 20%;
     min-width: 17%;
   }
 }
-.web-wrapper .dashboard .profile-tile .page-header {
+.website .dashboard .user-tile .page-header {
   text-align: center;
 }
-.web-wrapper .dashboard .profile-tile .font {
+.website .dashboard .user-tile .content-size {
   font-size: 14px;
   line-height: 25px;
 }
-.web-wrapper .dashboard .profile-tile .post-comment {
+.website .dashboard .user-tile .post-comment {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
-.web-wrapper .dashboard .profile-tile .post-comment .post {
+.website .dashboard .user-tile .post-comment .post {
   margin-left: 25px;
 }
-.web-wrapper .dashboard .profile-tile .post-comment > div {
+.website .dashboard .user-tile .post-comment > div {
   padding-right: 10px;
 }
-.web-wrapper .dashboard .profile-tile .post-comment .comment {
+.website .dashboard .user-tile .post-comment .comment {
   padding-left: 10px;
 }
-.web-wrapper .dashboard .profile-tile .post-comment > div {
+.website .dashboard .user-tile .post-comment > div {
   border-right: 1px solid #ccc;
   float: left;
   text-align: center;
 }
-.web-wrapper .dashboard .profile-tile .post-comment > div:last-child {
+.website .dashboard .user-tile .post-comment > div:last-child {
   border-right: none;
 }
-.web-wrapper .dashboard .wrapper {
+.website .dashboard .tab-wrapper {
   display: inline-block;
   width: 100%;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .nav-tabs > li {
+.website .dashboard .tab-wrapper .nav-tabs {
+  margin-bottom: 40px;
+}
+.website .dashboard .tab-wrapper .tabs-width .nav-tabs > li {
   width: 25%;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile {
-  margin-top: 20px;
-}
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .font {
-  font-size: 12px;
-}
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .header {
+.website .dashboard .tab-wrapper .profile .basic .header {
   align-items: center;
   border-bottom: solid 2px #ccc;
   color: #716969;
@@ -147,27 +149,24 @@
   font-size: 16px;
   height: 60px;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .header button {
+.website .dashboard .tab-wrapper .profile .basic .header button {
   margin-left: 75%;
   width: 5%;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row {
+.website .dashboard .tab-wrapper .profile .basic .information .row {
   margin-top: 10px;
   padding-left: 20px;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row .detail {
+.website .dashboard .tab-wrapper .profile .basic .information .row .detail {
   color: #716969;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .row .detail .style {
+.website .dashboard .tab-wrapper .profile .basic .information .row .detail .input-size {
   width: 40%;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .basic .information .edit {
-  width: 40%;
-}
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work {
+.website .dashboard .tab-wrapper .profile .work {
   margin-top: 35px;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .header {
+.website .dashboard .tab-wrapper .profile .work .header {
   align-items: center;
   border-bottom: solid 2px #ccc;
   color: #716969;
@@ -175,79 +174,132 @@
   font-size: 16px;
   height: 60px;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .header button {
+.website .dashboard .tab-wrapper .profile .work .header button {
   margin-left: 86%;
   width: 5%;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row {
+.website .dashboard .tab-wrapper .profile .work .information .row {
   margin-top: 10px;
   padding-left: 20px;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row .detail {
+.website .dashboard .tab-wrapper .profile .work .information .row .detail {
   color: #716969;
 }
-.web-wrapper .dashboard .wrapper .tabs-width .tab-content .profile .work .information .row .detail .style {
+.website .dashboard .tab-wrapper .profile .work .information .row .detail .input-size {
   width: 40%;
 }
-.web-wrapper .home .post-content {
+.website .home .post-content {
   margin-top: 25px;
   margin-right: 25px;
 }
-.web-wrapper .home .post-content span {
+.website .home .post-content span {
   font-size: 14px;
   color: #716969;
 }
-.web-wrapper .home .border {
-  border-left: 2px solid #ccc;
-  margin: 10px 0 0 25px;
-  min-height: 500px;
-}
-.web-wrapper .home .title {
+.website .home .title {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  padding: 15px;
+  padding: 15px 15px 5px 15px;
 }
-.web-wrapper .home .profile {
+.website .home .profile {
   height: 350px;
   width: 100%;
 }
-.web-wrapper .home .footer {
+.website .home .footer {
   border-top: 1px solid #ccc;
 }
-.web-wrapper .home .add-post {
+.website .home .add-post {
   position: fixed;
   bottom: 10px;
   right: 31px;
 }
-.web-wrapper .home .add-post .btn-primary {
+.website .home .add-post .btn-primary {
+  background-color: #6ec0fb;
   border-radius: 50%;
   width: 40px;
   display: flex;
   justify-content: center;
   height: 40px;
 }
-.web-wrapper .home .add-post .btn-primary .glyphicon {
+.website .home .add-post .btn-primary .glyphicon {
   font-size: 22px;
   left: 1px;
   top: 8px;
 }
-.web-wrapper .modal-header {
+.website .home .home-icon {
+  border: 3px solid #6ec0fb;
+  z-index: 10;
+  top: 25px;
+  position: relative;
+  margin-top: 20px;
+}
+.website .home .gap {
+  padding-right: 2px;
+}
+.website .home .overflow-visible {
+  overflow: visible;
+}
+.website .home .timeline {
+  position: relative;
+  margin: 0 auto;
+}
+.website .home .timeline ::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  background-color: #6ec0fb;
+  top: -12px;
+  bottom: -30px;
+  left: 52%;
+  margin-left: -3px;
+}
+.website .home .before:before {
+  position: absolute;
+  content: " ●";
+  font-size: 35px;
+  top: -45px;
+  left: 51%;
+  margin-left: -11px;
+  color: #6ec0fb;
+}
+.website .home .after:after {
+  position: absolute;
+  content: " ●";
+  font-size: 35px;
+  top: 550px;
+  left: 51%;
+  margin-left: -11px;
+  color: #6ec0fb;
+}
+.website .home .noafter:after {
+  display: none;
+}
+.website .home .hori-timeline {
+  width: 2%;
+  position: relative;
+  top: 70px;
+  border-top: 3px solid #6ec0fb;
+}
+.website .home .like {
+  font-size: 20px;
+}
+.website .modal-header {
   background-color: #6ec0fb;
   color: white !important;
   font-size: 30px;
   text-align: center;
 }
-.web-wrapper .col-padding {
+.website .col-padding {
   padding: 0;
 }
-.web-wrapper .error {
+.website .error {
   color: red;
   font-family: verdana, Helvetica;
 }
-.web-wrapper .thumbnail {
+.website .thumbnail {
   padding: 0;
 }
-.web-wrapper .profile-img {
+.website .cover-img {
   background: url("../assets/mountain.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -255,11 +307,11 @@
   min-height: 230px;
 }
 @media (max-width: 768px) {
-  .web-wrapper .profile-img {
+  .website .cover-img {
     display: none;
   }
 }
-.web-wrapper .media-img {
+.website .media-img {
   border-radius: 50%;
   width: 50px;
   height: 50px;

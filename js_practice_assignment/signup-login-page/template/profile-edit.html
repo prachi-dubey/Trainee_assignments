@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-2"><p>Full Name :</p> </div>
         <div class="edit-info detail col-sm-10">
-          <div class="form-group">
+          <div class="form-group input-size">
             <input type="text" class="edit form-control" value="{{name}}" placeholder="{{name}}" name="fullname">
           </div>
         </div>
@@ -15,8 +15,8 @@
         <div class="edit-info detail col-sm-10">
         <div class="form-group gender">
           <div>
-            <label class="radio-inline"><input name="gender" type="radio" value="Male"/> Male</label>
-            <label class="radio-inline"><input name="gender" type="radio" value="Female"/> Female</label>
+            <label class="radio-inline"><input data-gender="Male" name="gender" type="radio" value="Male"/> Male</label>
+            <label class="radio-inline"><input data-gender="Female" name="gender" type="radio" value="Female"/> Female</label>
           </div>
         </div>
       </div>
@@ -25,9 +25,8 @@
     <div class="row">
       <div class="col-sm-2"><p>Birthdate :</p> </div>
       <div class="edit-info detail col-sm-10">
-        <div class="input-group edit form-group">
-         <input type="text" class="form-control showDatepicker" id="birth-date" name="datepicker" placeholder="{{birthdate}}">
-          <!-- <div class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </div> -->
+        <div class="input-group edit form-group input-size">
+         <input type="text" class="form-control showDatepicker" id="birth-date" name="datepicker" placeholder="{{#birthdate}}{{birthdate}}{{/birthdate}}{{^birthdate}}mm/dd/yy{{/birthdate}}">
         </div>
       </div>
     </div>
@@ -36,7 +35,7 @@
       <div class="col-sm-2"><p>Martial status :</p> </div>
       <div class="edit-info detail col-sm-10">
         <div class="form-group">
-          <select class="edit form-control style" name="maritalStatus" value="{{profile}}">
+          <select class="edit form-control input-size" name="maritalStatus" value="{{profile}}">
             <option value="Married"> Married </option>
             <option value="Single">Single</option>
           </select>
@@ -47,7 +46,7 @@
     <div class="row">
       <div class="col-sm-2"><p>Mobile :</p> </div>
       <div class="edit-info detail col-sm-10">
-        <div class="form-group">
+        <div class="form-group input-size">
           <input class="edit form-control" type="text" name="mobile" value="{{mobile}}"/>
         </div>
       </div>
@@ -66,7 +65,7 @@
       <div class="col-sm-2"><p>Occupation :</p> </div>
       <div class="edit-work detail col-sm-10">
         <div class="form-group">
-          <select class="form-control style" value="" name="profile">
+          <select class="form-control input-size" value="" name="profile">
             <option value="">Select option</option>
             <option value="Developer">Developer</option>
             <option value="Tester">Tester</option>
@@ -82,12 +81,12 @@
     <div class="row">
       <div class="col-sm-2"><p>Skills :</p> </div>
       <div class="edit-work detail col-sm-10">
-        <div class="style skills form-group" id="work-skills">
+        <div class="input-size skills form-group" id="work-skills">
           <div class="checkbox">
-            <label><input type="checkbox" name="skills" value="Node js,Php,Javascript"/>Node js,Php,Javascript</label>
+            <label><input type="checkbox" name="skills" value="NodeJs"/>NodeJs</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="skills" value="oracle"/> Python,oracle</label>
+            <label><input type="checkbox" name="skills" value="Python"/> Python </label>
           </div>
           <div class="checkbox">
             <label><input type="checkbox" name="skills" value="Embedded"/> Embedded</label>

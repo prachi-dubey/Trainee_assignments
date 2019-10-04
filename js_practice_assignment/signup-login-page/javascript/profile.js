@@ -1,8 +1,6 @@
-var dataDetail = null;
-
 function Profile() {
+
   this.prepareProfile = function(personDetail) {
-    console.log("profile tab");
     $.get("../template/profile.html", function(templateProfile, Status) {
       var output = Mustache.render(templateProfile, personDetail );
       history.pushState({ page: 1}, "profile", "#dashboard-profile");
@@ -10,15 +8,85 @@ function Profile() {
 
       $.get("../template/profile-view.html", function(profileView, Status) {
         var basicTemplate = $(profileView).filter('#basic-view').html();
-        var outputView = Mustache.render(basicTemplate, personDetail );
-        dataDetail = personDetail;
-        $('#profile-basic-view').html(outputView);
+        var outputBasic = Mustache.render(basicTemplate, personDetail );
+        $('#profile-basic-view').html(outputBasic);
 
         var workTemplate = $(profileView).filter('#work-view').html();
-        var outputView = Mustache.render(workTemplate, personDetail);
-        $('#profile-work-view').html(outputView);
+        var outputWork = Mustache.render(workTemplate, personDetail);
+        $('#profile-work-view').html(outputWork);
       });
     });
+  }
+
+  this.onBasicProfile = function (form) {
+    $('#profile-basic').removeAttr('novalidate');
+    event.preventDefault();
+    var inputs = $('form :input');
+    var values = {};
+    var authHelper = new AuthHelper();
+    inputs.each(function() {
+      if(this.name == 'gender') {
+        var data = $('input:radio[name=gender]:checked').val()
+        values[this.name] = data;
+      } else {
+        values[this.name] = $(this).val();
+      }
+    });
+    var storedDetail = authHelper.getData();
+    for (var i = 0; i < storedDetail.length; i++) {
+      if(storedDetail[i].isloggedIn) {
+        storedDetail[i].name = values.fullname;
+        storedDetail[i].gender = values.gender;
+        storedDetail[i].birthdate = values.datepicker;
+        storedDetail[i].maritalstatus = values.maritalStatus;
+        storedDetail[i].mobile = values.mobile;
+      }
+    }
+    authHelper.setData(storedDetail);
+
+    $('.edit-info').show();
+    $('#profile-basic-view').show();
+    var loginDetail =  authHelper.getLoginDetails();
+    if(loginDetail) {
+      var profileData = new Profile();
+      profileData.prepareProfile(loginDetail);
+    }
+  }
+
+  this.onWorkProfile =  function (form) {
+    $('#profile-work').removeAttr('novalidate');
+    event.preventDefault();
+    var authHelper = new AuthHelper();
+    var inputs = $('form :input');
+    var values = {};
+    inputs.each(function() {
+      var skills = [];
+      if(this.name == 'skills') {
+        $(":checkbox:checked").each(function(index) {
+          skills[index] = $(this).val();
+        });
+        values['skills'] = skills;
+      } else {
+        values[this.name] = $(this).val();
+      }
+    });
+
+    var storedDetail = authHelper.getData();
+    for (var i = 0; i < storedDetail.length; i++) {
+      if(storedDetail[i].isloggedIn) {
+        storedDetail[i].profile = values.profile;
+        storedDetail[i].skills = values.skills;
+      }
+    }
+    authHelper.setData(storedDetail);
+
+    $('.edit-work').show();
+    $('#profile-work-view').show();
+    var loginDetail =  authHelper.getLoginDetails();
+    if(loginDetail) {
+      var profileData = new Profile();
+      profileData.prepareProfile(loginDetail);
+    }
   }
 }
 
@@ -27,22 +95,20 @@ function editBasicProfile() {
   $('#profile-basic-view').hide();
   $.get("../template/profile-edit.html", function(profileEdit, Status) {
     basicTemplate = $(profileEdit).filter('#basic-edit').html();
+    var authHelper = new AuthHelper();
+    var dataDetail =  authHelper.getLoginDetails();
     var outputEdit = Mustache.render(basicTemplate, dataDetail);
     $('#profile-basic-edit').html(outputEdit);
-
+    $('input[name=gender][value='+ dataDetail.gender +' ]').prop("checked",true);
     $('#birth-date').datepicker();
     $('.input-group-addon').on('click', function() {
       $(this).siblings('.showDatepicker').datepicker("show");
     });
-
-    // $('.save-basic').on( "click", function() {
-    //   saveBasicProfile.call(this);;
-    // });
- });
+  });
 }
 
 function saveBasicProfile() {
-console.log("profile-basic");
+ var profile = new Profile();
   $("#profile-basic").validate({
     rules: {
       fullname: {
@@ -83,47 +149,7 @@ console.log("profile-basic");
         error.insertAfter( element );
       }
     },
-    submitHandler: function (form) {
-      $('#profile-basic').removeAttr('novalidate');
-      console.log(event.target);
-      event.preventDefault();
-      var inputs = $('form :input');
-        var values = {};
-        inputs.each(function() {
-          var skills = [];
-          values[this.name] = $(this).val();
-        });
-        console.log("check values");
-        console.log(values);
-        var authHelper = new AuthHelper();
-        var storedDetail = authHelper.getData();
-        // var storedDetail = JSON.parse(localStorage.getItem('personDetail'));
-        for (var i = 0; i < storedDetail.length; i++) {
-          if(storedDetail[i].isloggedIn) {
-            storedDetail[i].name = values.fullname;
-            storedDetail[i].gender = values.gender;
-            storedDetail[i].birthdate = values.datepicker;
-            storedDetail[i].maritalstatus = values.maritalStatus;
-            storedDetail[i].mobile = values.mobile;
-          }
-        }
-      var authHelper = new AuthHelper();
-      authHelper.setData(storedDetail);
-
-      $('.edit-info').show();
-      $('#profile-basic-view').show();
-      var authHelper = new AuthHelper();
-      var storedDetail = authHelper.getData();
-      // var storedDetail = JSON.parse(localStorage.getItem('personDetail'));
-      console.log(storedDetail);
-      for (var i = 0; i < storedDetail.length; i++) {
-        if(storedDetail[i].isloggedIn) {
-          var profileData = new Profile();
-          console.log(storedDetail[i]);
-          profileData.prepareProfile(storedDetail[i]);
-        }
-      }
-    }
+    submitHandler: profile.onBasicProfile
   });
 }
 
@@ -132,18 +158,19 @@ function editWorkProfile() {
   $('#profile-work-view').hide();
   $.get("../template/profile-edit.html", function(profileEdit, Status) {
     basicTemplate = $(profileEdit).filter('#work-edit').html();
+    var authHelper = new AuthHelper();
+    var dataDetail =  authHelper.getLoginDetails();
     var outputEdit = Mustache.render(basicTemplate, dataDetail);
     $('#profile-work-edit').html(outputEdit);
-
-    // $('.save-work').on( "click", function() {
-    //   saveWorkProfile.call(this);;
-    // });
- });
-  console.log("i am done");
+    $('select option[value='+ dataDetail.profile +']').attr('selected','selected');
+    for(var i = 0; i < dataDetail.skills.length ; i++) {
+      $('input[type=checkbox][value='+ dataDetail.skills[i] +' ]').prop("checked",true);
+    }
+  });
 }
 
 function saveWorkProfile() {
-console.log("profile-work");
+  var profile = new Profile();
   $("#profile-work").validate({
     rules: {
       profile: "required",
@@ -166,49 +193,6 @@ console.log("profile-work");
         error.insertAfter( element );
       }
     },
-    submitHandler: function (form) {
-      $('#profile-work').removeAttr('novalidate');
-      console.log(event.target);
-      event.preventDefault();
-      var inputs = $('form :input');
-      var values = {};
-      inputs.each(function() {
-        var skills = [];
-        if(this.name == 'skills') {
-          $(":checkbox:checked").each(function(index) {
-            skills[index] = $(this).val();
-          });
-          values['skills'] = skills;
-        } else {
-          values[this.name] = $(this).val();
-        }
-    });
-    console.log(values);
-    var authHelper = new AuthHelper();
-    var storedDetail = authHelper.getData();
-    // var storedDetail = JSON.parse(localStorage.getItem('personDetail'));
-    for (var i = 0; i < storedDetail.length; i++) {
-      if(storedDetail[i].isloggedIn) {
-        storedDetail[i].profile = values.profile;
-        storedDetail[i].skills = values.skills;
-      }
-    }
-    var authHelper = new AuthHelper();
-    authHelper.setData(storedDetail);
-
-    $('.edit-work').show();
-    $('#profile-work-view').show();
-    var authHelper = new AuthHelper();
-    var storedDetail = authHelper.getData();
-    // var storedDetail = JSON.parse(localStorage.getItem('personDetail'));
-    console.log(storedDetail);
-    for (var i = 0; i < storedDetail.length; i++) {
-      if(storedDetail[i].isloggedIn) {
-        var profileData = new Profile();
-        console.log(storedDetail[i]);
-        profileData.prepareProfile(storedDetail[i]);
-      }
-    }
-  }
-});
+    submitHandler: profile.onWorkProfile
+  });
 }
