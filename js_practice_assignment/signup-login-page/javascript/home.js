@@ -94,7 +94,6 @@ function Home() {
        $('#user-post').html(output);
      });
    }
-
  }
 
 function likeCount(event) {
@@ -109,7 +108,6 @@ function likeCount(event) {
 
   var t = $(event).parents().eq(1);
   console.log(t);
-
 }
 
 function addPostEvent() {
@@ -135,6 +133,7 @@ function storeUserPost() {
     messages: {
       title: "Please add title",
       image: {
+        required: "Please add image url",
         extension: "Please enter valid url with png or jpg extension"
       }
     },

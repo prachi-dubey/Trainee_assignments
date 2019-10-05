@@ -51,7 +51,7 @@ function AuthHelper() {
 
   this.getLoginDetails = function() {
     var storedDetail = JSON.parse(localStorage.getItem('personDetails'));
-    if(storedDetail) {
+    if (storedDetail) {
       for (var i = 0; i < storedDetail.length; i++) {
         if (storedDetail[i].isloggedIn) {
           return storedDetail[i];

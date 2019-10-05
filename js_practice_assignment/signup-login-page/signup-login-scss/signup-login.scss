@@ -110,6 +110,11 @@ $ipad: 768px;
           min-height: 20%;
           min-width: 17%;
         }
+        @media (min-width: $ipad) and (max-width: 991px) {
+          left: 45%;
+          min-height: 21%;
+          min-width: 11%;
+        }
       }
       .page-header {
         text-align: center;
@@ -321,7 +326,7 @@ $ipad: 768px;
   }
   .error {
     color:red;
-    font-family:verdana, Helvetica;
+    font-size: 12px;
   }
   .thumbnail {
     padding: 0;

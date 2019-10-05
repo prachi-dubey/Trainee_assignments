@@ -1,4 +1,3 @@
-var storeData = [];
 
 function Signup() {
   this.prepareSignupData = function() {

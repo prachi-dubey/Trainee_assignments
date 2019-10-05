@@ -36,7 +36,6 @@ function Login() {
      }
    }
 
-   var authHelper = new AuthHelper();
    authHelper.setData(storedDetail);
 
    document.getElementById('login-app').reset();

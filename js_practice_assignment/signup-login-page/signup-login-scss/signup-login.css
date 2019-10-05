@@ -102,6 +102,13 @@
     min-width: 17%;
   }
 }
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .dashboard .user-tile .logo {
+    left: 45%;
+    min-height: 21%;
+    min-width: 11%;
+  }
+}
 .website .dashboard .user-tile .page-header {
   text-align: center;
 }
@@ -294,7 +301,7 @@
 }
 .website .error {
   color: red;
-  font-family: verdana, Helvetica;
+  font-size: 12px;
 }
 .website .thumbnail {
   padding: 0;

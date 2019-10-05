@@ -26,8 +26,9 @@ function Dashboard() {
                 profileData.prepareProfile(personDetail);
                 break;
           default:
-                homeData.prepareHome(personDetail);
-                break;
+                // homeData.prepareHome(personDetail);
+                return;
+                // break;
         }
       });
     });
