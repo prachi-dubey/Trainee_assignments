@@ -1,9 +1,7 @@
 function Login() {
   this.prepareLoginData = function() {
-    var template = null;
-
-    $.get("../template/login.html", function(template, Status) {
-      var output = Mustache.render(template );
+    $.get("../template/login.html", function(template, status) {
+      var output = Mustache.render(template);
       $('#wrapper').html(output);
       $('.logout').addClass('hide');
       $("form[name='login']").validate({
@@ -22,35 +20,22 @@ function Login() {
    inputs.each(function() {
      personData[this.name] = $(this).val();
    });
-   var personDetail = {};
    var authHelper = new AuthHelper();
    var storedDetail = authHelper.getData();
 
    for (var i = 0; i < storedDetail.length; i++) {
      if ( (personData.email === storedDetail[i].email) && (personData.password === storedDetail[i].password)) {
-        personDetail = storedDetail[i];
         storedDetail[i].isloggedIn = true;
+        storedDetail[i].name = storedDetail[i].name.charAt(0).toUpperCase() + storedDetail[i].name.substr(1);
+        storedDetail[i].gender = storedDetail[i].gender.charAt(0).toUpperCase() + storedDetail[i].gender.substr(1);
        $('#login-error').text("");
      } else {
        $('#login-error').text("Please enter valid email and password");
      }
    }
-
    authHelper.setData(storedDetail);
-
    document.getElementById('login-app').reset();
 
-   // var storedDetail =  authHelper.getData();
-   // if(storedDetail) {
-   //   for (var i = 0; i < storedDetail.length; i++) {
-   //     if (storedDetail[i].isloggedIn) {
-   //       var dashboardData = new Dashboard();
-   //       dashboardData.prepareDashboard(storedDetail[i]);
-   //       $('.logout').removeClass('hide');
-   //       $('.logout img').attr("src", storedDetail[i].profileImg);
-   //     }
-   //   }
-   // }
    var loginDetail =  authHelper.getLoginDetails();
    if(loginDetail) {
      var dashboardData = new Dashboard();
@@ -59,5 +44,4 @@ function Login() {
      $('.logout img').attr("src", loginDetail.profileImg);
    }
  }
-
 }

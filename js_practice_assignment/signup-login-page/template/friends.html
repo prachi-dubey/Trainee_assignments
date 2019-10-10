@@ -1,0 +1,23 @@
+  <div id="follower" class="friends row">
+  {{#data}}
+    <div class='col-md-6 col-sm-6'>
+      <div class='thumbnail'>
+        <div class="tile clearfix">
+          <img src="../assets/img2.png" alt={{name}} />
+          <div class='caption'>
+            <h4>{{name}}</h4>
+            <div>{{profile}}</div>
+          </div>
+          <div class=" pull-right follow">
+            {{#follower}}
+              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Follow</div>
+            {{/follower}}
+            {{^follower}}
+              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Following</div>
+            {{/follower}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/data}}
+</div>

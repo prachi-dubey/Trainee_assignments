@@ -3,7 +3,7 @@ function Profile() {
   this.prepareProfile = function(personDetail) {
     $.get("../template/profile.html", function(templateProfile, Status) {
       var output = Mustache.render(templateProfile, personDetail );
-      history.pushState({ page: 1}, "profile", "#dashboard-profile");
+      history.pushState({ page: 1}, "profile", "#/dashboard-profile");
       $('#tab-content').html(output);
 
       $.get("../template/profile-view.html", function(profileView, Status) {
@@ -22,24 +22,25 @@ function Profile() {
     $('#profile-basic').removeAttr('novalidate');
     event.preventDefault();
     var inputs = $('form :input');
-    var values = {};
+    var basicData = {};
     var authHelper = new AuthHelper();
     inputs.each(function() {
       if(this.name == 'gender') {
-        var data = $('input:radio[name=gender]:checked').val()
-        values[this.name] = data;
+        var data = $('input:radio[name=gender]:checked').val();
+        basicData[this.name] = data;
       } else {
-        values[this.name] = $(this).val();
+        basicData[this.name] = $(this).val();
       }
     });
     var storedDetail = authHelper.getData();
     for (var i = 0; i < storedDetail.length; i++) {
       if(storedDetail[i].isloggedIn) {
-        storedDetail[i].name = values.fullname;
-        storedDetail[i].gender = values.gender;
-        storedDetail[i].birthdate = values.datepicker;
-        storedDetail[i].maritalstatus = values.maritalStatus;
-        storedDetail[i].mobile = values.mobile;
+        storedDetail[i].name = basicData.fullname;
+        $('.user-name').text(storedDetail[i].name);
+        storedDetail[i].gender = basicData.gender;
+        storedDetail[i].birthdate = basicData.datepicker;
+        storedDetail[i].maritalstatus = basicData.maritalStatus;
+        storedDetail[i].mobile = basicData.mobile;
       }
     }
     authHelper.setData(storedDetail);
@@ -58,24 +59,25 @@ function Profile() {
     event.preventDefault();
     var authHelper = new AuthHelper();
     var inputs = $('form :input');
-    var values = {};
+    var workData = {};
     inputs.each(function() {
       var skills = [];
       if(this.name == 'skills') {
         $(":checkbox:checked").each(function(index) {
           skills[index] = $(this).val();
         });
-        values['skills'] = skills;
+        workData['skills'] = skills;
       } else {
-        values[this.name] = $(this).val();
+        workData[this.name] = $(this).val();
       }
     });
 
     var storedDetail = authHelper.getData();
     for (var i = 0; i < storedDetail.length; i++) {
       if(storedDetail[i].isloggedIn) {
-        storedDetail[i].profile = values.profile;
-        storedDetail[i].skills = values.skills;
+        storedDetail[i].profile = workData.profile;
+        $('.user-profile').text(storedDetail[i].profile);
+        storedDetail[i].skills = workData.skills;
       }
     }
     authHelper.setData(storedDetail);

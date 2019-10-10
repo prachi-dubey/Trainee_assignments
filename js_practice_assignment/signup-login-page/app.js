@@ -6,14 +6,14 @@ function changeRoute(pageName) {
   if(pageName == 'login') {
     var login = new Login();
     login.prepareLoginData();
-    history.pushState({ page: 1}, "login", "#login");
+    history.pushState({ page: 1}, "login", "#/login");
     var logout = new AuthHelper();
     logout.logoutUser();
   } else if(pageName == 'signup') {
     $('#signup').tab('show');
     var signupData = new Signup();
     signupData.prepareSignupData();
-    history.pushState({ page: 1}, "signup", "#signup");
+    history.pushState({ page: 1}, "signup", "#/signup");
   }
 }
 
@@ -29,7 +29,7 @@ function checkSession() {
   }
   var login = new Login();
   login.prepareLoginData();
-  history.pushState({ page: 1}, "login", "#login");
+  history.pushState({ page: 1}, "login", "#/login");
 }
 
 window.onpopstate = function(event) {
@@ -64,8 +64,8 @@ function AuthHelper() {
 
   this.setData = function(storedDetail) {
     localStorage.setItem('personDetails', JSON.stringify(storedDetail));
-    var test = JSON.parse(localStorage.getItem('personDetails'));
-    console.log(test);
+    // var test = JSON.parse(localStorage.getItem('personDetails'));
+    // console.log(test);
   }
 
   this.getData = function() {

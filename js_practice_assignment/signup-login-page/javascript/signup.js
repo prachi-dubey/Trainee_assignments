@@ -1,8 +1,7 @@
-
 function Signup() {
   this.prepareSignupData = function() {
     var template = null;
-    $.get("../template/signup.html", function(templateData, Status) {
+    $.get("../template/signup.html", function(templateData, status) {
       var output = Mustache.render(templateData);
       $('#wrapper').html(output);
       $("#sign-app").validate({
@@ -82,39 +81,39 @@ function Signup() {
     });
   }
 
-   function onSignupSubmit (form) {
-     event.preventDefault();
-     var inputs = $("#sign-app :input");
-     var values = {};
-     inputs.each(function() {
-       var skills = [];
-       if(this.name == 'skills') {
-         $(":checkbox:checked").each(function(index) {
-           skills[index] = $(this).val();
-         });
-         values['skills'] = skills;
-       } else if(this.name == 'gender') {
-         var data = $('input:radio[name=gender]:checked').val()
-         values[this.name] = data;
-       } else {
-         values[this.name] = $(this).val();
-       }
-   });
-   console.log(values);
-   var authHelper = new AuthHelper();
-   var dataCheck = authHelper.getData();
-   if(!dataCheck) {
-     dataCheck = [];
-   }
-   dataCheck.push(values);
+  function onSignupSubmit (form) {
+    event.preventDefault();
+    var inputs = $("#sign-app :input");
+    var singupData = {};
+    inputs.each(function() {
+      var skills = [];
+      if(this.name == 'skills') {
+        $(":checkbox:checked").each(function(index) {
+        skills[index] = $(this).val();
+       });
+       singupData['skills'] = skills;
+      } else if(this.name == 'gender') {
+        var data = $('input:radio[name=gender]:checked').val();
+        singupData[this.name] = data;
+      } else {
+        singupData[this.name] = $(this).val();
+      }
+    });
+    singupData.follower = [];
+    singupData.following = 0;
+    
+    console.log(singupData);
+    var authHelper = new AuthHelper();
+    var dataCheck = authHelper.getData();
+    if(!dataCheck) {
+      dataCheck = [];
+    }
+    dataCheck.push(singupData);
+    authHelper.setData(dataCheck);
 
-   var authHelper = new AuthHelper();
-   authHelper.setData(dataCheck);
-
-   document.getElementById('sign-app').reset();
-
-   var loginData = new Login();
-   loginData.prepareLoginData();
+    document.getElementById('sign-app').reset();
+    var loginData = new Login();
+    loginData.prepareLoginData();
   }
 }
 

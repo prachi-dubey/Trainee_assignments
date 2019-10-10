@@ -28,18 +28,17 @@
 // localStorage.setItem('globalPost', JSON.stringify(globalPostData));
 
 function Home() {
-  this.prepareHome = function(personDetail) {
-    var globalPost = JSON.parse(localStorage.getItem('globalPost'));
+  this.prepareHome = function() {
+    var globalPost = getGlobalPost();
     for (var i = 0; i < globalPost.length; i++) {
-      var diffTime = timecheck(globalPost[i].time);
-      globalPost[i].time = diffTime;
+      globalPost[i].time = timecheck(globalPost[i].time);
       globalPost[i].name = globalPost[i].name.charAt(0).toUpperCase() + globalPost[i].name.substr(1);
     }
 
     globalPost.data = globalPost;
     $.get("../template/home.html", function(templateHome, Status) {
       var output = Mustache.render(templateHome, globalPost);
-      history.replaceState({ page: 1}, "home", "#dashboard-home");
+      history.replaceState({ page: 1}, "home", "#/dashboard-home");
       $('#tab-content').html(output);
       $('.lazy').lazy({
         scrollDirection: 'vertical',
@@ -48,13 +47,12 @@ function Home() {
           console.log('error loading ' + element.data('src'));
         }
       });
-      $('.timeline').first().addClass('before');
-      $('.timeline').last().addClass('after');
       $('[data-toggle="tooltip"]').tooltip();
     });
   }
 
   this.onSubmit = function (form) {
+    console.log(this);
     $('#post-modal').removeAttr('novalidate');
     event.preventDefault();
     $("#open-modal").modal('hide');
@@ -72,42 +70,30 @@ function Home() {
        var d = new Date();
        var time = d.getTime();
        values.image = values.image + '?';
-       values.time = time ;
+       values.time = time;
        values.name = loginDetail.name;
        values.icon = loginDetail.profileImg;
        arr = [values];
-       var userPost = JSON.parse(localStorage.getItem('globalPost'));
+       var userPost = getGlobalPost();
        userPost.unshift(values);
-       localStorage.setItem('globalPost', JSON.stringify(userPost));
+       storeGlobalPost(userPost);
      }
-
-     var globalPost = JSON.parse(localStorage.getItem('globalPost'));
-     for (var i = 0; i < globalPost.length; i++) {
-       var diffTime = timecheck(globalPost[i].time);
-       globalPost[i].time = diffTime;
-     }
-     var commonData = {};
-     commonData.data = globalPost;
-
-     $.get("../template/home.html", function(templateHome, Status) {
-       var output = Mustache.render(templateHome, commonData);
-       $('#user-post').html(output);
-     });
+     this.prepareHome();
    }
+
+   function getGlobalPost() {
+     var globalPostDetail = JSON.parse(localStorage.getItem('globalPost'));
+     return globalPostDetail;
+   }
+
+   function storeGlobalPost(userPost) {
+     localStorage.setItem('globalPost', JSON.stringify(userPost));
+   }
+
  }
 
 function likeCount(event) {
-  console.log("hii");
-  console.log(event);
-  $(event).css("color", '#6ec0fb');
-
-  var likesCount = $(event).siblings().eq(1).html();
-  likesCount = parseInt(likesCount, 10)
-  likesCount = likesCount + 1;
-  $(event).siblings().eq(1).html(likesCount);
-
-  var t = $(event).parents().eq(1);
-  console.log(t);
+    $($(event)[0]).addClass('like-hightlight');
 }
 
 function addPostEvent() {
@@ -140,18 +126,18 @@ function storeUserPost() {
     onfocusout: function(element) {
       this.element(element);
     },
-    submitHandler: home.onSubmit
+    submitHandler: home.onSubmit.bind(home)
   });
 }
 
 function timecheck(time) {
-  var saveTime = new Date(time);
-  var newTime = new Date();
-  var time = '';
-  var date = newTime.getDate() - saveTime.getDate();
+  var postTime = new Date(time);
+  var today = new Date();
+  var getPostTime = '';
+  var date = today.getDate() - postTime.getDate();
 
   if(date == 0) {
-    var diff = newTime.getTime() - saveTime.getTime();
+    var diff = today.getTime() - postTime.getTime();
     var hours = Math.floor(diff / 1000 / 60 / 60);
     diff -= hours * 1000 * 60 * 60;
     var minutes = Math.floor(diff / 1000 / 60);
@@ -159,13 +145,13 @@ function timecheck(time) {
     var seconds = Math.floor(diff / 1000 );
 
     if(hours > 0) {
-      time = hours + ' hours';
+      getPostTime = hours + ' hours';
     } else if(minutes < 60 && minutes > 0) {
-      time = minutes + ' minutes';
+      getPostTime = minutes + ' minutes';
     } else if(seconds < 60) {
-      time = seconds + ' seconds';
+      getPostTime = seconds + ' seconds';
     }
-    return time;
+    return getPostTime;
   } else {
     return date + ' days';
   }

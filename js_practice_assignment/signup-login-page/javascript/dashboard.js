@@ -2,29 +2,32 @@ function Dashboard() {
 
   this.prepareDashboard = function(personDetail) {
     var active = 'active';
-    $.get("../template/dashboard.html", function(template, Status) {
-      personDetail.name = personDetail.name.charAt(0).toUpperCase() + personDetail.name.substr(1);
-      personDetail.gender = personDetail.gender.charAt(0).toUpperCase() + personDetail.gender.substr(1);
-
+    var tabsName = ["Home", "Profile", "Friends", "Messages"];
+    $.get("../template/dashboard.html", function(template, status) {
+      personDetail.tabs = tabsName;
       var outputDashboard = Mustache.render(template, personDetail);
       $('#wrapper').html(outputDashboard);
 
-      history.pushState({ page: 1}, "dashboard", "#dashboard");
+      history.pushState({ page: 1}, "dashboard", "#/dashboard");
+      $('.show-tab-data').first().addClass('active');
       var homeData = new Home();
-      homeData.prepareHome(personDetail);
+      homeData.prepareHome();
 
       $('.show-tab-data').on('click', function() {
         var tabName = $(this).data('tab-content')
         $('#tabs li').removeClass(active);
         $(this).addClass(active);
         switch (tabName) {
-          case 'home':
-                homeData.prepareHome(personDetail);
+          case 'Home':
+                homeData.prepareHome();
                 break;
-          case 'profile':
+          case 'Profile':
                 var profileData = new Profile();
                 profileData.prepareProfile(personDetail);
                 break;
+          case 'Friends':
+                var friends = new Friends();
+                friends.prepareFriends();
           default:
                 // homeData.prepareHome(personDetail);
                 return;

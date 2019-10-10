@@ -2,6 +2,16 @@
 .website {
   padding: 0 5px;
 }
+@media (max-width: 768px) {
+  .website {
+    margin: 0 5px 0 5px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website {
+    margin: 0 8px 0 8px;
+  }
+}
 .website .nav .navbar {
   background-color: #6ec0fb;
 }
@@ -21,30 +31,30 @@
   margin: 5px 10px 0 0;
 }
 .website .nav .navbar .navbar-header .logout .media-img {
-  width: 40px;
   height: 40px;
+  width: 40px;
 }
 .website .login {
   border: 3px solid #f1f1f1;
 }
 .website .login form input[type=email], .website .login form input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  display: inline-block;
+  margin: 8px 0;
+  padding: 12px 20px;
+  width: 100%;
 }
 .website .login form .password {
   display: block;
 }
 .website .login form button {
   background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
   border: none;
+  color: white;
   cursor: pointer;
+  margin: 8px 0;
+  padding: 14px 20px;
   width: 20%;
 }
 .website .login form button:hover {
@@ -57,8 +67,8 @@
   border: 3px solid #f1f1f1;
 }
 .website .signup h4 {
-  text-align: center;
   color: #6ec0fb;
+  text-align: center;
 }
 .website .signup .name {
   margin-top: 15px;
@@ -75,7 +85,7 @@
   vertical-align: top;
   width: 85%;
 }
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .website .dashboard .user-tile {
     width: 100%;
   }
@@ -122,7 +132,7 @@
   margin-bottom: 20px;
 }
 .website .dashboard .user-tile .post-comment .post {
-  margin-left: 25px;
+  margin-left: 12px;
 }
 .website .dashboard .user-tile .post-comment > div {
   padding-right: 10px;
@@ -137,6 +147,9 @@
 }
 .website .dashboard .user-tile .post-comment > div:last-child {
   border-right: none;
+}
+.website .dashboard .user-tile .follower-detail {
+  text-align: center;
 }
 .website .dashboard .tab-wrapper {
   display: inline-block;
@@ -156,13 +169,35 @@
   font-size: 16px;
   height: 60px;
 }
+@media (max-width: 991px) {
+  .website .dashboard .tab-wrapper .profile .basic .header {
+    font-size: 15px;
+  }
+}
 .website .dashboard .tab-wrapper .profile .basic .header button {
   margin-left: 75%;
   width: 5%;
 }
+@media (max-width: 768px) {
+  .website .dashboard .tab-wrapper .profile .basic .header button {
+    margin-left: 45%;
+    width: 12%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .dashboard .tab-wrapper .profile .basic .header button {
+    margin-left: 70%;
+    width: 5%;
+  }
+}
 .website .dashboard .tab-wrapper .profile .basic .information .row {
   margin-top: 10px;
   padding-left: 20px;
+}
+@media (max-width: 768px) {
+  .website .dashboard .tab-wrapper .profile .basic .information .row {
+    padding-left: 5px;
+  }
 }
 .website .dashboard .tab-wrapper .profile .basic .information .row .detail {
   color: #716969;
@@ -181,9 +216,26 @@
   font-size: 16px;
   height: 60px;
 }
+@media (max-width: 991px) {
+  .website .dashboard .tab-wrapper .profile .work .header {
+    font-size: 15px;
+  }
+}
 .website .dashboard .tab-wrapper .profile .work .header button {
   margin-left: 86%;
   width: 5%;
+}
+@media (max-width: 768px) {
+  .website .dashboard .tab-wrapper .profile .work .header button {
+    margin-left: 72%;
+    width: 12%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .dashboard .tab-wrapper .profile .work .header button {
+    margin-left: 84%;
+    width: 5%;
+  }
 }
 .website .dashboard .tab-wrapper .profile .work .information .row {
   margin-top: 10px;
@@ -216,17 +268,17 @@
   border-top: 1px solid #ccc;
 }
 .website .home .add-post {
-  position: fixed;
   bottom: 10px;
+  position: fixed;
   right: 31px;
 }
 .website .home .add-post .btn-primary {
   background-color: #6ec0fb;
   border-radius: 50%;
-  width: 40px;
   display: flex;
-  justify-content: center;
   height: 40px;
+  justify-content: center;
+  width: 40px;
 }
 .website .home .add-post .btn-primary .glyphicon {
   font-size: 22px;
@@ -235,10 +287,10 @@
 }
 .website .home .home-icon {
   border: 3px solid #6ec0fb;
-  z-index: 10;
-  top: 25px;
-  position: relative;
   margin-top: 20px;
+  position: relative;
+  top: 25px;
+  z-index: 10;
 }
 .website .home .gap {
   padding-right: 2px;
@@ -247,48 +299,86 @@
   overflow: visible;
 }
 .website .home .timeline {
-  position: relative;
   margin: 0 auto;
+  position: relative;
 }
 .website .home .timeline ::after {
-  content: "";
-  position: absolute;
-  width: 3px;
   background-color: #6ec0fb;
-  top: -12px;
   bottom: -30px;
+  content: "";
   left: 52%;
   margin-left: -3px;
-}
-.website .home .before:before {
   position: absolute;
-  content: " ●";
-  font-size: 35px;
-  top: -45px;
-  left: 51%;
-  margin-left: -11px;
-  color: #6ec0fb;
-}
-.website .home .after:after {
-  position: absolute;
-  content: " ●";
-  font-size: 35px;
-  top: 550px;
-  left: 51%;
-  margin-left: -11px;
-  color: #6ec0fb;
+  top: -12px;
+  width: 3px;
 }
 .website .home .noafter:after {
   display: none;
 }
 .website .home .hori-timeline {
-  width: 2%;
+  border-top: 3px solid #6ec0fb;
   position: relative;
   top: 70px;
-  border-top: 3px solid #6ec0fb;
+  width: 2%;
 }
 .website .home .like {
   font-size: 20px;
+}
+.website .friends {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .website .friends .col-sm-6 {
+    padding: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .friends {
+    margin: 0;
+  }
+  .website .friends .col-sm-6 {
+    padding: 10px;
+  }
+}
+.website .friends .tile {
+  margin: 5px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .friends .tile {
+    margin: 0;
+  }
+}
+.website .friends .tile .caption {
+  display: inline-block;
+  vertical-align: middle;
+}
+.website .friends .tile .caption h4 {
+  margin: 2px;
+}
+.website .friends .tile .caption div {
+  color: #716969;
+}
+.website .friends .tile .follow {
+  display: inline-block;
+  margin: 10px 5px 0 0;
+  vertical-align: top;
+  width: 15%;
+}
+@media (max-width: 991px) {
+  .website .friends .tile .follow {
+    margin-top: 10px;
+    width: 20%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .friends .tile .follow {
+    padding-right: 10px;
+  }
+}
+.website .friends .tile .follow .btn {
+  min-width: 69px;
+  padding: 4px;
+  width: 100%;
 }
 .website .modal-header {
   background-color: #6ec0fb;
@@ -320,8 +410,56 @@
 }
 .website .media-img {
   border-radius: 50%;
-  width: 50px;
   height: 50px;
+  width: 50px;
+}
+.website .post-content:first-child:before {
+  color: #6ec0fb;
+  content: " ●";
+  font-size: 35px;
+  left: 3%;
+  margin-left: -13px;
+  position: absolute;
+  top: 288px;
+}
+@media (max-width: 768px) {
+  .website .post-content:first-child:before {
+    left: 4%;
+    margin-left: -1px;
+    top: 45px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .post-content:first-child:before {
+    margin-left: -15px;
+  }
+}
+.website .media:last-child:after {
+  color: #6ec0fb;
+  content: " ●";
+  font-size: 35px;
+  left: 3%;
+  margin-left: -13px;
+  position: absolute;
+  bottom: -48px;
+}
+@media (max-width: 768px) {
+  .website .media:last-child:after {
+    left: 4%;
+    margin-left: -2px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .website .media:last-child:after {
+    margin-left: -15px;
+  }
+}
+.website .check-test {
+  background-color: #6ec0fb;
+}
+
+.like-hightlight {
+  color: #6ec0fb !important;
 }
 
 /*# sourceMappingURL=signup-login.css.map */

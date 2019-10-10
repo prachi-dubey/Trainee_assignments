@@ -6,8 +6,8 @@
           <div class="cover"> </div>
           <img src="{{profileImg}}" class="logo media-img"/>
           <div class="page-header">
-             <p><b>{{name}}</b></p>
-             <h6>{{profile}}</h6>
+             <p><b class="user-name">{{name}}</b></p>
+             <h6 class="user-profile">{{profile}}</h6>
           </div>
 
           <div class="post-comment clearfix">
@@ -19,6 +19,10 @@
               <div><p>Comment</p></div>
               <div class="content-size"> 1 </div>
             </div>
+            <div class="comment">
+              <div><p>Following</p></div>
+              <div class="content-size following-counts"> {{following}} </div>
+            </div>
           </div>
         </div>
       </div>
@@ -27,14 +31,13 @@
         <div class="tab-wrapper">
          <div class="thumbnail cover-img"></div>
          <div class="tabs-width">
-            <ul class="nav nav-tabs" id="tabs">
-              <li class='show-tab-data active' data-tab-content="home"><a href="javascript:void(0);">Home</a></li>
-              <li class='show-tab-data' data-tab-content="profile"><a href="javascript:void(0);">Profile</a></li>
-              <li class='show-tab-data' data-tab-content="messages"><a href="javascript:void(0);">Messages</a></li>
-              <li class='show-tab-data' data-tab-content="friends"><a href="javascript:void(0);">Friends</a></li>
-            </ul>
+           <ul class="nav nav-tabs" id="tabs">
+             {{#tabs}}
+              <li class='show-tab-data' data-tab-content="{{.}}"><a href="javascript:void(0);">{{.}}</a></li>
+             {{/tabs}}
+           </ul>
 
-            <div class="tab-content" id="tab-content"></div>
+           <div class="tab-content" id="tab-content"></div>
 
          </div>
         </div>
