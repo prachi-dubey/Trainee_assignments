@@ -99,10 +99,9 @@ function Signup() {
         singupData[this.name] = $(this).val();
       }
     });
-    singupData.follower = [];
-    singupData.following = 0;
-    
-    console.log(singupData);
+    singupData.following = [];
+    singupData.followingCounts = 0;
+
     var authHelper = new AuthHelper();
     var dataCheck = authHelper.getData();
     if(!dataCheck) {

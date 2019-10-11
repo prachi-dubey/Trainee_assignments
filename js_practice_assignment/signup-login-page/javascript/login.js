@@ -16,15 +16,15 @@ function Login() {
   function onLoginSubmit(form) {
    event.preventDefault();
    var inputs = $("form[name='login'] :input");
-   var personData = {};
+   var loginData = {};
    inputs.each(function() {
-     personData[this.name] = $(this).val();
+     loginData[this.name] = $(this).val();
    });
    var authHelper = new AuthHelper();
    var storedDetail = authHelper.getData();
 
    for (var i = 0; i < storedDetail.length; i++) {
-     if ( (personData.email === storedDetail[i].email) && (personData.password === storedDetail[i].password)) {
+     if ( (loginData.email === storedDetail[i].email) && (loginData.password === storedDetail[i].password)) {
         storedDetail[i].isloggedIn = true;
         storedDetail[i].name = storedDetail[i].name.charAt(0).toUpperCase() + storedDetail[i].name.substr(1);
         storedDetail[i].gender = storedDetail[i].gender.charAt(0).toUpperCase() + storedDetail[i].gender.substr(1);

@@ -1,0 +1,466 @@
+$white-smoke: #f1f1f1;
+$grey: #ccc;
+$grey2: #716969;
+$green: #4CAF50;
+$blue: #6ec0fb;
+$black: #333;
+$ipad: 768px;
+$ipad2: 991px;
+
+.website {
+  padding: 0 5px;
+  @media (max-width: $ipad) {
+    margin: 0 5px 0 5px;
+  }
+  @media (min-width: $ipad) and (max-width: $ipad2)  {
+    margin: 0 8px 0 8px;
+  }
+  .nav {
+    .navbar {
+      background-color: $blue;
+      .navbar-header {
+        float: none;
+        .logo {
+          background: url("../assets/logo.jpg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-left: 10px;
+          min-height: 50px;
+        }
+        .logout {
+          float: right;
+          margin: 5px 10px 0 0;
+          .media-img  {
+            height: 40px;
+            width: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .login {
+    border: 3px solid $white-smoke;
+    form {
+      input[type=email], input[type=password] {
+        border: 1px solid $grey;
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 8px 0;
+        padding: 12px 20px;
+        width: 100%;
+      }
+      .password {
+        display: block;
+      }
+      button {
+        background-color: $green;
+        border: none;
+        color: white;
+        cursor: pointer;
+        margin: 8px 0;
+        padding: 14px 20px;
+        width: 20%;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      .login-status {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .signup {
+    border: 3px solid $white-smoke;
+    h4{
+      color: $blue;
+      text-align: center;
+    }
+    .name{
+      margin-top: 15px;
+      input {
+        text-transform: capitalize;
+      }
+    }
+    .checkbox {
+      margin-top: 0;
+    }
+  }
+
+  .dashboard {
+    .user-tile {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      width: 85%;
+      @media (max-width: $ipad2){
+        width: 100%;
+      }
+      .cover {
+        background: url("../assets/mountain.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 150px;
+      }
+      .logo {
+        border: solid 2px white;
+        left: 38%;
+        min-height: 20%;
+        min-width: 25%;
+        position: absolute;
+        top: 120px;
+        @media (max-width: $ipad) {
+          left: 41%;
+          min-height: 20%;
+          min-width: 17%;
+        }
+        @media (min-width: $ipad) and (max-width: $ipad2) {
+          left: 45%;
+          min-height: 21%;
+          min-width: 11%;
+        }
+      }
+      .page-header {
+        text-align: center;
+      }
+      .content-size {
+        font-size: 14px;
+        line-height: 25px;
+      }
+      .post-comment {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        .post {
+          margin-left: 12px;
+        }
+        > div {
+          padding-right: 10px;
+        }
+        .comment {
+          padding-left: 10px;
+        }
+        > div {
+          border-right: 1px solid $grey;
+          float: left;
+          text-align: center;
+        }
+        > div:last-child {
+          border-right: none;
+        }
+      }
+      .follower-detail {
+        text-align: center;
+      }
+    }
+
+    .tab-wrapper {
+      display: inline-block;
+      width: 100%;
+      .nav-tabs {
+        margin-bottom: 40px;
+      }
+      .tabs-width {
+        .nav-tabs>li {
+          width: 25%;
+        }
+      }
+      .profile {
+        .basic {
+          .header {
+            align-items: center;
+            border-bottom: solid 2px $grey;
+            color: $grey2;
+            display: flex;
+            font-size: 16px;
+            height: 60px;
+            @media (max-width: $ipad2) {
+              font-size: 15px;
+            }
+            button {
+              margin-left: 75%;
+              width: 5%;
+              @media (max-width: $ipad) {
+                margin-left: 45%;
+                width: 12%;
+              }
+              @media (min-width: $ipad) and (max-width: $ipad2)  {
+                margin-left: 70%;
+                width: 5%;
+              }
+            }
+          }
+          .information {
+            .row {
+              margin-top: 10px;
+              padding-left: 20px;
+              @media (max-width: $ipad) {
+                padding-left: 5px;
+              }
+              .detail {
+                color: $grey2;
+                .input-size {
+                  width: 40%;
+                }
+              }
+            }
+          }
+        }
+        .work {
+          margin-top: 35px;
+          .header {
+            align-items: center;
+            border-bottom: solid 2px $grey;
+            color: $grey2;
+            display: flex;
+            font-size: 16px;
+            height: 60px;
+            @media (max-width: $ipad2) {
+              font-size: 15px;
+            }
+            button {
+              margin-left: 86%;
+              width: 5%;
+              @media (max-width: $ipad) {
+                margin-left: 72%;
+                width: 12%;
+              }
+              @media (min-width: $ipad) and (max-width: $ipad2)  {
+                margin-left: 84%;
+                width: 5%;
+              }
+            }
+          }
+          .information {
+            .row {
+              margin-top: 10px;
+              padding-left: 20px;
+              .detail {
+                color: $grey2;
+                .input-size {
+                  width: 40%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .home {
+    .post-content {
+      margin-top: 25px;
+      margin-right: 25px;
+      span {
+        font-size: 14px;
+        color: $grey2;
+      }
+    }
+    .title {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      padding: 15px 15px 5px 15px;
+    }
+    .profile {
+       height: 350px;
+       width: 100%;
+    }
+    .footer {
+      border-top: 1px solid $grey;
+    }
+    .add-post {
+      bottom: 10px;
+      position: fixed;
+      right: 31px;
+      .btn-primary {
+        background-color: $blue;
+        border-radius: 50%;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+        .glyphicon {
+          font-size: 22px;
+          left: 1px;
+          top: 8px;
+        }
+      }
+    }
+
+   .home-icon {
+     border: 3px solid $blue;
+     margin-top: 20px;
+     position: relative;
+     top: 25px;
+     z-index: 10;
+   }
+   .gap {
+     padding-right: 2px;
+   }
+   .overflow-visible {
+     overflow:  visible;
+   }
+   .timeline {
+     margin: 0 auto;
+     position: relative;
+     ::after {
+       background-color: $blue;
+       bottom: -30px;
+       content: '';
+       left: 52%;
+       margin-left: -3px;
+       position: absolute;
+       top: -12px;
+       width: 3px;
+     }
+   }
+   .noafter:after {
+      display: none;
+    }
+    .hori-timeline {
+      border-top: 3px solid $blue;
+      position:relative;
+      top: 70px;
+      width: 2%;
+    }
+    .like {
+      font-size: 20px;
+    }
+   }
+
+   .friends {
+     margin: 0;
+     @media (max-width: $ipad) {
+       .col-sm-6 {
+         padding: 0;
+       }
+     }
+     @media (min-width: $ipad) and (max-width: $ipad2)  {
+       margin: 0;
+       .col-sm-6 {
+         padding: 10px;
+       }
+     }
+
+     .tile {
+       margin: 5px;
+       @media (min-width: $ipad) and (max-width: $ipad2)  {
+         margin: 0;
+       }
+       .caption {
+         display: inline-block;
+         vertical-align: middle;
+         h4 {
+           margin: 2px;
+         }
+         div {
+           color: $grey2;
+         }
+       }
+       .follow {
+         display: inline-block;
+         margin: 10px 5px 0 0;
+         vertical-align: top;
+         width: 15%;
+         @media (max-width: $ipad2) {
+           margin-top: 10px;
+           width: 20%;
+         }
+         @media (min-width: $ipad) and (max-width: $ipad2)  {
+           padding-right: 10px;
+         }
+         .btn {
+           min-width: 69px;
+           padding: 4px;
+           width: 100%;
+         }
+       }
+     }
+   }
+
+   .message {
+     font-size: 20px;
+     text-align: center;
+     margin: 10px;
+   }
+
+   .modal-header {
+     background-color: $blue;
+     color:white !important;
+     font-size: 30px;
+     text-align: center;
+   }
+   .col-padding {
+     padding: 0;
+   }
+   .error {
+     color:red;
+     font-size: 12px;
+   }
+   .thumbnail {
+     padding: 0;
+   }
+   .cover-img {
+     background: url("../assets/mountain.jpg");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     min-height: 230px;
+     @media (max-width: $ipad) {
+       display: none;
+     }
+   }
+   .media-img {
+     border-radius: 50%;
+     height: 50px;
+     width: 50px;
+   }
+
+   .post-content:first-child:before {
+     color: $blue;
+     content: ' \25CF';
+     font-size: 35px;
+     left: 3%;
+     margin-left: -13px;
+     position: absolute;
+     top: 288px;
+     @media (max-width: $ipad) {
+       left: 4%;
+       margin-left: -1px;
+       top: 45px;
+     }
+     @media (min-width: $ipad) and (max-width: $ipad2)  {
+       margin-left: -15px;
+     }
+
+   }
+
+   .media:last-child:after {
+     color: $blue;
+     content: ' \25CF';
+     font-size: 35px;
+     left: 3%;
+     margin-left: -13px;
+     position: absolute;
+     bottom: -48px;
+     @media (max-width: $ipad) {
+       left: 4%;
+       margin-left: -2px;
+     }
+     @media (min-width: $ipad) and (max-width: $ipad2)  {
+       margin-left: -15px;
+     }
+   }
+
+   .check-test {
+     background-color: #6ec0fb;
+   }
+}
+
+.like-hightlight {
+  color: #6ec0fb !important;
+}

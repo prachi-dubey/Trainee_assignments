@@ -3,17 +3,19 @@ $(document).ready(function() {
 });
 
 function changeRoute(pageName) {
-  if(pageName == 'login') {
+  var loginStr = 'login';
+  var signupStr = 'signup';
+  if(pageName == loginStr ) {
     var login = new Login();
     login.prepareLoginData();
-    history.pushState({ page: 1}, "login", "#/login");
+    history.pushState({ page: 1}, loginStr , "#/login");
     var logout = new AuthHelper();
     logout.logoutUser();
-  } else if(pageName == 'signup') {
+  } else if(pageName == signupStr) {
     $('#signup').tab('show');
     var signupData = new Signup();
     signupData.prepareSignupData();
-    history.pushState({ page: 1}, "signup", "#/signup");
+    history.pushState({ page: 1}, signupStr , "#/signup");
   }
 }
 
@@ -37,20 +39,21 @@ window.onpopstate = function(event) {
 };
 
 function AuthHelper() {
+  var personDetailStr = 'personDetails';
 
   this.logoutUser = function() {
-    var storedDetail = JSON.parse(localStorage.getItem('personDetails'));
+    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
      for (var i = 0; i < storedDetail.length; i++) {
        if(storedDetail[i].isloggedIn) {
          storedDetail[i].isloggedIn = false;
          break;
        }
      }
-    localStorage.setItem('personDetails', JSON.stringify(storedDetail));
+    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
   }
 
   this.getLoginDetails = function() {
-    var storedDetail = JSON.parse(localStorage.getItem('personDetails'));
+    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
     if (storedDetail) {
       for (var i = 0; i < storedDetail.length; i++) {
         if (storedDetail[i].isloggedIn) {
@@ -63,13 +66,22 @@ function AuthHelper() {
   }
 
   this.setData = function(storedDetail) {
-    localStorage.setItem('personDetails', JSON.stringify(storedDetail));
-    // var test = JSON.parse(localStorage.getItem('personDetails'));
-    // console.log(test);
+    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
   }
 
   this.getData = function() {
-    var dataCheck = JSON.parse(localStorage.getItem('personDetails'));
+    var dataCheck = JSON.parse(localStorage.getItem(personDetailStr));
     return dataCheck;
+  }
+
+  this.setFollowersCount = function() {
+    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
+     for (var i = 0; i < storedDetail.length; i++) {
+       if(storedDetail[i].isloggedIn) {
+         storedDetail[i].followingCounts = (storedDetail[i].following).length;
+         break;
+       }
+     }
+    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
   }
 }

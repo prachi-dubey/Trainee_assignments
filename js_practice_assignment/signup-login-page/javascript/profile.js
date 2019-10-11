@@ -126,7 +126,7 @@ function saveBasicProfile() {
       gender: "required",
       maritalStatus : "required",
       datepicker: "required",
-     },
+    },
     messages: {
       fullname: {
         required: "Please enter letters only",
@@ -140,7 +140,7 @@ function saveBasicProfile() {
       gender: "Please select one option",
       maritalStatus: "please select one field",
       datepicker: "please select your birthdate"
-     },
+    },
     onfocusout: function(element) {
       this.element(element);
     },

@@ -9,12 +9,12 @@
             <div>{{profile}}</div>
           </div>
           <div class=" pull-right follow">
-            {{#follower}}
-              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Follow</div>
-            {{/follower}}
-            {{^follower}}
+            {{#following}}
               <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Following</div>
-            {{/follower}}
+            {{/following}}
+            {{^following}}
+              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Follow</div>
+            {{/following}}
           </div>
         </div>
       </div>

@@ -1,15 +1,15 @@
 function Friends() {
 
-  var globalFriends = [ {name: "Josephin Deo",profile: "Backend Engineer",follower: false, id: 1},
-                      {name: "Leo Deo",profile: "Professor" ,follower: false , id: 2},
-                      {name: "Joe Leon",profile: "Frontend Engineer" ,follower: false , id: 3},
-                      {name: "Ram Singh",profile: "Militry Officer" ,follower: false , id: 4},
-                      {name: "Rohit",profile: "Boxer" ,follower: false , id: 5},
-                      {name: "Ambani",profile: " Businessman" ,follower: false , id: 6},
-                      {name: "Steven",profile: "Cricketer" ,follower: false , id: 7},
-                      {name: "Robert Peel",profile: "Player" ,follower: false , id: 8},
-                      {name: "Neil Chaplin",profile: "Astronauts" ,follower: false , id: 9},
-                      {name: "Charlie",profile: "Actor" ,follower: false , id: 10},
+  var globalFriends = [ {name: "Josephin Deo",profile: "Backend Engineer",following: false, id: 1},
+                      {name: "Leo Deo",profile: "Professor" ,following: false , id: 2},
+                      {name: "Joe Leon",profile: "Frontend Engineer" ,following: false , id: 3},
+                      {name: "Ram Singh",profile: "Militry Officer" ,following: false , id: 4},
+                      {name: "Rohit",profile: "Boxer" ,following: false , id: 5},
+                      {name: "Ambani",profile: " Businessman" ,following: false , id: 6},
+                      {name: "Steven",profile: "Cricketer" ,following: false , id: 7},
+                      {name: "Robert Peel",profile: "Player" ,following: false , id: 8},
+                      {name: "Neil Chaplin",profile: "Astronauts" ,following: false , id: 9},
+                      {name: "Charlie",profile: "Actor" ,following: false , id: 10},
                     ];
 
   this.prepareFriends = function() {
@@ -27,15 +27,14 @@ function Friends() {
     var authHelper = new AuthHelper();
     var loginDetail = authHelper.getLoginDetails();
     if(loginDetail) {
-      var following = loginDetail.follower;
+      var userFollower = loginDetail.following;
+      $('.following-counts').text(userFollower.length);
       var friendsData = JSON.parse(localStorage.getItem('friends'));
-      console.log(following);
-      if(following.length) {
-        for(var i = 0; i < following.length ; i++) {
-          var t = following[i].id;
+      if(userFollower.length) {
+        for(var i = 0; i < userFollower.length ; i++) {
           for(var j = 0; j <= friendsData.length ; j++) {
-            if(t == friendsData[j].id) {
-              friendsData[j].follower = true;
+            if(userFollower[i].id == friendsData[j].id) {
+              friendsData[j].following = true;
               break;
             }
           }
@@ -45,54 +44,49 @@ function Friends() {
     localStorage.setItem('friends', JSON.stringify(friendsData));
     return friendsData;
   }
-
-  this.StoreLoggedInFollower = function(followersData) {
-    var followerList = [];
-    for(var i = 0; i < followersData.length; i++) {
-      if(followersData[i].follower) {
-        var temp = {
-          id: followersData[i].id,
-        }
-        followerList.push(temp);
-      }
-    }
-    var followersCount = followersData.length - followerList.length;
-    $('.following-counts').text(followersCount);
-
-    var authHelper = new AuthHelper();
-    var storedDetail = authHelper.getData();
-    for (var i = 0; i < storedDetail.length; i++) {
-      if (storedDetail[i].isloggedIn) {
-        storedDetail[i].follower = followerList;
-        storedDetail[i].following = followersCount;
-      }
-    }
-    authHelper.setData(storedDetail);
-  }
 }
 
 function follow(event) {
   var id = $(event).data('id');
-  var totalFollowers = JSON.parse(localStorage.getItem('friends'));
-  for (var i = 0; i < totalFollowers.length; i++) {
-    if(totalFollowers[i].id == id) {
-      if(totalFollowers[i].follower) {
-        totalFollowers[i].follower = false;
-      } else {
-        totalFollowers[i].follower = true;
+
+  var followerList = [];
+  var followersCount = null;
+  var authHelper = new AuthHelper();
+  var storedDetail = authHelper.getData();
+  for (var i = 0; i < storedDetail.length; i++) {
+    if (storedDetail[i].isloggedIn) {
+    followerList = storedDetail[i].following;
+    }
+  }
+
+  console.log("logged in followers");
+  console.log(followerList);
+  if($(event).text() == 'Follow') {
+    $(event).text('Following');
+  } else if($(event).text() == 'Following') {
+    $(event).text('Follow');
+  }
+
+  var isFollowing = false;
+  if(followerList && followerList.length) {
+    for (var i = 0; i < followerList.length; i++) {
+      if(followerList[i].id == id) {
+        isFollowing = true;
+        followerList.splice(i, 1);
+        break;
       }
     }
   }
-  localStorage.setItem('friends', JSON.stringify(totalFollowers));
 
-  var followersData = JSON.parse(localStorage.getItem('friends'));
-  var tempStore = {};
-  tempStore.data = followersData;
-  $.get("../template/friends.html", function(templateCheck, Status) {
-    var template = Mustache.render(templateCheck, tempStore);
-    $('#follower').html(template);
-  });
+  if((isFollowing) && (!followerList.length) ) {
+    followerList = [];
+  } else if(!isFollowing || !followerList.length) {
+    followerList.push({id: id});
+  }
 
-  var storeFollowers = new Friends();
-  storeFollowers.StoreLoggedInFollower(followersData);
+  var followers = JSON.parse(localStorage.getItem('friends'));
+  $('.following-counts').text(followerList.length);
+  console.log(followersCount);
+  authHelper.setData(storedDetail);
+  authHelper.setFollowersCount();
 }

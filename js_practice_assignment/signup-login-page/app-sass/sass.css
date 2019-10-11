@@ -1,0 +1,345 @@
+.website {
+  padding: 0 5px; }
+  @media (max-width: 768px) {
+    .website {
+      margin: 0 5px 0 5px; } }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .website {
+      margin: 0 8px 0 8px; } }
+  .website .nav .navbar {
+    background-color: #6ec0fb; }
+    .website .nav .navbar .navbar-header {
+      float: none; }
+      .website .nav .navbar .navbar-header .logo {
+        background: url("../assets/logo.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 10px;
+        min-height: 50px; }
+      .website .nav .navbar .navbar-header .logout {
+        float: right;
+        margin: 5px 10px 0 0; }
+        .website .nav .navbar .navbar-header .logout .media-img {
+          height: 40px;
+          width: 40px; }
+  .website .login {
+    border: 3px solid #f1f1f1; }
+    .website .login form input[type=email], .website .login form input[type=password] {
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      display: inline-block;
+      margin: 8px 0;
+      padding: 12px 20px;
+      width: 100%; }
+    .website .login form .password {
+      display: block; }
+    .website .login form button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin: 8px 0;
+      padding: 14px 20px;
+      width: 20%; }
+    .website .login form button:hover {
+      opacity: 0.8; }
+    .website .login form .login-status {
+      margin-top: 20px; }
+  .website .signup {
+    border: 3px solid #f1f1f1; }
+    .website .signup h4 {
+      color: #6ec0fb;
+      text-align: center; }
+    .website .signup .name {
+      margin-top: 15px; }
+      .website .signup .name input {
+        text-transform: capitalize; }
+    .website .signup .checkbox {
+      margin-top: 0; }
+  .website .dashboard .user-tile {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 85%; }
+    @media (max-width: 991px) {
+      .website .dashboard .user-tile {
+        width: 100%; } }
+    .website .dashboard .user-tile .cover {
+      background: url("../assets/mountain.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 150px; }
+    .website .dashboard .user-tile .logo {
+      border: solid 2px white;
+      left: 38%;
+      min-height: 20%;
+      min-width: 25%;
+      position: absolute;
+      top: 120px; }
+      @media (max-width: 768px) {
+        .website .dashboard .user-tile .logo {
+          left: 41%;
+          min-height: 20%;
+          min-width: 17%; } }
+      @media (min-width: 768px) and (max-width: 991px) {
+        .website .dashboard .user-tile .logo {
+          left: 45%;
+          min-height: 21%;
+          min-width: 11%; } }
+    .website .dashboard .user-tile .page-header {
+      text-align: center; }
+    .website .dashboard .user-tile .content-size {
+      font-size: 14px;
+      line-height: 25px; }
+    .website .dashboard .user-tile .post-comment {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px; }
+      .website .dashboard .user-tile .post-comment .post {
+        margin-left: 12px; }
+      .website .dashboard .user-tile .post-comment > div {
+        padding-right: 10px; }
+      .website .dashboard .user-tile .post-comment .comment {
+        padding-left: 10px; }
+      .website .dashboard .user-tile .post-comment > div {
+        border-right: 1px solid #ccc;
+        float: left;
+        text-align: center; }
+      .website .dashboard .user-tile .post-comment > div:last-child {
+        border-right: none; }
+    .website .dashboard .user-tile .follower-detail {
+      text-align: center; }
+  .website .dashboard .tab-wrapper {
+    display: inline-block;
+    width: 100%; }
+    .website .dashboard .tab-wrapper .nav-tabs {
+      margin-bottom: 40px; }
+    .website .dashboard .tab-wrapper .tabs-width .nav-tabs > li {
+      width: 25%; }
+    .website .dashboard .tab-wrapper .profile .basic .header {
+      align-items: center;
+      border-bottom: solid 2px #ccc;
+      color: #716969;
+      display: flex;
+      font-size: 16px;
+      height: 60px; }
+      @media (max-width: 991px) {
+        .website .dashboard .tab-wrapper .profile .basic .header {
+          font-size: 15px; } }
+      .website .dashboard .tab-wrapper .profile .basic .header button {
+        margin-left: 75%;
+        width: 5%; }
+        @media (max-width: 768px) {
+          .website .dashboard .tab-wrapper .profile .basic .header button {
+            margin-left: 45%;
+            width: 12%; } }
+        @media (min-width: 768px) and (max-width: 991px) {
+          .website .dashboard .tab-wrapper .profile .basic .header button {
+            margin-left: 70%;
+            width: 5%; } }
+    .website .dashboard .tab-wrapper .profile .basic .information .row {
+      margin-top: 10px;
+      padding-left: 20px; }
+      @media (max-width: 768px) {
+        .website .dashboard .tab-wrapper .profile .basic .information .row {
+          padding-left: 5px; } }
+      .website .dashboard .tab-wrapper .profile .basic .information .row .detail {
+        color: #716969; }
+        .website .dashboard .tab-wrapper .profile .basic .information .row .detail .input-size {
+          width: 40%; }
+    .website .dashboard .tab-wrapper .profile .work {
+      margin-top: 35px; }
+      .website .dashboard .tab-wrapper .profile .work .header {
+        align-items: center;
+        border-bottom: solid 2px #ccc;
+        color: #716969;
+        display: flex;
+        font-size: 16px;
+        height: 60px; }
+        @media (max-width: 991px) {
+          .website .dashboard .tab-wrapper .profile .work .header {
+            font-size: 15px; } }
+        .website .dashboard .tab-wrapper .profile .work .header button {
+          margin-left: 86%;
+          width: 5%; }
+          @media (max-width: 768px) {
+            .website .dashboard .tab-wrapper .profile .work .header button {
+              margin-left: 72%;
+              width: 12%; } }
+          @media (min-width: 768px) and (max-width: 991px) {
+            .website .dashboard .tab-wrapper .profile .work .header button {
+              margin-left: 84%;
+              width: 5%; } }
+      .website .dashboard .tab-wrapper .profile .work .information .row {
+        margin-top: 10px;
+        padding-left: 20px; }
+        .website .dashboard .tab-wrapper .profile .work .information .row .detail {
+          color: #716969; }
+          .website .dashboard .tab-wrapper .profile .work .information .row .detail .input-size {
+            width: 40%; }
+  .website .home .post-content {
+    margin-top: 25px;
+    margin-right: 25px; }
+    .website .home .post-content span {
+      font-size: 14px;
+      color: #716969; }
+  .website .home .title {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 15px 15px 5px 15px; }
+  .website .home .profile {
+    height: 350px;
+    width: 100%; }
+  .website .home .footer {
+    border-top: 1px solid #ccc; }
+  .website .home .add-post {
+    bottom: 10px;
+    position: fixed;
+    right: 31px; }
+    .website .home .add-post .btn-primary {
+      background-color: #6ec0fb;
+      border-radius: 50%;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      width: 40px; }
+      .website .home .add-post .btn-primary .glyphicon {
+        font-size: 22px;
+        left: 1px;
+        top: 8px; }
+  .website .home .home-icon {
+    border: 3px solid #6ec0fb;
+    margin-top: 20px;
+    position: relative;
+    top: 25px;
+    z-index: 10; }
+  .website .home .gap {
+    padding-right: 2px; }
+  .website .home .overflow-visible {
+    overflow: visible; }
+  .website .home .timeline {
+    margin: 0 auto;
+    position: relative; }
+    .website .home .timeline ::after {
+      background-color: #6ec0fb;
+      bottom: -30px;
+      content: '';
+      left: 52%;
+      margin-left: -3px;
+      position: absolute;
+      top: -12px;
+      width: 3px; }
+  .website .home .noafter:after {
+    display: none; }
+  .website .home .hori-timeline {
+    border-top: 3px solid #6ec0fb;
+    position: relative;
+    top: 70px;
+    width: 2%; }
+  .website .home .like {
+    font-size: 20px; }
+  .website .friends {
+    margin: 0; }
+    @media (max-width: 768px) {
+      .website .friends .col-sm-6 {
+        padding: 0; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .website .friends {
+        margin: 0; }
+        .website .friends .col-sm-6 {
+          padding: 10px; } }
+    .website .friends .tile {
+      margin: 5px; }
+      @media (min-width: 768px) and (max-width: 991px) {
+        .website .friends .tile {
+          margin: 0; } }
+      .website .friends .tile .caption {
+        display: inline-block;
+        vertical-align: middle; }
+        .website .friends .tile .caption h4 {
+          margin: 2px; }
+        .website .friends .tile .caption div {
+          color: #716969; }
+      .website .friends .tile .follow {
+        display: inline-block;
+        margin: 10px 5px 0 0;
+        vertical-align: top;
+        width: 15%; }
+        @media (max-width: 991px) {
+          .website .friends .tile .follow {
+            margin-top: 10px;
+            width: 20%; } }
+        @media (min-width: 768px) and (max-width: 991px) {
+          .website .friends .tile .follow {
+            padding-right: 10px; } }
+        .website .friends .tile .follow .btn {
+          min-width: 69px;
+          padding: 4px;
+          width: 100%; }
+  .website .message {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px; }
+  .website .modal-header {
+    background-color: #6ec0fb;
+    color: white !important;
+    font-size: 30px;
+    text-align: center; }
+  .website .col-padding {
+    padding: 0; }
+  .website .error {
+    color: red;
+    font-size: 12px; }
+  .website .thumbnail {
+    padding: 0; }
+  .website .cover-img {
+    background: url("../assets/mountain.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 230px; }
+    @media (max-width: 768px) {
+      .website .cover-img {
+        display: none; } }
+  .website .media-img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px; }
+  .website .post-content:first-child:before {
+    color: #6ec0fb;
+    content: ' \25CF';
+    font-size: 35px;
+    left: 3%;
+    margin-left: -13px;
+    position: absolute;
+    top: 288px; }
+    @media (max-width: 768px) {
+      .website .post-content:first-child:before {
+        left: 4%;
+        margin-left: -1px;
+        top: 45px; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .website .post-content:first-child:before {
+        margin-left: -15px; } }
+  .website .media:last-child:after {
+    color: #6ec0fb;
+    content: ' \25CF';
+    font-size: 35px;
+    left: 3%;
+    margin-left: -13px;
+    position: absolute;
+    bottom: -48px; }
+    @media (max-width: 768px) {
+      .website .media:last-child:after {
+        left: 4%;
+        margin-left: -2px; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      .website .media:last-child:after {
+        margin-left: -15px; } }
+  .website .check-test {
+    background-color: #6ec0fb; }
+
+.like-hightlight {
+  color: #6ec0fb !important; }

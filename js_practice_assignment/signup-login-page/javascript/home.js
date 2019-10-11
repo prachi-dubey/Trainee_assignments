@@ -24,7 +24,7 @@
 //    subtitle: "miriadna.com desctopwalls images/max/Nature-of-Brazil.jpg Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
 //    likes: 8
 //  } ];
-//
+
 // localStorage.setItem('globalPost', JSON.stringify(globalPostData));
 
 function Home() {
@@ -52,7 +52,6 @@ function Home() {
   }
 
   this.onSubmit = function (form) {
-    console.log(this);
     $('#post-modal').removeAttr('novalidate');
     event.preventDefault();
     $("#open-modal").modal('hide');
@@ -60,40 +59,38 @@ function Home() {
     $(".modal-backdrop").remove();
     var authHelper = new AuthHelper();
     var inputs = $('#post-modal :input');
-    var values = {};
-     inputs.each(function() {
-       values[this.name] = $(this).val();
-     });
-     var loginDetail = authHelper.getLoginDetails();
-     if(loginDetail) {
-       var arr = [];
-       var d = new Date();
-       var time = d.getTime();
-       values.image = values.image + '?';
-       values.time = time;
-       values.name = loginDetail.name;
-       values.icon = loginDetail.profileImg;
-       arr = [values];
-       var userPost = getGlobalPost();
-       userPost.unshift(values);
-       storeGlobalPost(userPost);
-     }
-     this.prepareHome();
-   }
+    var post = {};
+    inputs.each(function() {
+      post[this.name] = $(this).val();
+    });
+    var loginDetail = authHelper.getLoginDetails();
+    if(loginDetail) {
+      var today = new Date();
+      var time = today.getTime();
+      post.image = post.image + '?';
+      post.time = time;
+      post.name = loginDetail.name;
+      post.icon = loginDetail.profileImg;
+      var userPost = getGlobalPost();
+      userPost.unshift(post);
+      storeGlobalPost(userPost);
+    }
+    this.prepareHome();
+  }
 
-   function getGlobalPost() {
-     var globalPostDetail = JSON.parse(localStorage.getItem('globalPost'));
-     return globalPostDetail;
-   }
+  function getGlobalPost() {
+    var globalPostDetail = JSON.parse(localStorage.getItem('globalPost'));
+    return globalPostDetail;
+  }
 
-   function storeGlobalPost(userPost) {
-     localStorage.setItem('globalPost', JSON.stringify(userPost));
-   }
+  function storeGlobalPost(userPost) {
+    localStorage.setItem('globalPost', JSON.stringify(userPost));
+  }
 
- }
+}
 
 function likeCount(event) {
-    $($(event)[0]).addClass('like-hightlight');
+  $($(event)[0]).addClass('like-hightlight');
 }
 
 function addPostEvent() {
@@ -112,15 +109,32 @@ function storeUserPost() {
     rules: {
       title: "required",
       image: {
-        required:true,
+        required: function(element) {
+          var titleValue = $('#add-title').val();
+          var subtitleValue = $('#add-subtitle').val();
+          if(titleValue && subtitleValue) { return false; }
+          else if(titleValue && !subtitleValue) {return true;}
+        },
         extension: "png|jpg"
+      },
+      subtitle: {
+        required: function(element) {
+          var titleValue = $('#add-title').val();
+          var imageValue = $('#add-image').val();
+          if(titleValue && imageValue) { return false; }
+          else if(titleValue && !imageValue) {return true;}
+        },
+        maxlength: 100
       }
     },
     messages: {
-      title: "Please add title",
+      title: "Please add Post Title",
       image: {
-        required: "Please add image url",
+        required: "Please add Post Subtitle/Image Url",
         extension: "Please enter valid url with png or jpg extension"
+      },
+      subtitle: {
+        required: "Please add Post Subtitle/image Url",
       }
     },
     onfocusout: function(element) {

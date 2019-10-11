@@ -28,12 +28,19 @@ function Dashboard() {
           case 'Friends':
                 var friends = new Friends();
                 friends.prepareFriends();
+          case 'Messages':
+                messageTab();
           default:
-                // homeData.prepareHome(personDetail);
                 return;
-                // break;
         }
       });
     });
   };
+
+  function messageTab() {
+    var messageTab = '#tab-content';
+    $(messageTab).empty();
+    var messageHtml = '<div class="message"> No messages</div>'
+    $(messageTab).html(messageHtml);
+  }
 }
