@@ -59,8 +59,6 @@ function follow(event) {
     }
   }
 
-  console.log("logged in followers");
-  console.log(followerList);
   if($(event).text() == 'Follow') {
     $(event).text('Following');
   } else if($(event).text() == 'Following') {
@@ -86,7 +84,6 @@ function follow(event) {
 
   var followers = JSON.parse(localStorage.getItem('friends'));
   $('.following-counts').text(followerList.length);
-  console.log(followersCount);
   authHelper.setData(storedDetail);
   authHelper.setFollowersCount();
 }
