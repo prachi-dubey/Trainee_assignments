@@ -10,10 +10,10 @@
           </div>
           <div class=" pull-right follow">
             {{#following}}
-              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Following</div>
+              <div class='btn btn-primary' data-id="{{id}}" onclick="follow()" role='button'>Following</div>
             {{/following}}
             {{^following}}
-              <div class='btn btn-primary' data-id="{{id}}" onclick="follow(this)" role='button'>Follow</div>
+              <div class='btn btn-primary' data-id="{{id}}" onclick="follow()" role='button'>Follow</div>
             {{/following}}
           </div>
         </div>

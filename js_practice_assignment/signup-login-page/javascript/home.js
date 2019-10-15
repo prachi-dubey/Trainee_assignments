@@ -31,7 +31,7 @@ function Home() {
   this.prepareHome = function() {
     var globalPost = getGlobalPost();
     for (var i = 0; i < globalPost.length; i++) {
-      globalPost[i].time = timecheck(globalPost[i].time);
+      globalPost[i].time = updatePostTime(globalPost[i].time);
       globalPost[i].name = globalPost[i].name.charAt(0).toUpperCase() + globalPost[i].name.substr(1);
     }
 
@@ -144,7 +144,7 @@ function storeUserPost() {
   });
 }
 
-function timecheck(time) {
+function updatePostTime(time) {
   var postTime = new Date(time);
   var today = new Date();
   var getPostTime = '';

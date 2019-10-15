@@ -34,26 +34,22 @@ function checkSession() {
   history.pushState({ page: 1}, "login", "#/login");
 }
 
-window.onpopstate = function(event) {
-  // alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
-};
-
 function AuthHelper() {
-  var personDetailStr = 'personDetails';
+  var PERSONDETAIL = 'personDetails';
 
   this.logoutUser = function() {
-    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
+    var storedDetail = JSON.parse(localStorage.getItem(PERSONDETAIL));
      for (var i = 0; i < storedDetail.length; i++) {
        if(storedDetail[i].isloggedIn) {
          storedDetail[i].isloggedIn = false;
          break;
        }
      }
-    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
+    localStorage.setItem(PERSONDETAIL, JSON.stringify(storedDetail));
   }
 
   this.getLoginDetails = function() {
-    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
+    var storedDetail = JSON.parse(localStorage.getItem(PERSONDETAIL));
     if (storedDetail) {
       for (var i = 0; i < storedDetail.length; i++) {
         if (storedDetail[i].isloggedIn) {
@@ -66,22 +62,22 @@ function AuthHelper() {
   }
 
   this.setData = function(storedDetail) {
-    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
+    localStorage.setItem(PERSONDETAIL, JSON.stringify(storedDetail));
   }
 
   this.getData = function() {
-    var dataCheck = JSON.parse(localStorage.getItem(personDetailStr));
+    var dataCheck = JSON.parse(localStorage.getItem(PERSONDETAIL));
     return dataCheck;
   }
 
   this.setFollowersCount = function() {
-    var storedDetail = JSON.parse(localStorage.getItem(personDetailStr));
+    var storedDetail = JSON.parse(localStorage.getItem(PERSONDETAIL));
      for (var i = 0; i < storedDetail.length; i++) {
        if(storedDetail[i].isloggedIn) {
          storedDetail[i].followingCounts = (storedDetail[i].following).length;
          break;
        }
      }
-    localStorage.setItem(personDetailStr, JSON.stringify(storedDetail));
+    localStorage.setItem(PERSONDETAIL, JSON.stringify(storedDetail));
   }
 }
